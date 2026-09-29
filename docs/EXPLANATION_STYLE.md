@@ -172,3 +172,17 @@ Explain the underlying reason:
 > "Plain Java does not automatically give this project a web server, URL routing, or JSON request handling. We need those capabilities because Postman and other systems must be able to send HTTP requests to GeoOps. Spring Web provides those pieces, so we add it as a dependency."
 
 The explanation box should teach the reason behind the action, not merely name the action.
+
+
+## Compact bullet layout
+
+Explanation-card text must use a compact bullet-pointer layout.
+
+Rules:
+- Every visible explanation line starts with `• `.
+- Do not insert blank lines between explanation points.
+- Keep each bullet focused on one idea.
+- Flows such as `Controller → Service → Repository` may remain on one bullet line.
+- Do not use large paragraph spacing inside the explanation card.
+
+The goal is to keep the explanation dense, scannable, and easy to follow without empty vertical gaps.
