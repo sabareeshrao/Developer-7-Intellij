@@ -44,16 +44,50 @@ def validate_course(course):
             if not (step.get("action") or {}).get("action"):
                 raise SystemExit(f"Step {stage_index}.{step_index} has no simulator action")
             action_name = (step.get("action") or {}).get("action")
-            if step.get("software") == "intellij" and action_name in {"createFile", "setCode", "typeCode", "replaceCode"}:
-                highlight = step.get("highlight") or {}
-                if highlight.get("kind") != "code":
+            action_data = (step.get("action") or {}).get("data") or {}
+            highlight = step.get("highlight") or {}
+
+            if why:
+                lines = why.splitlines()
+                if any(not line.startswith("• ") for line in lines):
                     raise SystemExit(
-                        f"Step {stage_index}.{step_index} edits code but does not use an explicit code-line highlight"
+                        f"Step {stage_index}.{step_index} explanation lines must all start with •"
                     )
-                if not (highlight.get("lines") or highlight.get("line") or highlight.get("text") or highlight.get("selector")):
+                if any(not line.strip() for line in lines):
                     raise SystemExit(
-                        f"Step {stage_index}.{step_index} code highlight has no line/text/selector target"
+                        f"Step {stage_index}.{step_index} explanation contains blank lines"
                     )
+
+            if step.get("software") == "intellij":
+                if action_name == "createFile" and str(action_data.get("content") or ""):
+                    raise SystemExit(
+                        f"Step {stage_index}.{step_index} createFile contains source text; "
+                        "create the empty file first, then use typeCode so typing is visible"
+                    )
+
+                if action_name in {"setCode", "typeCode", "replaceCode"}:
+                    if highlight.get("kind") != "code":
+                        raise SystemExit(
+                            f"Step {stage_index}.{step_index} edits code but does not use an explicit code-line highlight"
+                        )
+                    if not (highlight.get("lines") or highlight.get("line") or highlight.get("text") or highlight.get("selector")):
+                        raise SystemExit(
+                            f"Step {stage_index}.{step_index} code highlight has no line/text/selector target"
+                        )
+
+                if action_name == "typeTerminal":
+                    command = str(action_data.get("command") or action_data.get("text") or "")
+                    if not command.strip():
+                        raise SystemExit(
+                            f"Step {stage_index}.{step_index} typeTerminal has no command text"
+                        )
+                    selectors = highlight.get("selectors") or []
+                    if highlight.get("kind") != "target" or ".terminalCommandFocus" not in selectors:
+                        raise SystemExit(
+                            f"Step {stage_index}.{step_index} terminal command must target .terminalCommandFocus "
+                            "so the master yellow command boundary is visible"
+                        )
+
             for sentence in re.split(r"(?<=[.!?])\s+", why):
                 key = normalize_sentence(sentence)
                 if len(key) < 32:
