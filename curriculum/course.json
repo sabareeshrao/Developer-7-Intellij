@@ -432,7 +432,7 @@
       "steps": [
         {
           "title": "Choose Maven as the GeoOps build system",
-          "why": "We are starting at the generator because this is the cleanest place to see the first architecture decision. Maven gives GeoOps a standard Java layout and one pom.xml that describes how the application is built. That also creates a repeatable path from a developer laptop to CI instead of relying on settings that exist only inside IntelliJ.",
+          "why": "Alright, this is our first real project choice.\n\nWe're going with Maven.\n\nMaven is going to help us manage the libraries GeoOps needs, run tests, and build the application.\n\nThe important file to remember is pom.xml. That's where we'll tell Maven which Java version we're using and which dependencies belong in the project.\n\nWithout Maven, we'd end up downloading JAR files and managing them ourselves. We don't want that.\n\nSo for this project, Maven becomes our build tool.",
           "software": "spring_initializer",
           "action": {
             "action": "setProjectType",
@@ -449,7 +449,7 @@
         },
         {
           "title": "Keep the implementation language on Java",
-          "why": "The project is specifically meant to build Java and Spring Boot experience, so the generator stays on Java rather than Kotlin or Groovy. This setting decides the kind of source scaffold we begin with. IntelliJ will later compile those .java files into JVM bytecode, which is where the JDK and JVM concepts connect back to something visible in the project.",
+          "why": "Next, we choose the language we're actually going to write.\n\nFor GeoOps, that's Java.\n\nThat means the classes we create later—our controller, service, request object, and domain object—will all be Java files.\n\nSpring Initializr could generate Kotlin or Groovy too, but that's not what this project is about.\n\nSo this option is simply telling the generator: build me a Java Spring Boot project.",
           "software": "spring_initializer",
           "action": {
             "action": "setLanguage",
@@ -466,7 +466,7 @@
         },
         {
           "title": "Select Java 17",
-          "why": "GeoOps deliberately targets Java 17, and consistency matters more than simply having a newer JDK installed somewhere on the machine. IntelliJ, Maven and GitHub Actions should all agree on the same major version. That alignment prevents the familiar situation where code compiles locally but fails on the build server because a different Java level is being used.",
+          "why": "Now let's choose the Java version.\n\nWe're using Java 17.\n\nThis choice matters because IntelliJ, Maven, and GitHub Actions should all use the same Java version.\n\nIf your laptop builds with one Java version and CI builds with another, you can get annoying “works on my machine” problems.\n\nSo we're fixing the version now and keeping GeoOps on Java 17 everywhere.",
           "software": "spring_initializer",
           "action": {
             "action": "setJavaVersion",
@@ -483,7 +483,7 @@
         },
         {
           "title": "Give the application its GeoOps identity",
-          "why": "Before downloading anything, we give the project stable Maven coordinates and a package root. com.atlasgrid:geoops identifies the artifact, while com.atlasgrid.geoops becomes the package tree Spring will scan beneath the application class. These values look small in the form, but they shape folders, imports and the artifact name we will carry through every later set.",
+          "why": "Okay, now we're giving the project its identity.\n\nThe group is com.atlasgrid and the artifact is geoops.\n\nTogether, those values help Maven identify this application.\n\nThe package name is com.atlasgrid.geoops, and you'll see that exact package at the top of our Java classes later.\n\nSo we're not just filling in a form here. These values are going to show up throughout the project structure.",
           "software": "spring_initializer",
           "action": {
             "action": "setMetadata",
@@ -510,7 +510,7 @@
         },
         {
           "title": "Add Spring Web",
-          "why": "Spring Web is the capability that turns this starter into an HTTP application. It brings Spring MVC, JSON handling and the embedded servlet stack that will expose /api/projects. We are not installing a separate application server by hand; the starter is what allows Spring Boot to bring up embedded Tomcat with the application.",
+          "why": "Now we're adding the dependency that gives GeoOps a web API.\n\nThat dependency is Spring Web.\n\nOnce this is included, Spring Boot can run an embedded Tomcat server and our Java code can receive HTTP requests.\n\nThat's what will let us create endpoints such as GET /api/projects and POST /api/projects.\n\nWithout Spring Web, our application could still run Java code, but it would not yet be the REST application we're trying to build.",
           "software": "spring_initializer",
           "action": {
             "action": "addDependency",
@@ -528,7 +528,7 @@
         },
         {
           "title": "Add Bean Validation",
-          "why": "Project intake will accept JSON from outside the service, so we want a clean way to reject missing required values at the API boundary. The Validation starter gives us annotations such as @NotBlank. That keeps basic input rules beside the request model instead of scattering manual empty-string checks throughout the controller.",
+          "why": "Next, we're adding Validation.\n\nWe're going to receive project data from an HTTP request, and we don't want to accept things like an empty project code or an empty project name.\n\nThis dependency gives us annotations such as @NotBlank.\n\nInstead of writing manual checks everywhere, we can put the rule directly on the request fields.\n\nLater, when we create CreateProjectRequest, you'll see exactly where this dependency gets used.",
           "software": "spring_initializer",
           "action": {
             "action": "addDependency",
@@ -545,7 +545,7 @@
         },
         {
           "title": "Add Lombok",
-          "why": "Lombok is here for selective boilerplate reduction, not as a substitute for knowing Java. In this first slice we use @Slf4j so the service gets a logger without hand-writing the logger field. IntelliJ still needs annotation processing support for generated members, while Maven carries the actual library dependency in the build.",
+          "why": "Here we're adding Lombok.\n\nWe're not using Lombok because Java is impossible without it. We're using it to remove a little repetitive code where it makes sense.\n\nIn this set, the useful example will be @Slf4j.\n\nThat annotation gives ProjectService a logger without us manually declaring the logger field.\n\nSo keep Lombok in mind; we'll connect this dependency to real code shortly.",
           "software": "spring_initializer",
           "action": {
             "action": "addDependency",
@@ -562,7 +562,7 @@
         },
         {
           "title": "Generate the starter project",
-          "why": "The generator now has enough information to produce a Maven Spring Boot scaffold. The simulator shows a newer patch in the Spring Boot 3.3 line, but this course is reproducing the original Developer-7 Set 1 state exactly. Once the project reaches IntelliJ, pom.xml will pin the historical GeoOps baseline to Spring Boot 3.3.5 rather than silently changing the source project.",
+          "why": "Alright, we've selected the basic project settings and dependencies, so now we generate the project.\n\nThink of this as Spring Initializr creating the starting folder structure and pom.xml for us.\n\nOne detail: the current simulator shows a newer Spring Boot patch version, but the original Developer-7 Set 1 used Spring Boot 3.3.5.\n\nWe're rebuilding that original project order, so when we open pom.xml in IntelliJ, we'll pin it back to 3.3.5.\n\nThe goal is to reproduce the original GeoOps project, not quietly change its history.",
           "software": "spring_initializer",
           "action": {
             "action": "generateProject",
@@ -578,7 +578,7 @@
         },
         {
           "title": "Open GeoOps in IntelliJ",
-          "why": "This is the handoff from project generation to everyday development. IntelliJ becomes the main workspace from here: source code, Maven, tests, Spring Boot runs and later refactoring stay in the same IDE. The project begins nearly empty on purpose because the learning value comes from watching its structure grow when each set earns a new capability.",
+          "why": "Now we're moving into the tool we'll use for most of the project: IntelliJ IDEA.\n\nFrom this point, this is where we'll create Java files, run tests, inspect Maven, start Spring Boot, and later debug or refactor code.\n\nNotice that the project is still small.\n\nThat's intentional.\n\nWe're going to grow the same GeoOps project set by set instead of opening a finished codebase and pretending we built it.",
           "software": "intellij",
           "action": {
             "action": "openProject",
@@ -600,7 +600,7 @@
         },
         {
           "title": "Bind IntelliJ to the Java 17 JDK",
-          "why": "Choosing the Project SDK tells IntelliJ which development kit supplies javac, the standard libraries and runtime tools used by this project. The JVM executes compiled bytecode, while the JDK gives us the compiler and development utilities. Pinning the IDE to Java 17 removes ambiguity before we start writing application code.",
+          "why": "Before we start coding, look at the Project SDK.\n\nWe're setting it to Java 17.\n\nThe JDK is what gives IntelliJ the Java compiler and the standard Java libraries needed to build this code.\n\nSo the Java 17 choice we made in Spring Initializr is now being matched inside IntelliJ.\n\nThis is one of those setup details that saves us from version problems later.",
           "software": "intellij",
           "action": {
             "action": "setProjectSdk",
@@ -618,7 +618,7 @@
         },
         {
           "title": "Create the canonical GeoOps pom.xml",
-          "why": "Here we turn the generated idea into the exact Set 1 build definition. The parent is pinned to Spring Boot 3.3.5, and the dependencies add Web, Validation, Actuator, Lombok and the Spring Boot test starter. Notice that most dependency versions are absent because Spring Boot dependency management supplies a coordinated version set instead of making us match every library manually.",
+          "why": "Now we're looking at one of the most important files in a Maven project: pom.xml.\n\nThis file tells Maven what the project is and what it depends on.\n\nAt the top, we're using Spring Boot 3.3.5.\n\nThen we add Spring Web, Validation, Actuator, Lombok, and the Spring Boot test starter.\n\nNotice we are not manually writing a version beside every Spring dependency. Spring Boot manages compatible versions for us.\n\nSo whenever you hear “Maven dependency management,” this file is where that becomes real.",
           "software": "intellij",
           "action": {
             "action": "createFile",
@@ -639,7 +639,7 @@
         },
         {
           "title": "Look up Spring Web in Maven Central",
-          "why": "A pom.xml names a dependency, but Maven still needs a repository from which to resolve it. Maven Central is the public repository we are looking at here; the first build downloads missing artifacts and stores them under the developer's local ~/.m2/repository. That local cache explains why later builds usually do not download the same JAR files again.",
+          "why": "Let's quickly step outside IntelliJ and look at Maven Central.\n\nWhen pom.xml says we need spring-boot-starter-web, Maven has to get that library from somewhere.\n\nMaven Central is one of the remote repositories where those artifacts are published.\n\nThe first time Maven needs a dependency, it downloads it.\n\nAfter that, Maven normally keeps a local copy under the .m2 repository on your machine.\n\nSo the flow is basically: pom.xml → Maven → remote repository → local .m2 cache.",
           "software": "maven_central",
           "action": {
             "action": "searchDependency",
@@ -658,7 +658,7 @@
         },
         {
           "title": "Open the Maven tool window",
-          "why": "Back in IntelliJ, we can inspect the imported Maven model instead of treating pom.xml as passive XML. The IDE resolves the libraries and exposes Maven goals, but Maven remains the build system that can run outside IntelliJ. That distinction matters because a healthy project must be reproducible from the command line and in automation.",
+          "why": "Back in IntelliJ, we're opening the Maven tool window.\n\nThis lets us see the Maven project from inside the IDE.\n\nWe can inspect dependencies and run Maven goals without leaving IntelliJ.\n\nBut here's the important point: IntelliJ is not replacing Maven.\n\nMaven is still the build tool. IntelliJ is just giving us a convenient way to work with it.\n\nThat matters because the same Maven build should also work later in GitHub Actions.",
           "software": "intellij",
           "action": {
             "action": "openMavenToolWindow",
@@ -713,7 +713,7 @@
         },
         {
           "title": "Walk through the Maven lifecycle",
-          "why": "Think of the lifecycle as an ordered build pipeline rather than a bag of unrelated commands. validate checks the project, compile builds main source, test runs tests, package produces the JAR, verify performs verification work, install copies the artifact to the local Maven repository, and deploy can publish it remotely. Asking Maven for a later phase automatically includes the earlier phases before it.",
+          "why": "Now look at these Maven phases.\n\nThey happen in an order.\n\nvalidate checks the project, compile compiles the Java code, test runs tests, package creates the JAR, verify performs verification, install puts the built artifact into your local Maven repository, and deploy can publish it somewhere remote.\n\nYou don't normally run every word one by one.\n\nFor example, when we run verify, Maven also goes through the earlier phases it needs first.\n\nSo think of the lifecycle as one build path with several checkpoints.",
           "software": "intellij",
           "action": {
             "action": "showMavenLifecycle",
@@ -739,7 +739,7 @@
         },
         {
           "title": "Create the Spring Boot entry point",
-          "why": "This class is where ordinary Java startup hands control to Spring Boot. The JVM invokes main(), then SpringApplication.run(...) creates the Spring application context and starts the web environment. @SpringBootApplication also establishes the configuration root, enables auto-configuration and scans below com.atlasgrid.geoops, which is why our controller and service will be discovered later.",
+          "why": "Alright, this is where our GeoOps application actually begins.\n\nEvery Java program needs an entry point, and here that entry point is main().\n\nBut notice we're not manually creating controllers, starting Tomcat, or loading every Spring class ourselves. We hand that work to Spring Boot with SpringApplication.run().\n\nNow look at @SpringBootApplication. This tells Spring Boot that this is the main application class and that it should start configuration, auto-configuration, and component scanning.\n\nSo when this file runs, the flow is basically:\n\nmain() → SpringApplication.run() → Spring starts → embedded Tomcat starts → GeoOps is running.\n\nAt this point the application can start, but it still doesn't know what a GeoOps project looks like. That's what we'll create next.",
           "software": "intellij",
           "action": {
             "action": "createFile",
@@ -760,7 +760,7 @@
         },
         {
           "title": "Model one GIS project",
-          "why": "GeoOps needs an object that represents a project entering the GIS workflow, so we create a small immutable record. The coordinateReferenceSystem field makes the domain explicitly geospatial from day one, while UUID and createdAt give each intake record identity and timing. We are intentionally avoiding database annotations or geometry engines because those technologies have not been introduced by the learning sequence yet.",
+          "why": "Now let's create the object that represents an actual GeoOps project.\n\nFor this first version, a project has an id, project code, name, coordinate reference system, and creation time.\n\nThe GIS-specific field here is coordinateReferenceSystem.\n\nFor example, one project might use EPSG:4326.\n\nWe're using a Java record because this object is mainly carrying data and we want it to stay simple.\n\nAlso notice what is missing: no database annotations, no PostGIS geometry, no persistence layer.\n\nWe haven't earned those parts of the architecture yet, so we're not adding them early.",
           "software": "intellij",
           "action": {
             "action": "createFile",
@@ -781,7 +781,7 @@
         },
         {
           "title": "Separate request input from domain state",
-          "why": "Incoming JSON should not have to mirror every internal field on GeoProject. This request record contains only values the client is allowed to supply, and @NotBlank expresses the minimum contract for each one. The server will create the UUID and timestamp itself, which keeps client input responsibilities separate from values owned by the application.",
+          "why": "Now we need to think about what the client is allowed to send us.\n\nA client creating a project should provide the project code, name, and coordinate reference system.\n\nIt should not choose the UUID or the creation time. Those belong to the server.\n\nThat's why we're creating CreateProjectRequest separately from GeoProject.\n\nThe @NotBlank annotations come from the Validation dependency we added earlier.\n\nSo if somebody sends an empty project code, Spring can reject the request before bad data reaches our service logic.",
           "software": "intellij",
           "action": {
             "action": "createFile",
@@ -802,7 +802,7 @@
         },
         {
           "title": "Add the first GeoOps service",
-          "why": "The controller should not become the place where all application rules accumulate, so project creation belongs in ProjectService. For Set 1 the service keeps records in an ArrayList and returns a defensive copy for reads; that is enough to make the slice runnable without pretending persistence already exists. @Slf4j supplies the logger, giving the earlier Lombok choice a concrete use.",
+          "why": "Okay, now this is an important change in the structure.\n\nWe could put project creation directly inside ProjectController, and for a tiny demo it would work.\n\nBut GeoOps is supposed to keep growing.\n\nSo we're creating ProjectService and putting the application logic there.\n\nThe controller will handle HTTP. The service will handle the work.\n\nFor now, the service stores projects in an ArrayList because we have not introduced a database yet.\n\nAnd here's where Lombok finally connects to the code: @Slf4j gives this service a logger.",
           "software": "intellij",
           "action": {
             "action": "createFile",
@@ -823,7 +823,7 @@
         },
         {
           "title": "Expose project intake over HTTP",
-          "why": "This controller turns the service into a REST API. GET /api/projects returns current records, while POST /api/projects accepts validated JSON and responds with HTTP 201 when a project is created. Constructor injection makes the ProjectService dependency explicit, and Spring can provide that service because our application class is scanning this package tree.",
+          "why": "Now we're giving GeoOps an actual HTTP entry point.\n\n@RestController tells Spring that this class receives web requests and returns response data.\n\n@RequestMapping(\"/api/projects\") gives everything in this controller the same base path.\n\nThen GET /api/projects reads projects, while POST /api/projects creates one.\n\nNotice that the controller does not create the project itself. It passes the work to ProjectService.\n\nSo our flow is now:\n\nHTTP request → ProjectController → ProjectService.\n\nLater, when the project really needs a database, that flow can grow without turning this controller into one giant class.",
           "software": "intellij",
           "action": {
             "action": "createFile",
@@ -844,7 +844,7 @@
         },
         {
           "title": "Configure the GeoOps runtime",
-          "why": "Application code tells Spring what the program does; this YAML carries settings that should not be buried inside Java methods. We name the service, keep the local server on port 8080 and expose Actuator health and info endpoints. Those operational endpoints give us a cheap way to prove the process is alive before we test any business request.",
+          "why": "Now we're moving a few settings out of Java code and into application.yml.\n\nFirst, we give the Spring application its name: geoops.\n\nThen we keep the local server on port 8080.\n\nWe're also exposing Actuator health and info endpoints.\n\nThat health endpoint is going to be useful in a minute because it gives us a quick way to ask, “Is the application actually running?”\n\nSo this file is basically where runtime configuration starts living.",
           "software": "intellij",
           "action": {
             "action": "createFile",
@@ -865,7 +865,7 @@
         },
         {
           "title": "Add a Spring Boot context test",
-          "why": "The first test is deliberately small but still useful: can Spring build the application context with the dependencies and configuration we assembled? @SpringBootTest boots that context, so a failure can reveal broken wiring or startup configuration early. Focused behavior tests will arrive as later sets add rules that deserve their own verification.",
+          "why": "Before we run the whole application manually, let's add one basic test.\n\n@SpringBootTest tells Spring to start the application context for the test.\n\nThe method itself looks almost empty, and that's okay.\n\nWhat we're checking is whether Spring can load the project with the configuration and classes we've created so far.\n\nIf something important is wired incorrectly, this simple test can fail before we even open Postman.\n\nLater sets will add more specific tests when we have more behavior to test.",
           "software": "intellij",
           "action": {
             "action": "createFile",
@@ -886,7 +886,7 @@
         },
         {
           "title": "Run the JUnit test",
-          "why": "Rather than assuming the project is wired correctly, we run the test runner and look for a visible green result. A passing contextLoads test means the Spring container can start with the current classes and configuration. It does not prove future business behavior, but it gives this first vertical slice a reliable startup checkpoint.",
+          "why": "Alright, let's run the test.\n\nWatch the result at the bottom.\n\ncontextLoads is green, which means Spring was able to create the application context successfully.\n\nThat doesn't mean every possible feature is perfect.\n\nIt means our current project setup is valid enough for Spring to start.\n\nThat's exactly the checkpoint we wanted before moving on.",
           "software": "intellij",
           "action": {
             "action": "runJUnit",
@@ -915,7 +915,7 @@
         },
         {
           "title": "Run Maven clean verify",
-          "why": "The IDE test view is convenient during development, but the build must also succeed through the command our automation will use. clean removes old target output and verify drives the lifecycle through compilation, tests, packaging and verification. Seeing BUILD SUCCESS here proves the project can be built without depending on a hidden IntelliJ state.",
+          "why": "Now we're going one step beyond the IntelliJ test button.\n\nWe're running Maven clean verify.\n\nclean removes the old build output, and verify builds the project and runs the tests through Maven's lifecycle.\n\nWhy do this if the test already passed in IntelliJ?\n\nBecause we want proof that the project builds through Maven itself, not only through the IDE.\n\nThe BUILD SUCCESS message is what we want to see before the same command eventually runs in CI.",
           "software": "intellij",
           "action": {
             "action": "runMavenGoal",
@@ -935,7 +935,7 @@
         },
         {
           "title": "Start GeoOps from IntelliJ",
-          "why": "With the build green, we run the application instead of merely compiling it. SpringApplication.run() creates the context, auto-configuration recognizes the web starter, and embedded Tomcat begins listening on port 8080. A useful path to keep in mind is JVM → main() → Spring Boot context → Tomcat → REST mappings, because Postman is about to enter through the HTTP end of that chain.",
+          "why": "Okay, now let's actually start GeoOps.\n\nThis time we're not just testing the Spring context. We're running the application.\n\nmain() starts, SpringApplication.run() takes over, Spring creates the application context, and embedded Tomcat starts on port 8080.\n\nOnce you see the “Started GeoOpsApplication” message, the server is ready to receive HTTP requests.\n\nSo now we can leave IntelliJ for a moment and talk to the application from Postman.",
           "software": "intellij",
           "action": {
             "action": "runSpringBootApp",
@@ -957,7 +957,7 @@
         },
         {
           "title": "Open the Actuator health request",
-          "why": "Before sending business data, we use the smallest request available to check whether the service is reachable. /actuator/health comes from Actuator rather than ProjectController, so a successful response confirms the application and web server are running. This separates runtime availability from project-intake behavior and makes failures easier to isolate.",
+          "why": "Before we test project creation, let's check something simpler.\n\nWe're opening GET /actuator/health.\n\nWe didn't write this endpoint in ProjectController. Actuator gives it to us because of the dependency we added earlier.\n\nThink of this as asking the application one basic question:\n\n“Are you up?”\n\nIf this health request fails, there is no point debugging our project API yet. We would first make sure Spring Boot is actually running.",
           "software": "postman",
           "action": {
             "action": "openRequest",
@@ -975,7 +975,7 @@
         },
         {
           "title": "Confirm GeoOps is healthy",
-          "why": "The 200 OK response with status UP is external proof that the Spring Boot process is listening and Actuator is working. We have now crossed the boundary from code inside IntelliJ to an HTTP client outside the application. If this check failed, we would fix startup, port or connectivity before spending time debugging project JSON.",
+          "why": "There it is: 200 OK and status UP.\n\nThat tells us GeoOps is running and reachable on port 8080.\n\nThis is our first request coming from outside IntelliJ into the Spring Boot application.\n\nSo the path is now:\n\nPostman → Tomcat → Spring Boot → Actuator.\n\nNext we'll do the same thing with an endpoint that we actually wrote ourselves.",
           "software": "postman",
           "action": {
             "action": "sendRequest",
@@ -1003,7 +1003,7 @@
         },
         {
           "title": "Open the Create Project request",
-          "why": "We now move from an operational endpoint to the first GeoOps business endpoint. This request targets POST /api/projects and carries only the three fields allowed by CreateProjectRequest. Using EPSG:4326 keeps the payload grounded in the GIS domain instead of turning the exercise into a generic CRUD example.",
+          "why": "Now we're opening the request that creates a GeoOps project.\n\nThe method is POST and the URL is /api/projects.\n\nLook at the JSON body.\n\nWe're sending projectCode, name, and coordinateReferenceSystem because those are the fields in CreateProjectRequest.\n\nFor the CRS we're using EPSG:4326, which keeps the example tied to the GIS domain.\n\nWhen we send this, the request should go through the controller and into ProjectService.",
           "software": "postman",
           "action": {
             "action": "openRequest",
@@ -1021,7 +1021,7 @@
         },
         {
           "title": "Create the first GIS intake record",
-          "why": "POST reaches ProjectController, validation checks the payload, ProjectService creates the UUID and timestamp, and the new GeoProject is stored in memory. HTTP 201 Created tells the caller that a new resource was accepted. This response demonstrates that controller mapping, validation, service logic, the domain record and JSON serialization are cooperating end to end.",
+          "why": "Now watch the full flow happen.\n\nPostman sends the JSON to ProjectController.\n\nSpring validates CreateProjectRequest, then the controller passes it to ProjectService.\n\nThe service generates the UUID and creation time, stores the GeoProject in memory, and returns it.\n\nThe response is 201 Created, which is exactly what we expect when a new resource is created.\n\nSo this one request proves several pieces are connected:\n\nPostman → Controller → Validation → Service → GeoProject → JSON response.",
           "software": "postman",
           "action": {
             "action": "sendRequest",
@@ -1053,7 +1053,7 @@
         },
         {
           "title": "Open the project list request",
-          "why": "Creating a record is only half of the first slice; we also want to read the current application state back through the API. GET /api/projects calls ProjectService.findAll(), which returns a copy of the in-memory collection. Returning a copy prevents outside code from receiving the service's mutable list directly.",
+          "why": "We created a project, so now let's check whether GeoOps can return it.\n\nThis request is GET /api/projects.\n\nThere is no request body this time because we're simply asking for the projects the service currently knows about.\n\nInside the application, ProjectController calls ProjectService.findAll().\n\nRemember, we're still using the in-memory list from Set 1.\n\nSo this request is reading from that same temporary list.",
           "software": "postman",
           "action": {
             "action": "openRequest",
@@ -1071,7 +1071,7 @@
         },
         {
           "title": "Read the project back from GeoOps",
-          "why": "The list response contains the same Austin project we just created, so the slice has completed a create-and-read round trip. There is still no database behind this result; restarting the process would lose the record, and that limitation is intentional here. Persistence will enter only when a later interview anchor gives the project a reason to need it.",
+          "why": "And there is the Austin project we created earlier.\n\nThat means our first create-and-read flow is working.\n\nOne important limitation: this project only lives in memory right now.\n\nIf we stop the application and start it again, this record disappears.\n\nThat's not a bug in this set. We simply have not introduced a database yet.\n\nWhen persistence becomes part of the learning order, we'll replace this temporary storage properly instead of pretending a database exists today.",
           "software": "postman",
           "action": {
             "action": "sendRequest",
@@ -1105,7 +1105,7 @@
         },
         {
           "title": "Open the working tree in Git",
-          "why": "The application works locally, so the next responsibility is to capture that state in version control. Git sees source, configuration, tests and workflows as a working tree that can be reviewed before committing. This local repository is different from GitHub: Git records history on the machine, while GitHub will host and collaborate on that history remotely.",
+          "why": "The code works locally, so now let's look at the Git side.\n\nGit is going to track how this project changes over time.\n\nRight now these files are new or modified in our working tree.\n\nThink of the working tree as the current state of the files on our machine.\n\nNothing has been recorded as a permanent Git commit yet.\n\nBefore we commit, we'll decide which changes belong in that snapshot.",
           "software": "git",
           "action": {
             "action": "openRepository",
@@ -1194,7 +1194,7 @@
         },
         {
           "title": "Stage the Set 1 files",
-          "why": "Staging is the review boundary between files that merely changed and files we intend to include in a commit. We stage the complete first slice together because source, test, build configuration and CI describe one coherent starting point. Git can now show exactly what will be recorded without making the commit yet.",
+          "why": "Now we're staging the Set 1 files.\n\nStaging means, “These are the changes I want in my next commit.”\n\nThis gives us a chance to review what we're about to record.\n\nFor this first milestone, the Java source, configuration, test, Maven file, and CI workflow all belong together.\n\nSo we stage them as one complete GeoOps starting point.",
           "software": "git",
           "action": {
             "action": "stageAll",
@@ -1210,7 +1210,7 @@
         },
         {
           "title": "Commit the GeoOps bootstrap",
-          "why": "A commit freezes this known-good learning milestone into local history with a meaningful message. The value is more than backup: later sets can show how GeoOps evolved from this point and we can reason about which change introduced a behavior. That continuity is essential for a course that should feel like one real project growing over time.",
+          "why": "Now we create the commit.\n\nThe message is “Complete Set 1 GeoOps bootstrap.”\n\nA commit is basically a saved point in the project's history.\n\nLater, when Set 2 adds new code, we'll be able to see exactly what changed from this Set 1 version.\n\nThat's why we're not treating Git as something we use only at the end of a project.\n\nWe're recording the project as it grows.",
           "software": "git",
           "action": {
             "action": "commit",
@@ -1229,7 +1229,7 @@
         },
         {
           "title": "Push Set 1 to the remote",
-          "why": "Pushing transfers the local commit to the configured remote so the project is no longer confined to one workstation. Once main is on GitHub, collaboration, CI and Pages deployment can react to repository history. The source-control path becomes local Git commit → remote GitHub repository → automated checks.",
+          "why": "The commit exists locally, but GitHub doesn't know about it yet.\n\nSo now we push main to the remote repository.\n\nThis sends our Git history from the local machine to GitHub.\n\nAfter the push, other tools can react to that repository change.\n\nIn our case, GitHub Actions can run the build automatically, and the learning site deployment can also use the repository.\n\nSo this is the point where local development becomes shared repository state.",
           "software": "git",
           "action": {
             "action": "push",
@@ -1251,7 +1251,7 @@
         },
         {
           "title": "Open Developer-7-Intellij on GitHub",
-          "why": "Here we are looking at the remote copy that the rest of the team and GitHub automation can see. The repository carries the Set 1 source plus curriculum and deployment integration for the learning site. Keeping this downstream project independent lets GeoOps evolve on its own while simulator fixes continue to come from the pinned Experiment-VS-Code master.",
+          "why": "Now we're looking at Developer-7-Intellij on GitHub.\n\nThis is the remote copy of the project we just pushed.\n\nThe Java project lives here, but this repository also contains the curriculum that drives the simulator.\n\nThe actual simulator software still comes from Experiment-VS-Code.\n\nSo the relationship is simple:\n\nExperiment-VS-Code provides the reusable software simulation.\n\nDeveloper-7-Intellij provides the GeoOps project and the learning steps.",
           "software": "github",
           "action": {
             "action": "openRepository",
@@ -1268,7 +1268,7 @@
         },
         {
           "title": "Open GitHub Actions",
-          "why": "CI is where we prove the project can be rebuilt on a clean machine rather than trusting the developer laptop. The workflow checks out the repository, configures Java 17, validates the learning narration and runs Maven clean verify. If one of those steps fails, main should not be treated as a healthy Set 1 state.",
+          "why": "Next, let's look at GitHub Actions.\n\nThis is our CI area.\n\nWhenever we push code, the workflow can start on a fresh GitHub runner.\n\nIt sets up Java 17, validates the learning curriculum, and runs Maven clean verify.\n\nThat is important because it answers a simple question:\n\n“Can this project build successfully somewhere other than my own IntelliJ setup?”",
           "software": "github_actions",
           "action": {
             "action": "openActions",
@@ -1283,7 +1283,7 @@
         },
         {
           "title": "Inspect the successful Set 1 CI run",
-          "why": "This final screen closes the development loop: code was built in IntelliJ, exercised through Postman, committed with Git, pushed to GitHub and rebuilt by automation. A green verification run means the starting point is reproducible. Set 2 can modify this exact project instead of resetting to another disconnected demo.",
+          "why": "And this is the final checkpoint for Set 1.\n\nThe GitHub Actions run is green.\n\nSo we have now gone through the whole developer flow:\n\nSpring Initializr → IntelliJ → Java code → JUnit → Maven → Spring Boot → Postman → Git → GitHub → GitHub Actions.\n\nMore importantly, we did it with one project that now has a real starting history.\n\nSet 2 will continue from this exact GeoOps codebase. We're not starting over.",
           "software": "github_actions",
           "action": {
             "action": "openRun",
