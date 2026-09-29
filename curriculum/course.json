@@ -703,7 +703,7 @@
         },
         {
           "title": "Create empty pom.xml",
-          "why": "• Before we type the Maven build configuration, IntelliJ needs the actual pom.xml file to exist in the GeoOps project.\n• This step creates pom.xml as an empty file and opens it in the editor.\n• We are keeping the file empty on purpose instead of dropping finished source code onto the screen.\n• On the next step, the master IntelliJ simulator will use its typeCode action so you can watch the content appear while the caret and code area stay visible.",
+          "why": "• Before we can type the real pom.xml content, IntelliJ needs that file to exist in the GeoOps project.\n• This step creates pom.xml as an empty editor tab at pom.xml.\n• We deliberately leave pom.xml blank here so the next lesson action can visibly type its source instead of making completed code appear all at once.\n• When you move forward, watch pom.xml fill in through IntelliJ's typeCode animation while the active code stays in view.",
           "software": "intellij",
           "action": {
             "action": "createFile",
@@ -851,7 +851,7 @@
         },
         {
           "title": "Create empty GeoOpsApplication.java",
-          "why": "• Before we type the Spring Boot entry point, IntelliJ needs the actual GeoOpsApplication.java file to exist in the GeoOps project.\n• This step creates GeoOpsApplication.java as an empty file and opens it in the editor.\n• We are keeping the file empty on purpose instead of dropping finished source code onto the screen.\n• On the next step, the master IntelliJ simulator will use its typeCode action so you can watch the content appear while the caret and code area stay visible.",
+          "why": "• Before we can type the real GeoOpsApplication.java content, IntelliJ needs that file to exist in the GeoOps project.\n• This step creates GeoOpsApplication.java as an empty editor tab at src/main/java/com/atlasgrid/geoops/GeoOpsApplication.java.\n• We deliberately leave GeoOpsApplication.java blank here so the next lesson action can visibly type its source instead of making completed code appear all at once.\n• When you move forward, watch GeoOpsApplication.java fill in through IntelliJ's typeCode animation while the active code stays in view.",
           "software": "intellij",
           "action": {
             "action": "createFile",
@@ -891,7 +891,7 @@
         },
         {
           "title": "Create empty GeoProject.java",
-          "why": "• Before we type the GeoOps project model, IntelliJ needs the actual GeoProject.java file to exist in the GeoOps project.\n• This step creates GeoProject.java as an empty file and opens it in the editor.\n• We are keeping the file empty on purpose instead of dropping finished source code onto the screen.\n• On the next step, the master IntelliJ simulator will use its typeCode action so you can watch the content appear while the caret and code area stay visible.",
+          "why": "• Before we can type the real GeoProject.java content, IntelliJ needs that file to exist in the GeoOps project.\n• This step creates GeoProject.java as an empty editor tab at src/main/java/com/atlasgrid/geoops/project/domain/GeoProject.java.\n• We deliberately leave GeoProject.java blank here so the next lesson action can visibly type its source instead of making completed code appear all at once.\n• When you move forward, watch GeoProject.java fill in through IntelliJ's typeCode animation while the active code stays in view.",
           "software": "intellij",
           "action": {
             "action": "createFile",
@@ -934,7 +934,7 @@
         },
         {
           "title": "Create empty CreateProjectRequest.java",
-          "why": "• Before we type the API request model, IntelliJ needs the actual CreateProjectRequest.java file to exist in the GeoOps project.\n• This step creates CreateProjectRequest.java as an empty file and opens it in the editor.\n• We are keeping the file empty on purpose instead of dropping finished source code onto the screen.\n• On the next step, the master IntelliJ simulator will use its typeCode action so you can watch the content appear while the caret and code area stay visible.",
+          "why": "• Before we can type the real CreateProjectRequest.java content, IntelliJ needs that file to exist in the GeoOps project.\n• This step creates CreateProjectRequest.java as an empty editor tab at src/main/java/com/atlasgrid/geoops/project/api/CreateProjectRequest.java.\n• We deliberately leave CreateProjectRequest.java blank here so the next lesson action can visibly type its source instead of making completed code appear all at once.\n• When you move forward, watch CreateProjectRequest.java fill in through IntelliJ's typeCode animation while the active code stays in view.",
           "software": "intellij",
           "action": {
             "action": "createFile",
@@ -975,7 +975,7 @@
         },
         {
           "title": "Create empty ProjectService.java",
-          "why": "• Before we type the project service, IntelliJ needs the actual ProjectService.java file to exist in the GeoOps project.\n• This step creates ProjectService.java as an empty file and opens it in the editor.\n• We are keeping the file empty on purpose instead of dropping finished source code onto the screen.\n• On the next step, the master IntelliJ simulator will use its typeCode action so you can watch the content appear while the caret and code area stay visible.",
+          "why": "• Before we can type the real ProjectService.java content, IntelliJ needs that file to exist in the GeoOps project.\n• This step creates ProjectService.java as an empty editor tab at src/main/java/com/atlasgrid/geoops/project/application/ProjectService.java.\n• We deliberately leave ProjectService.java blank here so the next lesson action can visibly type its source instead of making completed code appear all at once.\n• When you move forward, watch ProjectService.java fill in through IntelliJ's typeCode animation while the active code stays in view.",
           "software": "intellij",
           "action": {
             "action": "createFile",
@@ -1024,7 +1024,7 @@
         },
         {
           "title": "Create empty ProjectController.java",
-          "why": "• Before we type the REST controller, IntelliJ needs the actual ProjectController.java file to exist in the GeoOps project.\n• This step creates ProjectController.java as an empty file and opens it in the editor.\n• We are keeping the file empty on purpose instead of dropping finished source code onto the screen.\n• On the next step, the master IntelliJ simulator will use its typeCode action so you can watch the content appear while the caret and code area stay visible.",
+          "why": "• Before we can type the real ProjectController.java content, IntelliJ needs that file to exist in the GeoOps project.\n• This step creates ProjectController.java as an empty editor tab at src/main/java/com/atlasgrid/geoops/project/api/ProjectController.java.\n• We deliberately leave ProjectController.java blank here so the next lesson action can visibly type its source instead of making completed code appear all at once.\n• When you move forward, watch ProjectController.java fill in through IntelliJ's typeCode animation while the active code stays in view.",
           "software": "intellij",
           "action": {
             "action": "createFile",
@@ -1072,7 +1072,7 @@
         },
         {
           "title": "Create empty application.yml",
-          "why": "• Before we type the Spring Boot runtime configuration, IntelliJ needs the actual application.yml file to exist in the GeoOps project.\n• This step creates application.yml as an empty file and opens it in the editor.\n• We are keeping the file empty on purpose instead of dropping finished source code onto the screen.\n• On the next step, the master IntelliJ simulator will use its typeCode action so you can watch the content appear while the caret and code area stay visible.",
+          "why": "• Before we can type the real application.yml content, IntelliJ needs that file to exist in the GeoOps project.\n• This step creates application.yml as an empty editor tab at src/main/resources/application.yml.\n• We deliberately leave application.yml blank here so the next lesson action can visibly type its source instead of making completed code appear all at once.\n• When you move forward, watch application.yml fill in through IntelliJ's typeCode animation while the active code stays in view.",
           "software": "intellij",
           "action": {
             "action": "createFile",
@@ -1115,7 +1115,7 @@
         },
         {
           "title": "Create empty GeoOpsApplicationTests.java",
-          "why": "• Before we type the automated test, IntelliJ needs the actual GeoOpsApplicationTests.java file to exist in the GeoOps project.\n• This step creates GeoOpsApplicationTests.java as an empty file and opens it in the editor.\n• We are keeping the file empty on purpose instead of dropping finished source code onto the screen.\n• On the next step, the master IntelliJ simulator will use its typeCode action so you can watch the content appear while the caret and code area stay visible.",
+          "why": "• Before we can type the real GeoOpsApplicationTests.java content, IntelliJ needs that file to exist in the GeoOps project.\n• This step creates GeoOpsApplicationTests.java as an empty editor tab at src/test/java/com/atlasgrid/geoops/GeoOpsApplicationTests.java.\n• We deliberately leave GeoOpsApplicationTests.java blank here so the next lesson action can visibly type its source instead of making completed code appear all at once.\n• When you move forward, watch GeoOpsApplicationTests.java fill in through IntelliJ's typeCode animation while the active code stays in view.",
           "software": "intellij",
           "action": {
             "action": "createFile",
@@ -1577,7 +1577,7 @@
       "steps": [
         {
           "title": "Create empty PreflightResult.java",
-          "why": "• Before we type the preflight result model, IntelliJ needs the actual PreflightResult.java file to exist in the GeoOps project.\n• This step creates PreflightResult.java as an empty file and opens it in the editor.\n• We are keeping the file empty on purpose instead of dropping finished source code onto the screen.\n• On the next step, the master IntelliJ simulator will use its typeCode action so you can watch the content appear while the caret and code area stay visible.",
+          "why": "• Before we can type the real PreflightResult.java content, IntelliJ needs that file to exist in the GeoOps project.\n• This step creates PreflightResult.java as an empty editor tab at src/main/java/com/atlasgrid/geoops/tools/preflight/PreflightResult.java.\n• We deliberately leave PreflightResult.java blank here so the next lesson action can visibly type its source instead of making completed code appear all at once.\n• When you move forward, watch PreflightResult.java fill in through IntelliJ's typeCode animation while the active code stays in view.",
           "software": "intellij",
           "action": {
             "action": "createFile",
@@ -1622,7 +1622,7 @@
         },
         {
           "title": "Create empty DatasetPreflightValidator.java",
-          "why": "• Before we type the reusable GIS dataset validator, IntelliJ needs the actual DatasetPreflightValidator.java file to exist in the GeoOps project.\n• This step creates DatasetPreflightValidator.java as an empty file and opens it in the editor.\n• We are keeping the file empty on purpose instead of dropping finished source code onto the screen.\n• On the next step, the master IntelliJ simulator will use its typeCode action so you can watch the content appear while the caret and code area stay visible.",
+          "why": "• Before we can type the real DatasetPreflightValidator.java content, IntelliJ needs that file to exist in the GeoOps project.\n• This step creates DatasetPreflightValidator.java as an empty editor tab at src/main/java/com/atlasgrid/geoops/tools/preflight/DatasetPreflightValidator.java.\n• We deliberately leave DatasetPreflightValidator.java blank here so the next lesson action can visibly type its source instead of making completed code appear all at once.\n• When you move forward, watch DatasetPreflightValidator.java fill in through IntelliJ's typeCode animation while the active code stays in view.",
           "software": "intellij",
           "action": {
             "action": "createFile",
@@ -1669,7 +1669,7 @@
         },
         {
           "title": "Create empty GeoOpsPreflightCli.java",
-          "why": "• Before we type the command-line process boundary, IntelliJ needs the actual GeoOpsPreflightCli.java file to exist in the GeoOps project.\n• This step creates GeoOpsPreflightCli.java as an empty file and opens it in the editor.\n• We are keeping the file empty on purpose instead of dropping finished source code onto the screen.\n• On the next step, the master IntelliJ simulator will use its typeCode action so you can watch the content appear while the caret and code area stay visible.",
+          "why": "• Before we can type the real GeoOpsPreflightCli.java content, IntelliJ needs that file to exist in the GeoOps project.\n• This step creates GeoOpsPreflightCli.java as an empty editor tab at src/main/java/com/atlasgrid/geoops/tools/preflight/GeoOpsPreflightCli.java.\n• We deliberately leave GeoOpsPreflightCli.java blank here so the next lesson action can visibly type its source instead of making completed code appear all at once.\n• When you move forward, watch GeoOpsPreflightCli.java fill in through IntelliJ's typeCode animation while the active code stays in view.",
           "software": "intellij",
           "action": {
             "action": "createFile",
@@ -1755,7 +1755,7 @@
         },
         {
           "title": "Create empty DatasetPreflightValidatorTest.java",
-          "why": "• Before we type the validator unit tests, IntelliJ needs the actual DatasetPreflightValidatorTest.java file to exist in the GeoOps project.\n• This step creates DatasetPreflightValidatorTest.java as an empty file and opens it in the editor.\n• We are keeping the file empty on purpose instead of dropping finished source code onto the screen.\n• On the next step, the master IntelliJ simulator will use its typeCode action so you can watch the content appear while the caret and code area stay visible.",
+          "why": "• Before we can type the real DatasetPreflightValidatorTest.java content, IntelliJ needs that file to exist in the GeoOps project.\n• This step creates DatasetPreflightValidatorTest.java as an empty editor tab at src/test/java/com/atlasgrid/geoops/tools/preflight/DatasetPreflightValidatorTest.java.\n• We deliberately leave DatasetPreflightValidatorTest.java blank here so the next lesson action can visibly type its source instead of making completed code appear all at once.\n• When you move forward, watch DatasetPreflightValidatorTest.java fill in through IntelliJ's typeCode animation while the active code stays in view.",
           "software": "intellij",
           "action": {
             "action": "createFile",
