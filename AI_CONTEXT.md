@@ -4,24 +4,92 @@ This repository is the simulator-backed rebuild of `Developer-7`.
 
 ## Current learning state
 
-**Set 1 — 1/387+ — complete**
+**Set 2 — 2/387+ — complete**
 
-The implementation must grow cumulatively. Do not copy later Set 2+ features backward into Set 1.
+The implementation grows cumulatively. Do not reset the project between sets and do not copy future features backward.
+
+## Set order
+
+Follow the original `sabareeshrao/Developer-7` order.
+
+Current sequence:
+
+1. Development Environment
+2. System.exit() and Process Boundaries
+3. Project Methodology / Agile-Scrum
+4. StringBuilder / StringBuffer
+5. OOP in Enterprise Projects
+6. final keyword
+7. real-world final use case
+8. static methods
+9. equals() / hashCode()
+10. == vs .equals()
+
+Continue the original order beyond that.
 
 ## Ownership
 
 - `sabareeshrao/Experiment-VS-Code` owns the reusable player and simulator software.
-- This repository owns GeoOps source, curriculum, generated player data, documentation, and its own GitHub Pages deployment.
-- `MASTER_SOFTWARE_REF` pins the exact validated simulator snapshot.
+- This repository owns GeoOps source, curriculum, generated player data, documentation, and GitHub Pages deployment.
+- `MASTER_SOFTWARE_REF` pins the validated master snapshot.
+
+## Mandatory simulator rules
+
+Read `docs/SIMULATION_UI_RULES.md` and `docs/EXPLANATION_STYLE.md` before adding lessons.
+
+For IntelliJ source-building steps:
+
+```text
+createFile with empty content
+        ↓
+typeCode with real source
+        ↓
+exact code-line highlight
+```
+
+Never place completed source directly into a non-empty `createFile` lesson action.
+
+For IntelliJ terminal commands:
+
+```text
+typeTerminal
+        ↓
+visible command typing
+        ↓
+.terminalCommandFocus
+        ↓
+yellow command boundary
+```
+
+Only the current forward/replay step animates. Historical replay must stay silent.
 
 ## Explanation rule
 
-Use short, conversational YouTube-style narration tied to the visible action. Do not recycle full sentences across steps. The build validator rejects repeated explanation sentences.
+Use compact `•` bullet lines with no blank gaps.
 
-## Current software
+Assume zero prior knowledge when a technical term first appears.
 
-Spring Initializr, IntelliJ IDEA, Maven Central, Postman, Git, GitHub, GitHub Actions.
+Teach in this order:
+
+```text
+problem → why it exists → simple meaning → technical term → GeoOps code/tool → effect
+```
+
+Do not recycle full explanation sentences.
+
+## Set 2 project state
+
+Set 2 adds:
+
+- `PreflightResult`
+- `DatasetPreflightValidator`
+- `GeoOpsPreflightCli`
+- `DatasetPreflightValidatorTest`
+- process exit codes 0 / 2 / 3 / 4 / 5
+- Spring Boot graceful shutdown
+
+`System.exit()` is restricted to the standalone CLI outer boundary. Normal web controller/service code does not terminate the JVM.
 
 ## Next set
 
-Set 2 introduces the GIS preflight CLI and controlled `System.exit()` usage. IntelliJ remains the primary simulator and its integrated terminal becomes important for observing process exit behavior.
+Set 3 establishes the GeoOps Agile/Scrum delivery workflow using the same project and repository history.
