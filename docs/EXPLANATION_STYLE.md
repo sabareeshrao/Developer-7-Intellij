@@ -193,11 +193,14 @@ The goal is to keep the explanation dense, scannable, and easy to follow without
 When the explanation card talks about code, the simulator must highlight the exact code lines being discussed.
 
 Rules:
-- IntelliJ code creation/edit steps must use `highlight.kind: "code"`.
+- Create a new source file with an empty `createFile` action first; that file-creation UI step may use a target highlight such as the active editor tab.
+- Put the real source text in the following `typeCode` action so the current lesson visibly auto-types the code.
+- `typeCode`, `setCode`, and `replaceCode` steps that explain code must use `highlight.kind: "code"`.
 - Use explicit `lines`, `line`, `text`, or a code selector that resolves to the discussed code.
 - Do not rely on generic `.codeLine.focus` for a step that explains specific code.
 - If the explanation discusses several important lines, highlight those lines together.
 - The highlighted lines must match the explanation, not merely the file that happens to be open.
+- IntelliJ terminal commands must use `typeTerminal` and target `.terminalCommandFocus` so the master yellow command boundary remains visible.
 - UI actions such as opening Maven, running tests, or clicking Postman controls may continue to use target/control highlights.
 
-The build validator rejects IntelliJ code-edit steps that do not declare an explicit code highlight.
+The build validator rejects instant non-empty `createFile` source injection, code-edit steps without explicit code highlights, and terminal typing without the yellow command-focus target.
