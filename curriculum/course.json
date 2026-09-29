@@ -301,10 +301,47 @@
                 "content": "",
                 "message": "Complete Set 1 GeoOps bootstrap",
                 "time": "Today"
+              },
+              {
+                "path": "src/main/java/com/atlasgrid/geoops/tools/preflight/PreflightResult.java",
+                "content": "",
+                "message": "Complete Set 2 controlled System.exit preflight CLI",
+                "time": "Today"
+              },
+              {
+                "path": "src/main/java/com/atlasgrid/geoops/tools/preflight/DatasetPreflightValidator.java",
+                "content": "",
+                "message": "Complete Set 2 controlled System.exit preflight CLI",
+                "time": "Today"
+              },
+              {
+                "path": "src/main/java/com/atlasgrid/geoops/tools/preflight/GeoOpsPreflightCli.java",
+                "content": "",
+                "message": "Complete Set 2 controlled System.exit preflight CLI",
+                "time": "Today"
+              },
+              {
+                "path": "src/test/java/com/atlasgrid/geoops/tools/preflight/DatasetPreflightValidatorTest.java",
+                "content": "",
+                "message": "Complete Set 2 controlled System.exit preflight CLI",
+                "time": "Today"
               }
             ],
             "readme": "# Developer-7-Intellij\\n\\nSet-by-set GeoOps developer playback.",
             "commits": [
+              {
+                "hash": "set2001",
+                "message": "Complete Set 2 controlled System.exit preflight CLI",
+                "author": "Developer",
+                "date": "Today",
+                "files": [
+                  "src/main/java/com/atlasgrid/geoops/tools/preflight/PreflightResult.java",
+                  "src/main/java/com/atlasgrid/geoops/tools/preflight/DatasetPreflightValidator.java",
+                  "src/main/java/com/atlasgrid/geoops/tools/preflight/GeoOpsPreflightCli.java",
+                  "src/test/java/com/atlasgrid/geoops/tools/preflight/DatasetPreflightValidatorTest.java",
+                  "src/main/resources/application.yml"
+                ]
+              },
               {
                 "hash": "set1001",
                 "message": "Complete Set 1 GeoOps bootstrap",
@@ -365,6 +402,54 @@
           }
         ],
         "runs": [
+          {
+            "id": "set-2-ci",
+            "name": "GeoOps CI",
+            "event": "push",
+            "branch": "main",
+            "status": "success",
+            "commit": "set2001",
+            "actor": "sabareeshrao",
+            "runner": "ubuntu-latest",
+            "duration": "1m 18s",
+            "jobs": [
+              {
+                "name": "build",
+                "status": "success",
+                "runner": "ubuntu-latest",
+                "steps": [
+                  {
+                    "name": "Set up job",
+                    "status": "success",
+                    "log": "Runner image: ubuntu-latest"
+                  },
+                  {
+                    "name": "Checkout",
+                    "status": "success",
+                    "log": "Checked out Set 2"
+                  },
+                  {
+                    "name": "Set up Java 17",
+                    "status": "success",
+                    "log": "Temurin Java 17 configured"
+                  },
+                  {
+                    "name": "Validate learning curriculum",
+                    "status": "success",
+                    "log": "Narration, typing actions and highlight contracts valid"
+                  },
+                  {
+                    "name": "Verify with Maven",
+                    "status": "success",
+                    "log": "Tests run: 5, Failures: 0\nBUILD SUCCESS"
+                  }
+                ]
+              }
+            ],
+            "summary": "Set 2 preflight CLI, process-boundary tests and curriculum validation passed.",
+            "annotations": [],
+            "artifacts": []
+          },
           {
             "id": "set-1-ci",
             "name": "GeoOps CI",
@@ -617,15 +702,34 @@
           }
         },
         {
-          "title": "Create the canonical GeoOps pom.xml",
-          "why": "• Now we're creating the real Maven build file for GeoOps: pom.xml.\n• POM stands for Project Object Model.\n• You can think of pom.xml as Maven's instruction file for this project.\n• It answers questions such as:\n• What is this project called?\n• Which Java and Spring Boot version are we using?\n• Which external libraries does GeoOps need?\n• How should Maven package the application?\n• At the top, we use the Spring Boot parent version 3.3.5 because that is the original Set 1 baseline.\n• Then we declare dependencies for Spring Web, Validation, Actuator, Lombok, and testing.\n• Notice that we are not manually writing a version beside every Spring dependency.\n• Spring Boot provides dependency management, which means it already knows a compatible group of library versions for that Boot release.\n• So instead of guessing which Spring Web, Jackson, Tomcat, and testing versions work together, Maven can use the coordinated versions Spring Boot supplies.",
+          "title": "Create empty pom.xml",
+          "why": "• Before we type the Maven build configuration, IntelliJ needs the actual pom.xml file to exist in the GeoOps project.\n• This step creates pom.xml as an empty file and opens it in the editor.\n• We are keeping the file empty on purpose instead of dropping finished source code onto the screen.\n• On the next step, the master IntelliJ simulator will use its typeCode action so you can watch the content appear while the caret and code area stay visible.",
           "software": "intellij",
           "action": {
             "action": "createFile",
             "data": {
               "path": "pom.xml",
               "language": "xml",
-              "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\"\n         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd\">\n    <modelVersion>4.0.0</modelVersion>\n    <parent>\n        <groupId>org.springframework.boot</groupId>\n        <artifactId>spring-boot-starter-parent</artifactId>\n        <version>3.3.5</version>\n        <relativePath/>\n    </parent>\n    <groupId>com.atlasgrid</groupId>\n    <artifactId>geoops</artifactId>\n    <version>0.0.1-SNAPSHOT</version>\n    <name>GeoOps</name>\n    <description>Fictional GIS operations platform used for Java/Spring Boot experience learning</description>\n    <properties>\n        <java.version>17</java.version>\n    </properties>\n    <dependencies>\n        <dependency>\n            <groupId>org.springframework.boot</groupId>\n            <artifactId>spring-boot-starter-web</artifactId>\n        </dependency>\n        <dependency>\n            <groupId>org.springframework.boot</groupId>\n            <artifactId>spring-boot-starter-validation</artifactId>\n        </dependency>\n        <dependency>\n            <groupId>org.springframework.boot</groupId>\n            <artifactId>spring-boot-starter-actuator</artifactId>\n        </dependency>\n        <dependency>\n            <groupId>org.projectlombok</groupId>\n            <artifactId>lombok</artifactId>\n            <optional>true</optional>\n        </dependency>\n        <dependency>\n            <groupId>org.springframework.boot</groupId>\n            <artifactId>spring-boot-starter-test</artifactId>\n            <scope>test</scope>\n        </dependency>\n    </dependencies>\n    <build>\n        <plugins>\n            <plugin>\n                <groupId>org.springframework.boot</groupId>\n                <artifactId>spring-boot-maven-plugin</artifactId>\n            </plugin>\n        </plugins>\n    </build>\n</project>\n"
+              "content": ""
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              ".tab.active"
+            ]
+          }
+        },
+        {
+          "title": "Type the canonical GeoOps pom.xml",
+          "why": "• Now we're creating the real Maven build file for GeoOps: pom.xml.\n• POM stands for Project Object Model.\n• You can think of pom.xml as Maven's instruction file for this project.\n• It answers questions such as:\n• What is this project called?\n• Which Java and Spring Boot version are we using?\n• Which external libraries does GeoOps need?\n• How should Maven package the application?\n• At the top, we use the Spring Boot parent version 3.3.5 because that is the original Set 1 baseline.\n• Then we declare dependencies for Spring Web, Validation, Actuator, Lombok, and testing.\n• Notice that we are not manually writing a version beside every Spring dependency.\n• Spring Boot provides dependency management, which means it already knows a compatible group of library versions for that Boot release.\n• So instead of guessing which Spring Web, Jackson, Tomcat, and testing versions work together, Maven can use the coordinated versions Spring Boot supplies.",
+          "software": "intellij",
+          "action": {
+            "action": "typeCode",
+            "data": {
+              "file": "pom.xml",
+              "code": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\"\n         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd\">\n    <modelVersion>4.0.0</modelVersion>\n    <parent>\n        <groupId>org.springframework.boot</groupId>\n        <artifactId>spring-boot-starter-parent</artifactId>\n        <version>3.3.5</version>\n        <relativePath/>\n    </parent>\n    <groupId>com.atlasgrid</groupId>\n    <artifactId>geoops</artifactId>\n    <version>0.0.1-SNAPSHOT</version>\n    <name>GeoOps</name>\n    <description>Fictional GIS operations platform used for Java/Spring Boot experience learning</description>\n    <properties>\n        <java.version>17</java.version>\n    </properties>\n    <dependencies>\n        <dependency>\n            <groupId>org.springframework.boot</groupId>\n            <artifactId>spring-boot-starter-web</artifactId>\n        </dependency>\n        <dependency>\n            <groupId>org.springframework.boot</groupId>\n            <artifactId>spring-boot-starter-validation</artifactId>\n        </dependency>\n        <dependency>\n            <groupId>org.springframework.boot</groupId>\n            <artifactId>spring-boot-starter-actuator</artifactId>\n        </dependency>\n        <dependency>\n            <groupId>org.projectlombok</groupId>\n            <artifactId>lombok</artifactId>\n            <optional>true</optional>\n        </dependency>\n        <dependency>\n            <groupId>org.springframework.boot</groupId>\n            <artifactId>spring-boot-starter-test</artifactId>\n            <scope>test</scope>\n        </dependency>\n    </dependencies>\n    <build>\n        <plugins>\n            <plugin>\n                <groupId>org.springframework.boot</groupId>\n                <artifactId>spring-boot-maven-plugin</artifactId>\n            </plugin>\n        </plugins>\n    </build>\n</project>\n",
+              "position": "replace"
             }
           },
           "highlight": {
@@ -746,15 +850,34 @@
           }
         },
         {
-          "title": "Create the Spring Boot entry point",
-          "why": "• Alright, this is where our GeoOps application actually begins.\n• Every running Java application needs some code that starts the program.\n• For this application, that starting method is:\n• public static void main(String[] args)\n• The JVM looks for this standard main method when we launch the class.\n• JVM means Java Virtual Machine. It is the runtime that executes Java bytecode.\n• Inside main(), we call SpringApplication.run().\n• Why do we need that?\n• Because we don't want to manually create every Spring object, configure the web server, discover controllers, and wire dependencies ourselves.\n• SpringApplication.run() tells Spring Boot to start the application environment for us.\n• Now look at @SpringBootApplication.\n• This annotation marks this class as the main Spring Boot configuration class. Among other things, it enables automatic configuration and component scanning.\n• Component scanning means Spring looks through our package tree for Spring-managed classes such as controllers and services.\n• So the startup flow is:\n• JVM starts main() → main() calls SpringApplication.run() → Spring creates its application context → embedded Tomcat starts → GeoOps can receive web requests.\n• The application can now start, but it still has no GeoOps business data. Next we need an object that represents a project.",
+          "title": "Create empty GeoOpsApplication.java",
+          "why": "• Before we type the Spring Boot entry point, IntelliJ needs the actual GeoOpsApplication.java file to exist in the GeoOps project.\n• This step creates GeoOpsApplication.java as an empty file and opens it in the editor.\n• We are keeping the file empty on purpose instead of dropping finished source code onto the screen.\n• On the next step, the master IntelliJ simulator will use its typeCode action so you can watch the content appear while the caret and code area stay visible.",
           "software": "intellij",
           "action": {
             "action": "createFile",
             "data": {
               "path": "src/main/java/com/atlasgrid/geoops/GeoOpsApplication.java",
               "language": "java",
-              "content": "package com.atlasgrid.geoops;\n\nimport org.springframework.boot.SpringApplication;\nimport org.springframework.boot.autoconfigure.SpringBootApplication;\n\n@SpringBootApplication\npublic class GeoOpsApplication {\n    public static void main(String[] args) {\n        SpringApplication.run(GeoOpsApplication.class, args);\n    }\n}\n"
+              "content": ""
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              ".tab.active"
+            ]
+          }
+        },
+        {
+          "title": "Type the Spring Boot entry point",
+          "why": "• Alright, this is where our GeoOps application actually begins.\n• Every running Java application needs some code that starts the program.\n• For this application, that starting method is:\n• public static void main(String[] args)\n• The JVM looks for this standard main method when we launch the class.\n• JVM means Java Virtual Machine. It is the runtime that executes Java bytecode.\n• Inside main(), we call SpringApplication.run().\n• Why do we need that?\n• Because we don't want to manually create every Spring object, configure the web server, discover controllers, and wire dependencies ourselves.\n• SpringApplication.run() tells Spring Boot to start the application environment for us.\n• Now look at @SpringBootApplication.\n• This annotation marks this class as the main Spring Boot configuration class. Among other things, it enables automatic configuration and component scanning.\n• Component scanning means Spring looks through our package tree for Spring-managed classes such as controllers and services.\n• So the startup flow is:\n• JVM starts main() → main() calls SpringApplication.run() → Spring creates its application context → embedded Tomcat starts → GeoOps can receive web requests.\n• The application can now start, but it still has no GeoOps business data. Next we need an object that represents a project.",
+          "software": "intellij",
+          "action": {
+            "action": "typeCode",
+            "data": {
+              "file": "src/main/java/com/atlasgrid/geoops/GeoOpsApplication.java",
+              "code": "package com.atlasgrid.geoops;\n\nimport org.springframework.boot.SpringApplication;\nimport org.springframework.boot.autoconfigure.SpringBootApplication;\n\n@SpringBootApplication\npublic class GeoOpsApplication {\n    public static void main(String[] args) {\n        SpringApplication.run(GeoOpsApplication.class, args);\n    }\n}\n",
+              "position": "replace"
             }
           },
           "highlight": {
@@ -767,15 +890,34 @@
           }
         },
         {
-          "title": "Model one GIS project",
-          "why": "• Now we need to answer a basic domain question:\n• What information represents one project inside GeoOps?\n• A domain object is simply an object that represents something meaningful in the problem our application is solving.\n• Here the thing we're modeling is a GIS project.\n• For our first version, GeoProject contains an id, project code, project name, coordinate reference system, and creation time.\n• The id is a UUID.\n• UUID stands for Universally Unique Identifier. It gives each created project its own identifier without us manually choosing numbers such as 1, 2, 3.\n• The coordinateReferenceSystem field is important for the GIS domain.\n• A coordinate reference system tells us how geographic coordinates should be interpreted. For example, EPSG:4326 is a commonly recognized CRS identifier.\n• We're using a Java record because this class mainly carries a fixed group of values.\n• And notice what we're deliberately not doing yet: there are no database annotations here.\n• Right now the project only needs an in-memory model. We'll introduce persistence only when the learning sequence reaches a real reason for it.",
+          "title": "Create empty GeoProject.java",
+          "why": "• Before we type the GeoOps project model, IntelliJ needs the actual GeoProject.java file to exist in the GeoOps project.\n• This step creates GeoProject.java as an empty file and opens it in the editor.\n• We are keeping the file empty on purpose instead of dropping finished source code onto the screen.\n• On the next step, the master IntelliJ simulator will use its typeCode action so you can watch the content appear while the caret and code area stay visible.",
           "software": "intellij",
           "action": {
             "action": "createFile",
             "data": {
               "path": "src/main/java/com/atlasgrid/geoops/project/domain/GeoProject.java",
               "language": "java",
-              "content": "package com.atlasgrid.geoops.project.domain;\n\nimport java.time.Instant;\nimport java.util.UUID;\n\npublic record GeoProject(\n        UUID id,\n        String projectCode,\n        String name,\n        String coordinateReferenceSystem,\n        Instant createdAt\n) {\n}\n"
+              "content": ""
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              ".tab.active"
+            ]
+          }
+        },
+        {
+          "title": "Model one GIS project",
+          "why": "• Now we need to answer a basic domain question:\n• What information represents one project inside GeoOps?\n• A domain object is simply an object that represents something meaningful in the problem our application is solving.\n• Here the thing we're modeling is a GIS project.\n• For our first version, GeoProject contains an id, project code, project name, coordinate reference system, and creation time.\n• The id is a UUID.\n• UUID stands for Universally Unique Identifier. It gives each created project its own identifier without us manually choosing numbers such as 1, 2, 3.\n• The coordinateReferenceSystem field is important for the GIS domain.\n• A coordinate reference system tells us how geographic coordinates should be interpreted. For example, EPSG:4326 is a commonly recognized CRS identifier.\n• We're using a Java record because this class mainly carries a fixed group of values.\n• And notice what we're deliberately not doing yet: there are no database annotations here.\n• Right now the project only needs an in-memory model. We'll introduce persistence only when the learning sequence reaches a real reason for it.",
+          "software": "intellij",
+          "action": {
+            "action": "typeCode",
+            "data": {
+              "file": "src/main/java/com/atlasgrid/geoops/project/domain/GeoProject.java",
+              "code": "package com.atlasgrid.geoops.project.domain;\n\nimport java.time.Instant;\nimport java.util.UUID;\n\npublic record GeoProject(\n        UUID id,\n        String projectCode,\n        String name,\n        String coordinateReferenceSystem,\n        Instant createdAt\n) {\n}\n",
+              "position": "replace"
             }
           },
           "highlight": {
@@ -791,15 +933,34 @@
           }
         },
         {
-          "title": "Separate request input from domain state",
-          "why": "• Now let's separate the data a client sends from the complete GeoProject object stored by the application.\n• Why?\n• Imagine a client sends a request to create a project.\n• The client should choose the project code, name, and coordinate reference system.\n• But should the client also choose the internal UUID and the exact server creation time?\n• No. Those values belong to GeoOps itself.\n• So we create a separate request object named CreateProjectRequest.\n• A request object describes the data expected from the incoming HTTP request.\n• Then we place @NotBlank on each required text value.\n• Remember the Validation dependency we added earlier? This is where it becomes useful.\n• @NotBlank tells the validation system that the value cannot be null, empty, or only whitespace.\n• So the responsibility is now clear:\n• client supplies projectCode, name, CRS → validation checks them → application creates id and timestamp.\n• Keeping those responsibilities separate makes the API easier to control as GeoOps grows.",
+          "title": "Create empty CreateProjectRequest.java",
+          "why": "• Before we type the API request model, IntelliJ needs the actual CreateProjectRequest.java file to exist in the GeoOps project.\n• This step creates CreateProjectRequest.java as an empty file and opens it in the editor.\n• We are keeping the file empty on purpose instead of dropping finished source code onto the screen.\n• On the next step, the master IntelliJ simulator will use its typeCode action so you can watch the content appear while the caret and code area stay visible.",
           "software": "intellij",
           "action": {
             "action": "createFile",
             "data": {
               "path": "src/main/java/com/atlasgrid/geoops/project/api/CreateProjectRequest.java",
               "language": "java",
-              "content": "package com.atlasgrid.geoops.project.api;\n\nimport jakarta.validation.constraints.NotBlank;\n\npublic record CreateProjectRequest(\n        @NotBlank String projectCode,\n        @NotBlank String name,\n        @NotBlank String coordinateReferenceSystem\n) {\n}\n"
+              "content": ""
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              ".tab.active"
+            ]
+          }
+        },
+        {
+          "title": "Separate request input from domain state",
+          "why": "• Now let's separate the data a client sends from the complete GeoProject object stored by the application.\n• Why?\n• Imagine a client sends a request to create a project.\n• The client should choose the project code, name, and coordinate reference system.\n• But should the client also choose the internal UUID and the exact server creation time?\n• No. Those values belong to GeoOps itself.\n• So we create a separate request object named CreateProjectRequest.\n• A request object describes the data expected from the incoming HTTP request.\n• Then we place @NotBlank on each required text value.\n• Remember the Validation dependency we added earlier? This is where it becomes useful.\n• @NotBlank tells the validation system that the value cannot be null, empty, or only whitespace.\n• So the responsibility is now clear:\n• client supplies projectCode, name, CRS → validation checks them → application creates id and timestamp.\n• Keeping those responsibilities separate makes the API easier to control as GeoOps grows.",
+          "software": "intellij",
+          "action": {
+            "action": "typeCode",
+            "data": {
+              "file": "src/main/java/com/atlasgrid/geoops/project/api/CreateProjectRequest.java",
+              "code": "package com.atlasgrid.geoops.project.api;\n\nimport jakarta.validation.constraints.NotBlank;\n\npublic record CreateProjectRequest(\n        @NotBlank String projectCode,\n        @NotBlank String name,\n        @NotBlank String coordinateReferenceSystem\n) {\n}\n",
+              "position": "replace"
             }
           },
           "highlight": {
@@ -813,15 +974,34 @@
           }
         },
         {
-          "title": "Add the first GeoOps service",
-          "why": "• Now we have data, but we still need somewhere to perform the actual project work.\n• We could put everything directly inside ProjectController.\n• For a tiny demo, that might seem convenient.\n• But think about what would happen as GeoOps grows.\n• The controller might start handling HTTP details, project creation rules, duplicate checks, database calls, logging, and other logic all in one class.\n• That becomes hard to understand and hard to test.\n• So we create ProjectService.\n• A service is a class where we place application or business logic that should not live inside the web controller.\n• For Set 1, ProjectService has a very simple job: create GeoProject objects and keep them in an ArrayList.\n• An ArrayList is a Java collection that stores multiple objects in order.\n• We are using it only as temporary in-memory storage because no database exists yet.\n• The service also uses @Slf4j. That Lombok annotation gives us a logger, so the earlier Lombok dependency now has a real purpose.\n• Our application structure is beginning to separate responsibilities:\n• controller will handle HTTP → service will handle project work.",
+          "title": "Create empty ProjectService.java",
+          "why": "• Before we type the project service, IntelliJ needs the actual ProjectService.java file to exist in the GeoOps project.\n• This step creates ProjectService.java as an empty file and opens it in the editor.\n• We are keeping the file empty on purpose instead of dropping finished source code onto the screen.\n• On the next step, the master IntelliJ simulator will use its typeCode action so you can watch the content appear while the caret and code area stay visible.",
           "software": "intellij",
           "action": {
             "action": "createFile",
             "data": {
               "path": "src/main/java/com/atlasgrid/geoops/project/application/ProjectService.java",
               "language": "java",
-              "content": "package com.atlasgrid.geoops.project.application;\n\nimport com.atlasgrid.geoops.project.api.CreateProjectRequest;\nimport com.atlasgrid.geoops.project.domain.GeoProject;\nimport lombok.extern.slf4j.Slf4j;\nimport org.springframework.stereotype.Service;\n\nimport java.time.Instant;\nimport java.util.ArrayList;\nimport java.util.List;\nimport java.util.UUID;\n\n@Slf4j\n@Service\npublic class ProjectService {\n    private final List<GeoProject> projects = new ArrayList<>();\n\n    public List<GeoProject> findAll() {\n        return List.copyOf(projects);\n    }\n\n    public GeoProject create(CreateProjectRequest request) {\n        GeoProject project = new GeoProject(\n                UUID.randomUUID(),\n                request.projectCode(),\n                request.name(),\n                request.coordinateReferenceSystem(),\n                Instant.now()\n        );\n        projects.add(project);\n        log.info(\"Created GeoOps project code={} crs={}\",\n                project.projectCode(), project.coordinateReferenceSystem());\n        return project;\n    }\n}\n"
+              "content": ""
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              ".tab.active"
+            ]
+          }
+        },
+        {
+          "title": "Add the first GeoOps service",
+          "why": "• Now we have data, but we still need somewhere to perform the actual project work.\n• We could put everything directly inside ProjectController.\n• For a tiny demo, that might seem convenient.\n• But think about what would happen as GeoOps grows.\n• The controller might start handling HTTP details, project creation rules, duplicate checks, database calls, logging, and other logic all in one class.\n• That becomes hard to understand and hard to test.\n• So we create ProjectService.\n• A service is a class where we place application or business logic that should not live inside the web controller.\n• For Set 1, ProjectService has a very simple job: create GeoProject objects and keep them in an ArrayList.\n• An ArrayList is a Java collection that stores multiple objects in order.\n• We are using it only as temporary in-memory storage because no database exists yet.\n• The service also uses @Slf4j. That Lombok annotation gives us a logger, so the earlier Lombok dependency now has a real purpose.\n• Our application structure is beginning to separate responsibilities:\n• controller will handle HTTP → service will handle project work.",
+          "software": "intellij",
+          "action": {
+            "action": "typeCode",
+            "data": {
+              "file": "src/main/java/com/atlasgrid/geoops/project/application/ProjectService.java",
+              "code": "package com.atlasgrid.geoops.project.application;\n\nimport com.atlasgrid.geoops.project.api.CreateProjectRequest;\nimport com.atlasgrid.geoops.project.domain.GeoProject;\nimport lombok.extern.slf4j.Slf4j;\nimport org.springframework.stereotype.Service;\n\nimport java.time.Instant;\nimport java.util.ArrayList;\nimport java.util.List;\nimport java.util.UUID;\n\n@Slf4j\n@Service\npublic class ProjectService {\n    private final List<GeoProject> projects = new ArrayList<>();\n\n    public List<GeoProject> findAll() {\n        return List.copyOf(projects);\n    }\n\n    public GeoProject create(CreateProjectRequest request) {\n        GeoProject project = new GeoProject(\n                UUID.randomUUID(),\n                request.projectCode(),\n                request.name(),\n                request.coordinateReferenceSystem(),\n                Instant.now()\n        );\n        projects.add(project);\n        log.info(\"Created GeoOps project code={} crs={}\",\n                project.projectCode(), project.coordinateReferenceSystem());\n        return project;\n    }\n}\n",
+              "position": "replace"
             }
           },
           "highlight": {
@@ -843,15 +1023,34 @@
           }
         },
         {
-          "title": "Expose project intake over HTTP",
-          "why": "• Now we're giving people or other systems a way to reach GeoOps over HTTP.\n• That is the job of ProjectController.\n• A controller is a class that receives incoming web requests and decides which application code should handle them.\n• @RestController tells Spring:\n• “This class contains HTTP endpoints, and the return values should be written into the HTTP response.”\n• Then @RequestMapping(\"/api/projects\") gives this controller a base URL.\n• Think of it as the common starting address for project-related operations.\n• Inside the controller we have two endpoints.\n• GET /api/projects asks for the current projects.\n• POST /api/projects sends data to create a new project.\n• The controller does not contain the project-creation logic itself. It calls ProjectService.\n• Why keep that separation?\n• Because HTTP handling and business logic change for different reasons.\n• The flow is now:\n• client request → ProjectController → ProjectService.\n• Later, if persistence is introduced, the service can grow without turning the controller into a giant all-purpose class.",
+          "title": "Create empty ProjectController.java",
+          "why": "• Before we type the REST controller, IntelliJ needs the actual ProjectController.java file to exist in the GeoOps project.\n• This step creates ProjectController.java as an empty file and opens it in the editor.\n• We are keeping the file empty on purpose instead of dropping finished source code onto the screen.\n• On the next step, the master IntelliJ simulator will use its typeCode action so you can watch the content appear while the caret and code area stay visible.",
           "software": "intellij",
           "action": {
             "action": "createFile",
             "data": {
               "path": "src/main/java/com/atlasgrid/geoops/project/api/ProjectController.java",
               "language": "java",
-              "content": "package com.atlasgrid.geoops.project.api;\n\nimport com.atlasgrid.geoops.project.application.ProjectService;\nimport com.atlasgrid.geoops.project.domain.GeoProject;\nimport jakarta.validation.Valid;\nimport org.springframework.http.HttpStatus;\nimport org.springframework.web.bind.annotation.*;\n\nimport java.util.List;\n\n@RestController\n@RequestMapping(\"/api/projects\")\npublic class ProjectController {\n    private final ProjectService projectService;\n\n    public ProjectController(ProjectService projectService) {\n        this.projectService = projectService;\n    }\n\n    @GetMapping\n    public List<GeoProject> getProjects() {\n        return projectService.findAll();\n    }\n\n    @PostMapping\n    @ResponseStatus(HttpStatus.CREATED)\n    public GeoProject createProject(@Valid @RequestBody CreateProjectRequest request) {\n        return projectService.create(request);\n    }\n}\n"
+              "content": ""
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              ".tab.active"
+            ]
+          }
+        },
+        {
+          "title": "Expose project intake over HTTP",
+          "why": "• Now we're giving people or other systems a way to reach GeoOps over HTTP.\n• That is the job of ProjectController.\n• A controller is a class that receives incoming web requests and decides which application code should handle them.\n• @RestController tells Spring:\n• “This class contains HTTP endpoints, and the return values should be written into the HTTP response.”\n• Then @RequestMapping(\"/api/projects\") gives this controller a base URL.\n• Think of it as the common starting address for project-related operations.\n• Inside the controller we have two endpoints.\n• GET /api/projects asks for the current projects.\n• POST /api/projects sends data to create a new project.\n• The controller does not contain the project-creation logic itself. It calls ProjectService.\n• Why keep that separation?\n• Because HTTP handling and business logic change for different reasons.\n• The flow is now:\n• client request → ProjectController → ProjectService.\n• Later, if persistence is introduced, the service can grow without turning the controller into a giant all-purpose class.",
+          "software": "intellij",
+          "action": {
+            "action": "typeCode",
+            "data": {
+              "file": "src/main/java/com/atlasgrid/geoops/project/api/ProjectController.java",
+              "code": "package com.atlasgrid.geoops.project.api;\n\nimport com.atlasgrid.geoops.project.application.ProjectService;\nimport com.atlasgrid.geoops.project.domain.GeoProject;\nimport jakarta.validation.Valid;\nimport org.springframework.http.HttpStatus;\nimport org.springframework.web.bind.annotation.*;\n\nimport java.util.List;\n\n@RestController\n@RequestMapping(\"/api/projects\")\npublic class ProjectController {\n    private final ProjectService projectService;\n\n    public ProjectController(ProjectService projectService) {\n        this.projectService = projectService;\n    }\n\n    @GetMapping\n    public List<GeoProject> getProjects() {\n        return projectService.findAll();\n    }\n\n    @PostMapping\n    @ResponseStatus(HttpStatus.CREATED)\n    public GeoProject createProject(@Valid @RequestBody CreateProjectRequest request) {\n        return projectService.create(request);\n    }\n}\n",
+              "position": "replace"
             }
           },
           "highlight": {
@@ -872,15 +1071,34 @@
           }
         },
         {
-          "title": "Configure the GeoOps runtime",
-          "why": "• Our Java classes describe application behavior, but some values should be easy to change without editing Java source.\n• That's why Spring Boot also uses configuration files.\n• Here we're creating application.yml.\n• YAML is a text format commonly used for configuration. The indentation groups related settings.\n• First we set the application name to geoops.\n• Then we configure server.port as 8080.\n• A port is a numbered communication endpoint on the machine. When our embedded Tomcat server starts on port 8080, a local client can reach it through an address such as http://localhost:8080.\n• We're also exposing Actuator health and info endpoints.\n• Spring Boot Actuator is a library that provides operational information about a running application.\n• The health endpoint gives us a simple question we can ask before testing our own API:\n• “Is the GeoOps process up and responding?”\n• That will help us separate startup problems from business-API problems in Postman.",
+          "title": "Create empty application.yml",
+          "why": "• Before we type the Spring Boot runtime configuration, IntelliJ needs the actual application.yml file to exist in the GeoOps project.\n• This step creates application.yml as an empty file and opens it in the editor.\n• We are keeping the file empty on purpose instead of dropping finished source code onto the screen.\n• On the next step, the master IntelliJ simulator will use its typeCode action so you can watch the content appear while the caret and code area stay visible.",
           "software": "intellij",
           "action": {
             "action": "createFile",
             "data": {
               "path": "src/main/resources/application.yml",
               "language": "yaml",
-              "content": "spring:\n  application:\n    name: geoops\n\nserver:\n  port: 8080\n\nmanagement:\n  endpoints:\n    web:\n      exposure:\n        include: health,info\n\ninfo:\n  app:\n    name: GeoOps\n    domain: GIS operations\n    company: AtlasGrid Geospatial Systems\n"
+              "content": ""
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              ".tab.active"
+            ]
+          }
+        },
+        {
+          "title": "Configure the GeoOps runtime",
+          "why": "• Our Java classes describe application behavior, but some values should be easy to change without editing Java source.\n• That's why Spring Boot also uses configuration files.\n• Here we're creating application.yml.\n• YAML is a text format commonly used for configuration. The indentation groups related settings.\n• First we set the application name to geoops.\n• Then we configure server.port as 8080.\n• A port is a numbered communication endpoint on the machine. When our embedded Tomcat server starts on port 8080, a local client can reach it through an address such as http://localhost:8080.\n• We're also exposing Actuator health and info endpoints.\n• Spring Boot Actuator is a library that provides operational information about a running application.\n• The health endpoint gives us a simple question we can ask before testing our own API:\n• “Is the GeoOps process up and responding?”\n• That will help us separate startup problems from business-API problems in Postman.",
+          "software": "intellij",
+          "action": {
+            "action": "typeCode",
+            "data": {
+              "file": "src/main/resources/application.yml",
+              "code": "spring:\n  application:\n    name: geoops\n\nserver:\n  port: 8080\n\nmanagement:\n  endpoints:\n    web:\n      exposure:\n        include: health,info\n\ninfo:\n  app:\n    name: GeoOps\n    domain: GIS operations\n    company: AtlasGrid Geospatial Systems\n",
+              "position": "replace"
             }
           },
           "highlight": {
@@ -896,15 +1114,34 @@
           }
         },
         {
-          "title": "Add a Spring Boot context test",
-          "why": "• Before manually clicking through the application, we want at least one automated check that Spring can start with what we've built.\n• That is why we're creating GeoOpsApplicationTests.\n• A test is code that checks whether some expected behavior is true.\n• Here we use @SpringBootTest.\n• That annotation tells Spring Boot to create the application context for the test.\n• The application context is the container where Spring creates and manages application components such as controllers and services.\n• Our contextLoads() method looks almost empty because the test is checking startup itself.\n• If Spring cannot build the context because of broken configuration or missing dependencies, the test will fail.\n• So this first test answers a very basic but valuable question:\n• “Can the current GeoOps application start successfully under test?”\n• Later, when we add more business rules, we'll create tests that check those rules directly.",
+          "title": "Create empty GeoOpsApplicationTests.java",
+          "why": "• Before we type the automated test, IntelliJ needs the actual GeoOpsApplicationTests.java file to exist in the GeoOps project.\n• This step creates GeoOpsApplicationTests.java as an empty file and opens it in the editor.\n• We are keeping the file empty on purpose instead of dropping finished source code onto the screen.\n• On the next step, the master IntelliJ simulator will use its typeCode action so you can watch the content appear while the caret and code area stay visible.",
           "software": "intellij",
           "action": {
             "action": "createFile",
             "data": {
               "path": "src/test/java/com/atlasgrid/geoops/GeoOpsApplicationTests.java",
               "language": "java",
-              "content": "package com.atlasgrid.geoops;\n\nimport org.junit.jupiter.api.Test;\nimport org.springframework.boot.test.context.SpringBootTest;\n\n@SpringBootTest\nclass GeoOpsApplicationTests {\n    @Test\n    void contextLoads() {\n    }\n}\n"
+              "content": ""
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              ".tab.active"
+            ]
+          }
+        },
+        {
+          "title": "Add a Spring Boot context test",
+          "why": "• Before manually clicking through the application, we want at least one automated check that Spring can start with what we've built.\n• That is why we're creating GeoOpsApplicationTests.\n• A test is code that checks whether some expected behavior is true.\n• Here we use @SpringBootTest.\n• That annotation tells Spring Boot to create the application context for the test.\n• The application context is the container where Spring creates and manages application components such as controllers and services.\n• Our contextLoads() method looks almost empty because the test is checking startup itself.\n• If Spring cannot build the context because of broken configuration or missing dependencies, the test will fail.\n• So this first test answers a very basic but valuable question:\n• “Can the current GeoOps application start successfully under test?”\n• Later, when we add more business rules, we'll create tests that check those rules directly.",
+          "software": "intellij",
+          "action": {
+            "action": "typeCode",
+            "data": {
+              "file": "src/test/java/com/atlasgrid/geoops/GeoOpsApplicationTests.java",
+              "code": "package com.atlasgrid.geoops;\n\nimport org.junit.jupiter.api.Test;\nimport org.springframework.boot.test.context.SpringBootTest;\n\n@SpringBootTest\nclass GeoOpsApplicationTests {\n    @Test\n    void contextLoads() {\n    }\n}\n",
+              "position": "replace"
             }
           },
           "highlight": {
@@ -1339,15 +1576,34 @@
       "subtitle": "Use a short-lived GIS preflight CLI to learn where process exit belongs and why normal Spring Boot service code must not terminate the JVM.",
       "steps": [
         {
-          "title": "Model the preflight result before we terminate anything",
-          "why": "• Alright, Set 2 starts with a different kind of problem.\n• Our main GeoOps application is a long-running Spring Boot server. Once it starts, it is supposed to keep running and continue serving requests.\n• But imagine a batch job wants to check a GIS dataset before sending that file into GeoOps.\n• For that small job, we do not need to start the entire web application. A short command-line program is enough.\n• A command-line program is a program we run from a terminal, usually with some input written after the command.\n• When that program finishes, the operating system needs a simple way to know whether the work succeeded or failed.\n• That value is called a process exit code.\n• By convention, exit code 0 means success. A non-zero value means some kind of failure.\n• Later in this set we are going to use System.exit() to return a failure code from the outer CLI process.\n• But we do not want our reusable validation logic to call System.exit() directly.\n• Why not?\n• Because System.exit() does not just leave one method. It asks the JVM to terminate the whole running Java process.\n• If a validator called it internally, a unit test or another caller could lose control of the process before it had a chance to inspect the validation result.\n• So first we create PreflightResult.\n• This record carries three pieces of information: whether validation passed, which exit code should be reported, and a human-readable message.\n• success() creates a successful result with exit code 0.\n• failure() creates a failed result with the specific non-zero code we want the CLI to report later.\n• That gives us a safer flow:\n• validator → PreflightResult → CLI boundary → System.exit() only when process termination is actually appropriate.",
+          "title": "Create empty PreflightResult.java",
+          "why": "• Before we type the preflight result model, IntelliJ needs the actual PreflightResult.java file to exist in the GeoOps project.\n• This step creates PreflightResult.java as an empty file and opens it in the editor.\n• We are keeping the file empty on purpose instead of dropping finished source code onto the screen.\n• On the next step, the master IntelliJ simulator will use its typeCode action so you can watch the content appear while the caret and code area stay visible.",
           "software": "intellij",
           "action": {
             "action": "createFile",
             "data": {
               "path": "src/main/java/com/atlasgrid/geoops/tools/preflight/PreflightResult.java",
               "language": "java",
-              "content": "package com.atlasgrid.geoops.tools.preflight;\n\n/**\n * Result returned by the standalone GIS dataset preflight validator.\n *\n * @param valid    whether the input passed validation\n * @param exitCode operating-system process exit code\n * @param message  human-readable result\n */\npublic record PreflightResult(\n        boolean valid,\n        int exitCode,\n        String message\n) {\n    public static PreflightResult success(String message) {\n        return new PreflightResult(true, 0, message);\n    }\n\n    public static PreflightResult failure(int exitCode, String message) {\n        return new PreflightResult(false, exitCode, message);\n    }\n}\n"
+              "content": ""
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              ".tab.active"
+            ]
+          }
+        },
+        {
+          "title": "Model the preflight result before we terminate anything",
+          "why": "• Set 2 starts by separating a validation result from the decision to terminate a Java process.\n• Our main GeoOps Spring Boot application is a long-running server, but a small dataset preflight check can run as a short command-line program.\n• A command-line program is a program launched from a terminal, often with values written after the command as arguments.\n• When a command-line process finishes, the operating system needs a simple status value that says whether it succeeded or failed.\n• That status value is called a process exit code.\n• By convention, exit code 0 means success and a non-zero code represents some kind of failure.\n• Later the outer CLI will use System.exit() for failure, but the reusable validation logic should not terminate the JVM by itself.\n• System.exit() asks the JVM to stop the entire running Java process, not merely leave one method.\n• If validation logic terminated the JVM directly, tests and other callers would lose the chance to inspect the result and choose their own response.\n• PreflightResult solves that problem by carrying ordinary data instead of ending the process.\n• The valid field tells us whether the dataset passed, exitCode carries the operating-system status we may need later, and message explains the result to a human.\n• success() creates a valid result with exit code 0, while failure() stores the specific non-zero failure code.\n• The design is now validator → PreflightResult → CLI boundary → process exit only when the outer program decides it is appropriate.",
+          "software": "intellij",
+          "action": {
+            "action": "typeCode",
+            "data": {
+              "file": "src/main/java/com/atlasgrid/geoops/tools/preflight/PreflightResult.java",
+              "code": "package com.atlasgrid.geoops.tools.preflight;\n\n/**\n * Result returned by the standalone GIS dataset preflight validator.\n *\n * @param valid    whether the input passed validation\n * @param exitCode operating-system process exit code\n * @param message  human-readable result\n */\npublic record PreflightResult(\n        boolean valid,\n        int exitCode,\n        String message\n) {\n    public static PreflightResult success(String message) {\n        return new PreflightResult(true, 0, message);\n    }\n\n    public static PreflightResult failure(int exitCode, String message) {\n        return new PreflightResult(false, exitCode, message);\n    }\n}\n",
+              "position": "replace"
             }
           },
           "highlight": {
@@ -1361,6 +1617,546 @@
               16,
               19,
               20
+            ]
+          }
+        },
+        {
+          "title": "Create empty DatasetPreflightValidator.java",
+          "why": "• Before we type the reusable GIS dataset validator, IntelliJ needs the actual DatasetPreflightValidator.java file to exist in the GeoOps project.\n• This step creates DatasetPreflightValidator.java as an empty file and opens it in the editor.\n• We are keeping the file empty on purpose instead of dropping finished source code onto the screen.\n• On the next step, the master IntelliJ simulator will use its typeCode action so you can watch the content appear while the caret and code area stay visible.",
+          "software": "intellij",
+          "action": {
+            "action": "createFile",
+            "data": {
+              "path": "src/main/java/com/atlasgrid/geoops/tools/preflight/DatasetPreflightValidator.java",
+              "language": "java",
+              "content": ""
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              ".tab.active"
+            ]
+          }
+        },
+        {
+          "title": "Type the GIS dataset preflight rules",
+          "why": "• Now we need the class that actually checks the dataset path supplied to the command-line tool.\n• The important design choice is that this validator returns PreflightResult objects and contains no System.exit() call.\n• That keeps file-checking logic separate from process-control logic.\n• SUPPORTED_EXTENSIONS defines the file types this first preflight version understands: CSV, JSON, and GeoJSON.\n• The validate() method receives String[] args, which is the same kind of command-line argument array Java passes into main().\n• If there is not exactly one usable argument, we return exit code 2 to mean the command was used incorrectly.\n• Path.of() turns the text argument into a Java Path object so the program can work with the filesystem location.\n• Files.exists() checks whether something is present at that path; a missing dataset becomes exit code 3.\n• Files.isRegularFile() makes sure the path points to a normal file rather than something such as a directory; that failure becomes code 4.\n• After that we inspect the filename extension and reject unsupported types with code 5.\n• Only after all checks pass do we return PreflightResult.success(), which carries exit code 0.\n• Notice the pattern: every branch returns information to its caller instead of deciding to kill the JVM.",
+          "software": "intellij",
+          "action": {
+            "action": "typeCode",
+            "data": {
+              "file": "src/main/java/com/atlasgrid/geoops/tools/preflight/DatasetPreflightValidator.java",
+              "code": "package com.atlasgrid.geoops.tools.preflight;\n\nimport java.nio.file.Files;\nimport java.nio.file.Path;\nimport java.util.Locale;\nimport java.util.Set;\n\n/**\n * Lightweight command-line preflight validation for inbound GIS data files.\n *\n * <p>This validator deliberately contains no System.exit call. Business logic\n * returns a result; only the outer CLI boundary decides whether the JVM process\n * should terminate with a non-zero status.</p>\n */\npublic class DatasetPreflightValidator {\n\n    private static final Set<String> SUPPORTED_EXTENSIONS =\n            Set.of(\".csv\", \".json\", \".geojson\");\n\n    public PreflightResult validate(String[] args) {\n        if (args == null || args.length != 1 || args[0].isBlank()) {\n            return PreflightResult.failure(\n                    2,\n                    \"Usage: GeoOpsPreflightCli <dataset-file>\"\n            );\n        }\n\n        Path dataset = Path.of(args[0]);\n\n        if (!Files.exists(dataset)) {\n            return PreflightResult.failure(\n                    3,\n                    \"Dataset does not exist: \" + dataset\n            );\n        }\n\n        if (!Files.isRegularFile(dataset)) {\n            return PreflightResult.failure(\n                    4,\n                    \"Dataset path is not a regular file: \" + dataset\n            );\n        }\n\n        String fileName = dataset.getFileName().toString().toLowerCase(Locale.ROOT);\n        boolean supported = SUPPORTED_EXTENSIONS.stream().anyMatch(fileName::endsWith);\n\n        if (!supported) {\n            return PreflightResult.failure(\n                    5,\n                    \"Unsupported dataset type. Supported: \" + SUPPORTED_EXTENSIONS\n            );\n        }\n\n        return PreflightResult.success(\n                \"Dataset passed basic GeoOps preflight checks: \" + dataset\n        );\n    }\n}\n",
+              "position": "replace"
+            }
+          },
+          "highlight": {
+            "kind": "code",
+            "lines": [
+              17,
+              20,
+              21,
+              22,
+              28,
+              30,
+              37,
+              45,
+              47,
+              54
+            ]
+          }
+        },
+        {
+          "title": "Create empty GeoOpsPreflightCli.java",
+          "why": "• Before we type the command-line process boundary, IntelliJ needs the actual GeoOpsPreflightCli.java file to exist in the GeoOps project.\n• This step creates GeoOpsPreflightCli.java as an empty file and opens it in the editor.\n• We are keeping the file empty on purpose instead of dropping finished source code onto the screen.\n• On the next step, the master IntelliJ simulator will use its typeCode action so you can watch the content appear while the caret and code area stay visible.",
+          "software": "intellij",
+          "action": {
+            "action": "createFile",
+            "data": {
+              "path": "src/main/java/com/atlasgrid/geoops/tools/preflight/GeoOpsPreflightCli.java",
+              "language": "java",
+              "content": ""
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              ".tab.active"
+            ]
+          }
+        },
+        {
+          "title": "Put System.exit() at the outer CLI boundary",
+          "why": "• This is the class where System.exit() finally belongs.\n• GeoOpsPreflightCli is a standalone command-line entry point, so its job includes communicating a final success or failure status back to the operating system.\n• main(String[] args) receives the command-line arguments that were typed after the Java command.\n• We create DatasetPreflightValidator and ask it to validate those arguments.\n• The validator returns a PreflightResult instead of terminating anything.\n• If result.valid() is true, we print the success message and simply return from main().\n• Returning from main() lets the program end normally, which produces the successful process status without unnecessarily calling System.exit(0).\n• If validation failed, we print the error message to System.err.\n• System.err is the standard error output stream, normally used for error messages separately from ordinary program output.\n• Then System.exit(result.exitCode()) tells the JVM to terminate this short-lived CLI process with the non-zero code selected by the validator.\n• This is safe here because the CLI process exists only to perform this one preflight job.\n• The same call would be dangerous inside ProjectController or ProjectService because those classes live inside the long-running GeoOps web server JVM.",
+          "software": "intellij",
+          "action": {
+            "action": "typeCode",
+            "data": {
+              "file": "src/main/java/com/atlasgrid/geoops/tools/preflight/GeoOpsPreflightCli.java",
+              "code": "package com.atlasgrid.geoops.tools.preflight;\n\n/**\n * Standalone process used by batch/Jenkins-style workflows before an inbound\n * GIS dataset is submitted to GeoOps.\n *\n * <p>System.exit is intentionally restricted to this outer application\n * boundary. Controllers, services and domain logic must not terminate the JVM.</p>\n */\npublic final class GeoOpsPreflightCli {\n\n    private GeoOpsPreflightCli() {\n    }\n\n    public static void main(String[] args) {\n        DatasetPreflightValidator validator = new DatasetPreflightValidator();\n        PreflightResult result = validator.validate(args);\n\n        if (result.valid()) {\n            System.out.println(result.message());\n            return;\n        }\n\n        System.err.println(result.message());\n        System.exit(result.exitCode());\n    }\n}\n",
+              "position": "replace"
+            }
+          },
+          "highlight": {
+            "kind": "code",
+            "lines": [
+              15,
+              16,
+              17,
+              19,
+              20,
+              21,
+              24,
+              25
+            ]
+          }
+        },
+        {
+          "title": "Give Spring Boot time for graceful shutdown",
+          "why": "• The web application needs a different shutdown policy from the short-lived CLI.\n• A running Spring Boot server can have active HTTP requests and Spring-managed components that should get a chance to finish cleanly.\n• A graceful shutdown means the framework stops accepting new work and allows in-progress work a limited amount of time to complete before the process ends.\n• Here we add a Spring lifecycle timeout of 20 seconds.\n• That does not mean every shutdown waits 20 seconds; it sets the maximum time allowed for a shutdown phase when work is still finishing.\n• The important contrast is becoming clear: the CLI reports its final status directly, while the server lets the Spring lifecycle coordinate shutdown.",
+          "software": "intellij",
+          "action": {
+            "action": "typeCode",
+            "data": {
+              "file": "src/main/resources/application.yml",
+              "marker": "    name: geoops\n",
+              "position": "after",
+              "code": "  lifecycle:\n    timeout-per-shutdown-phase: 20s\n"
+            }
+          },
+          "highlight": {
+            "kind": "code",
+            "lines": [
+              4,
+              5
+            ]
+          }
+        },
+        {
+          "title": "Enable graceful server shutdown",
+          "why": "• Now we tell the embedded web server to use graceful shutdown behavior.\n• server.shutdown: graceful is a Spring Boot configuration setting, not a call to System.exit().\n• When the application is stopped normally, Spring Boot and the embedded server coordinate the shutdown process.\n• That gives active requests a chance to finish instead of a controller suddenly terminating the JVM for every user.\n• So we now have two deliberate process policies in the same project.\n• The standalone preflight CLI may return a non-zero process code at its outer boundary, while the long-running web service uses framework-managed graceful shutdown.",
+          "software": "intellij",
+          "action": {
+            "action": "typeCode",
+            "data": {
+              "file": "src/main/resources/application.yml",
+              "marker": "  port: 8080\n",
+              "position": "after",
+              "code": "  shutdown: graceful\n"
+            }
+          },
+          "highlight": {
+            "kind": "code",
+            "lines": [
+              9
+            ]
+          }
+        },
+        {
+          "title": "Create empty DatasetPreflightValidatorTest.java",
+          "why": "• Before we type the validator unit tests, IntelliJ needs the actual DatasetPreflightValidatorTest.java file to exist in the GeoOps project.\n• This step creates DatasetPreflightValidatorTest.java as an empty file and opens it in the editor.\n• We are keeping the file empty on purpose instead of dropping finished source code onto the screen.\n• On the next step, the master IntelliJ simulator will use its typeCode action so you can watch the content appear while the caret and code area stay visible.",
+          "software": "intellij",
+          "action": {
+            "action": "createFile",
+            "data": {
+              "path": "src/test/java/com/atlasgrid/geoops/tools/preflight/DatasetPreflightValidatorTest.java",
+              "language": "java",
+              "content": ""
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              ".tab.active"
+            ]
+          }
+        },
+        {
+          "title": "Test exit-code decisions without killing the test JVM",
+          "why": "• Before running the CLI itself, we test the validator as ordinary Java logic.\n• This is exactly why we kept System.exit() out of DatasetPreflightValidator.\n• If the validator called System.exit() internally, a unit test could terminate the entire Maven test process before JUnit finished running.\n• @TempDir asks JUnit to create a temporary directory that the test can safely use for filesystem scenarios.\n• The first test passes no dataset argument and checks for exit code 2.\n• The second points to a file that does not exist and verifies exit code 3.\n• The unsupported-type test creates survey.exe and checks that the validator returns code 5.\n• The success test creates survey.geojson and verifies a valid result with exit code 0.\n• None of these tests terminate the JVM because they are testing the decision data, not the CLI process boundary.\n• That separation makes the code easier to test and gives future callers the freedom to handle validation failures differently.",
+          "software": "intellij",
+          "action": {
+            "action": "typeCode",
+            "data": {
+              "file": "src/test/java/com/atlasgrid/geoops/tools/preflight/DatasetPreflightValidatorTest.java",
+              "code": "package com.atlasgrid.geoops.tools.preflight;\n\nimport org.junit.jupiter.api.Test;\nimport org.junit.jupiter.api.io.TempDir;\n\nimport java.io.IOException;\nimport java.nio.file.Files;\nimport java.nio.file.Path;\n\nimport static org.assertj.core.api.Assertions.assertThat;\n\nclass DatasetPreflightValidatorTest {\n\n    private final DatasetPreflightValidator validator = new DatasetPreflightValidator();\n\n    @TempDir\n    Path tempDir;\n\n    @Test\n    void returnsUsageErrorWhenNoDatasetWasProvided() {\n        PreflightResult result = validator.validate(new String[0]);\n\n        assertThat(result.valid()).isFalse();\n        assertThat(result.exitCode()).isEqualTo(2);\n    }\n\n    @Test\n    void returnsNotFoundWhenDatasetDoesNotExist() {\n        PreflightResult result =\n                validator.validate(new String[]{tempDir.resolve(\"missing.geojson\").toString()});\n\n        assertThat(result.valid()).isFalse();\n        assertThat(result.exitCode()).isEqualTo(3);\n    }\n\n    @Test\n    void rejectsUnsupportedDatasetType() throws IOException {\n        Path dataset = Files.createFile(tempDir.resolve(\"survey.exe\"));\n\n        PreflightResult result = validator.validate(new String[]{dataset.toString()});\n\n        assertThat(result.valid()).isFalse();\n        assertThat(result.exitCode()).isEqualTo(5);\n    }\n\n    @Test\n    void acceptsSupportedGeoJsonDataset() throws IOException {\n        Path dataset = Files.createFile(tempDir.resolve(\"survey.geojson\"));\n\n        PreflightResult result = validator.validate(new String[]{dataset.toString()});\n\n        assertThat(result.valid()).isTrue();\n        assertThat(result.exitCode()).isZero();\n    }\n}\n",
+              "position": "replace"
+            }
+          },
+          "highlight": {
+            "kind": "code",
+            "lines": [
+              12,
+              16,
+              20,
+              24,
+              28,
+              33,
+              37,
+              43,
+              47,
+              53
+            ]
+          }
+        },
+        {
+          "title": "Run the preflight validator tests",
+          "why": "• Now we run the four new validator tests through JUnit.\n• A green result means each tested input produced the exit-code decision we expected.\n• We are verifying codes 2, 3, 5, and 0 without ever calling System.exit() inside the test process.\n• This gives us confidence in the reusable validation rules before we move to the real command-line boundary.",
+          "software": "intellij",
+          "action": {
+            "action": "runJUnit",
+            "data": {
+              "suite": "DatasetPreflightValidatorTest",
+              "duration": "0.41 s",
+              "tests": [
+                {
+                  "name": "returnsUsageErrorWhenNoDatasetWasProvided",
+                  "status": "PASS",
+                  "duration": "82 ms"
+                },
+                {
+                  "name": "returnsNotFoundWhenDatasetDoesNotExist",
+                  "status": "PASS",
+                  "duration": "96 ms"
+                },
+                {
+                  "name": "rejectsUnsupportedDatasetType",
+                  "status": "PASS",
+                  "duration": "108 ms"
+                },
+                {
+                  "name": "acceptsSupportedGeoJsonDataset",
+                  "status": "PASS",
+                  "duration": "124 ms"
+                }
+              ],
+              "total": 4,
+              "passed": 4,
+              "failed": 0
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#bottomPanel",
+              "#runBtn"
+            ]
+          }
+        },
+        {
+          "title": "Verify the complete GeoOps build after Set 2 changes",
+          "why": "• The focused validator tests passed, but we also need to make sure Set 2 did not break the rest of GeoOps.\n• Maven clean verify rebuilds the project from a clean target directory and runs the full test suite.\n• At this point the suite contains the original Spring context test plus the four preflight validator tests.\n• Seeing five tests pass and BUILD SUCCESS tells us the new CLI code and the existing web application can live in the same project without breaking each other.",
+          "software": "intellij",
+          "action": {
+            "action": "runMavenGoal",
+            "data": {
+              "goal": "clean verify",
+              "status": "BUILD SUCCESS",
+              "console": "[INFO] Compiling GeoOps with Java 17\n[INFO] Running GeoOpsApplicationTests\n[INFO] Running DatasetPreflightValidatorTest\n[INFO] Tests run: 5, Failures: 0, Errors: 0\n[INFO] BUILD SUCCESS"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#bottomPanel",
+              "#rightPanel"
+            ]
+          }
+        },
+        {
+          "title": "Start the long-running GeoOps web service again",
+          "why": "• Before demonstrating the short-lived CLI, let's look again at the other kind of Java process in this project.\n• GeoOpsApplication starts a Spring Boot web server that is expected to stay alive and keep serving HTTP requests.\n• That is very different from the preflight tool, which performs one check and then ends.\n• Starting the service here makes the process-boundary difference visible before we stop it gracefully.",
+          "software": "intellij",
+          "action": {
+            "action": "runSpringBootApp",
+            "data": {
+              "name": "GeoOpsApplication",
+              "port": 8080,
+              "profile": "default",
+              "console": "2026-09-29 INFO Starting GeoOpsApplication using Java 17\n2026-09-29 INFO Tomcat started on port 8080 (http)\n2026-09-29 INFO Started GeoOpsApplication"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#bottomPanel",
+              "#runBtn"
+            ]
+          }
+        },
+        {
+          "title": "Stop the web service through the Spring lifecycle",
+          "why": "• Now we stop the server through its normal application lifecycle rather than calling System.exit() from business code.\n• Because graceful shutdown is enabled, Spring Boot owns the shutdown sequence for this long-running service.\n• The practical rule is simple: controllers and services should not decide to terminate the whole JVM just because one request or one business operation failed.\n• Those layers should return errors or throw exceptions that the application can handle while the server continues serving other work.\n• System.exit() stays reserved for a true process boundary such as our standalone preflight CLI.",
+          "software": "intellij",
+          "action": {
+            "action": "stopSpringBootApp",
+            "data": {
+              "name": "GeoOpsApplication"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#bottomPanel",
+              "#stopBtn"
+            ]
+          }
+        },
+        {
+          "title": "Open IntelliJ's integrated terminal",
+          "why": "• Now we are switching from source code to the place where a command-line program is actually launched.\n• The integrated terminal is a shell inside IntelliJ where we can type operating-system commands without leaving the IDE.\n• The master simulator keeps command typing visible here and uses a yellow boundary around the current command.\n• That matters for this lesson because we want to see both the command being executed and the exit code returned by the process.",
+          "software": "intellij",
+          "action": {
+            "action": "openTerminal",
+            "data": {}
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#bottomPanel"
+            ]
+          }
+        },
+        {
+          "title": "Run the CLI with no dataset argument",
+          "why": "• First we intentionally run the preflight CLI incorrectly by providing no dataset path.\n• The Java command launches GeoOpsPreflightCli from the compiled target/classes directory.\n• Because main() receives an empty args array, DatasetPreflightValidator returns the usage failure with exit code 2.\n• The CLI prints the usage message and then System.exit(2) ends this short-lived Java process.\n• The terminal remains open because IntelliJ itself is not being terminated; only the Java process that ran the CLI has ended.\n• That distinction is one of the most important things to understand about System.exit().",
+          "software": "intellij",
+          "action": {
+            "action": "typeTerminal",
+            "data": {
+              "command": "java -cp target/classes com.atlasgrid.geoops.tools.preflight.GeoOpsPreflightCli",
+              "output": "Usage: GeoOpsPreflightCli <dataset-file>",
+              "exitCode": 2,
+              "session": "GeoOps CLI",
+              "shell": "Terminal"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              ".terminalCommandFocus"
+            ]
+          }
+        },
+        {
+          "title": "Run the CLI with a missing GIS file",
+          "why": "• This time we provide a dataset path, but the file does not exist.\n• The argument reaches Path.of(), and Files.exists() returns false.\n• The validator chooses exit code 3 and returns that decision as a PreflightResult.\n• Only after the result reaches GeoOpsPreflightCli does System.exit(3) terminate the CLI process.\n• The yellow command boundary keeps the exact command visible while the terminal also shows the non-zero exit status.",
+          "software": "intellij",
+          "action": {
+            "action": "typeTerminal",
+            "data": {
+              "command": "java -cp target/classes com.atlasgrid.geoops.tools.preflight.GeoOpsPreflightCli data/missing.geojson",
+              "output": "Dataset does not exist: data/missing.geojson",
+              "exitCode": 3,
+              "session": "GeoOps CLI",
+              "shell": "Terminal"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              ".terminalCommandFocus"
+            ]
+          }
+        },
+        {
+          "title": "See an unsupported dataset return exit code 5",
+          "why": "• Now we simulate a file that exists but has a type our preflight tool does not support.\n• The command creates survey.exe and immediately passes that path into the CLI.\n• Because .exe is not in the supported extension set, validation returns exit code 5.\n• This shows why different non-zero codes can be useful: an automation script can distinguish incorrect usage, missing files, and unsupported formats instead of receiving one vague failure value.",
+          "software": "intellij",
+          "action": {
+            "action": "typeTerminal",
+            "data": {
+              "command": "touch survey.exe && java -cp target/classes com.atlasgrid.geoops.tools.preflight.GeoOpsPreflightCli survey.exe",
+              "output": "Unsupported dataset type. Supported: [.csv, .json, .geojson]",
+              "exitCode": 5,
+              "session": "GeoOps CLI",
+              "shell": "Terminal"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              ".terminalCommandFocus"
+            ]
+          }
+        },
+        {
+          "title": "See a valid GeoJSON preflight finish with exit code 0",
+          "why": "• Finally we create a GeoJSON file and pass it to the same CLI.\n• The file exists, it is a regular file, and its .geojson extension is supported.\n• The validator therefore returns PreflightResult.success() with exit code 0.\n• GeoOpsPreflightCli prints the success message and returns naturally from main() instead of calling System.exit(0).\n• The operating system still sees a successful exit code because normal completion of main() ends the Java process successfully.\n• We have now demonstrated the full process policy in a real terminal flow: successful work ends normally, while known failures use explicit non-zero exit codes at the outer CLI boundary.",
+          "software": "intellij",
+          "action": {
+            "action": "typeTerminal",
+            "data": {
+              "command": "touch survey.geojson && java -cp target/classes com.atlasgrid.geoops.tools.preflight.GeoOpsPreflightCli survey.geojson",
+              "output": "Dataset passed basic GeoOps preflight checks: survey.geojson",
+              "exitCode": 0,
+              "session": "GeoOps CLI",
+              "shell": "Terminal"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              ".terminalCommandFocus"
+            ]
+          }
+        },
+        {
+          "title": "Review the Set 2 changes in Git",
+          "why": "• The behavior is working, so now we review exactly what Set 2 changed before recording it in history.\n• Git shows three new preflight production classes, one new test class, and the graceful-shutdown configuration change.\n• Keeping this as a separate Set 2 commit makes the project evolution easy to inspect later.\n• We can clearly see which files introduced process-exit behavior instead of mixing them invisibly into the original bootstrap commit.",
+          "software": "git",
+          "action": {
+            "action": "openRepository",
+            "data": {
+              "name": "Developer-7-Intellij",
+              "path": "C:\\Users\\developer\\Developer-7-Intellij",
+              "branch": "main",
+              "files": [
+                {
+                  "path": "src/main/java/com/atlasgrid/geoops/tools/preflight/PreflightResult.java",
+                  "status": "A",
+                  "staged": false,
+                  "content": ""
+                },
+                {
+                  "path": "src/main/java/com/atlasgrid/geoops/tools/preflight/DatasetPreflightValidator.java",
+                  "status": "A",
+                  "staged": false,
+                  "content": ""
+                },
+                {
+                  "path": "src/main/java/com/atlasgrid/geoops/tools/preflight/GeoOpsPreflightCli.java",
+                  "status": "A",
+                  "staged": false,
+                  "content": ""
+                },
+                {
+                  "path": "src/test/java/com/atlasgrid/geoops/tools/preflight/DatasetPreflightValidatorTest.java",
+                  "status": "A",
+                  "staged": false,
+                  "content": ""
+                },
+                {
+                  "path": "src/main/resources/application.yml",
+                  "status": "M",
+                  "staged": false,
+                  "content": ""
+                }
+              ]
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#mainView",
+              "#detailsBody"
+            ]
+          }
+        },
+        {
+          "title": "Stage the Set 2 process-boundary changes",
+          "why": "• We stage the Set 2 files after reviewing them.\n• The staging area now represents one coherent change: add a testable GIS preflight CLI, keep System.exit() at the outer process boundary, and configure the web service for graceful shutdown.\n• That is the exact change we want the next commit to describe.",
+          "software": "git",
+          "action": {
+            "action": "stageAll",
+            "data": {}
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#mainView",
+              "#detailsBody"
+            ]
+          }
+        },
+        {
+          "title": "Commit the controlled System.exit() design",
+          "why": "• Now we record Set 2 as its own Git milestone.\n• The commit message describes the design rather than merely listing filenames.\n• This gives later sets a clean point in history where GeoOps gained a second process type: the long-running web service plus a short-lived operational CLI.",
+          "software": "git",
+          "action": {
+            "action": "commit",
+            "data": {
+              "message": "Complete Set 2 controlled System.exit preflight CLI",
+              "hash": "set2001"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#mainView",
+              "#detailsBody"
+            ]
+          }
+        },
+        {
+          "title": "Push the completed Set 2 commit",
+          "why": "• The Set 2 commit exists locally, so we push it to the GitHub remote.\n• Once the remote repository receives the commit, GitHub Actions can rebuild the project from the exact source we recorded.\n• That final automation check is important because the preflight tests and the original Spring Boot test must all pass together on a clean runner.",
+          "software": "git",
+          "action": {
+            "action": "push",
+            "data": {
+              "remote": "origin",
+              "branch": "main",
+              "aheadAfter": 0,
+              "output": "Enumerating objects... done.\nTo https://github.com/sabareeshrao/Developer-7-Intellij.git\n   set1001..set2001  main -> main",
+              "status": "Push complete"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#pushBtn",
+              "#mainView"
+            ]
+          }
+        },
+        {
+          "title": "Open the updated GeoOps repository on GitHub",
+          "why": "• GitHub now represents the shared Set 2 state rather than only the local workstation history.\n• The repository includes the preflight result model, validator, CLI, tests, and graceful-shutdown configuration alongside everything built in Set 1.\n• This is still one continuously growing GeoOps project; Set 2 has added capabilities instead of replacing the earlier application.",
+          "software": "github",
+          "action": {
+            "action": "openRepository",
+            "data": {
+              "name": "Developer-7-Intellij"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#content"
+            ]
+          }
+        },
+        {
+          "title": "Open GitHub Actions for the Set 2 build",
+          "why": "• Now we move to the automated build that runs from the pushed repository state.\n• The same CI workflow sets up Java 17, validates the simulation curriculum, and runs Maven clean verify.\n• For Set 2 that verification now includes the original Spring Boot context test plus the four preflight validator tests.",
+          "software": "github_actions",
+          "action": {
+            "action": "openActions",
+            "data": {}
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#content"
+            ]
+          }
+        },
+        {
+          "title": "Confirm Set 2 passes CI",
+          "why": "• The green Set 2 run closes the loop.\n• A clean GitHub runner rebuilt the project and all five tests passed.\n• That means the process-boundary design is not only visible in the simulator; it is also represented by real Java source and tests that compile successfully.\n• Set 2 is now complete: reusable validation returns data, the standalone CLI owns System.exit(), and the long-running Spring Boot service uses graceful shutdown.\n• The next Developer-7 set is Set 3, where the project establishes its Agile project methodology and connects engineering work to issues, branches, pull requests, review, and CI.",
+          "software": "github_actions",
+          "action": {
+            "action": "openRun",
+            "data": {
+              "id": "set-2-ci"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#content"
             ]
           }
         }
