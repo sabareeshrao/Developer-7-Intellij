@@ -1,0 +1,20 @@
+{
+  "mode": "one-anchor-per-set",
+  "counterFormat": "currentAnchor/totalAnchors+",
+  "originalAnchorCount": 387,
+  "syntheticAnchorCount": 0,
+  "totalAnchorCount": 387,
+  "status": "1/387+",
+  "completed": {
+    "sets": 1,
+    "jobExperienceAnchors": 1
+  },
+  "current": {
+    "set": 1,
+    "anchor": "What's your preferred development environment and tool set for Spring Boot application?",
+    "anchorType": "original",
+    "covered": true,
+    "evidence": "docs/sets/SET-001-DEVELOPMENT-ENVIRONMENT.md"
+  },
+  "nextAction": "Build Set 2 around controlled System.exit usage and JVM process boundaries while preserving the Set 1 GeoOps project."
+}

@@ -1,0 +1,1304 @@
+{
+  "title": "Developer-7-Intellij — GeoOps",
+  "subtitle": "Build the Developer-7 GeoOps project from scratch, one cumulative set at a time.",
+  "books": [
+    {
+      "id": "book-1",
+      "title": "GeoOps from Scratch",
+      "subtitle": "Java 17, Spring Boot and real developer-tool workflow built cumulatively.",
+      "chapterStart": 1,
+      "chapterEnd": 1
+    }
+  ],
+  "package": {
+    "apps": {
+      "spring_initializer": {
+        "projectType": "Maven",
+        "language": "Java",
+        "bootVersion": "3.3.13",
+        "group": "com.example",
+        "artifact": "demo",
+        "name": "demo",
+        "packageName": "com.example.demo",
+        "description": "Demo project for Spring Boot",
+        "packaging": "Jar",
+        "javaVersion": "17",
+        "configFormat": "YAML",
+        "dependencies": []
+      },
+      "intellij_idea": {
+        "project": {
+          "name": "GeoOps",
+          "sdk": "Java 17",
+          "languageLevel": "17"
+        },
+        "tree": [],
+        "files": {},
+        "problems": [],
+        "breakpoints": [],
+        "runConfigurations": [],
+        "maven": {},
+        "spring": {
+          "activeProfile": "default",
+          "apps": [
+            {
+              "name": "GeoOpsApplication",
+              "status": "Stopped",
+              "port": 8080,
+              "profile": "default"
+            }
+          ]
+        },
+        "jpa": {},
+        "git": {
+          "branch": "main",
+          "changes": [],
+          "history": []
+        },
+        "database": {},
+        "tests": {},
+        "terminal": "",
+        "console": "",
+        "visibleFeatures": []
+      },
+      "maven_central": {
+        "query": "",
+        "results": [
+          "web",
+          "junit"
+        ],
+        "selectedArtifact": "web",
+        "selectedVersion": "3.5.6"
+      },
+      "postman": {
+        "workspaceName": "GeoOps API Workspace",
+        "activeEnvironment": "Local",
+        "environments": {
+          "Local": {
+            "baseUrl": "http://localhost:8080"
+          }
+        },
+        "globals": {},
+        "collections": [
+          {
+            "name": "GeoOps API",
+            "description": "Set 1 requests for GeoOps.",
+            "variables": {},
+            "requests": [
+              {
+                "id": "health",
+                "name": "Health",
+                "method": "GET",
+                "url": "{{baseUrl}}/actuator/health",
+                "params": [],
+                "headers": {
+                  "Accept": "application/json"
+                },
+                "auth": {
+                  "type": "No Auth",
+                  "fields": {}
+                },
+                "bodyMode": "raw",
+                "body": "",
+                "tests": "",
+                "examples": []
+              },
+              {
+                "id": "create-project",
+                "name": "Create Project",
+                "method": "POST",
+                "url": "{{baseUrl}}/api/projects",
+                "params": [],
+                "headers": {
+                  "Content-Type": "application/json",
+                  "Accept": "application/json"
+                },
+                "auth": {
+                  "type": "No Auth",
+                  "fields": {}
+                },
+                "bodyMode": "raw",
+                "body": "{\n  \"projectCode\": \"TX-AUS-001\",\n  \"name\": \"Austin Survey Intake\",\n  \"coordinateReferenceSystem\": \"EPSG:4326\"\n}",
+                "tests": "",
+                "examples": []
+              },
+              {
+                "id": "list-projects",
+                "name": "List Projects",
+                "method": "GET",
+                "url": "{{baseUrl}}/api/projects",
+                "params": [],
+                "headers": {
+                  "Accept": "application/json"
+                },
+                "auth": {
+                  "type": "No Auth",
+                  "fields": {}
+                },
+                "bodyMode": "raw",
+                "body": "",
+                "tests": "",
+                "examples": []
+              }
+            ],
+            "folders": []
+          }
+        ],
+        "initialRequest": "health",
+        "history": [],
+        "console": [],
+        "cookies": [],
+        "mocks": [],
+        "monitors": [],
+        "runner": {},
+        "websocket": {},
+        "grpc": {},
+        "documentation": {},
+        "liveNetwork": false
+      },
+      "git": {
+        "title": "Git",
+        "version": "Local Repository",
+        "repository": {
+          "name": "Developer-7-Intellij",
+          "path": "C:\\\\Users\\\\developer\\\\Developer-7-Intellij",
+          "initialized": true
+        },
+        "activeBranch": "main",
+        "branches": [
+          {
+            "name": "main",
+            "current": true
+          }
+        ],
+        "remotes": [
+          {
+            "name": "origin",
+            "url": "https://github.com/sabareeshrao/Developer-7-Intellij.git"
+          }
+        ],
+        "tags": [],
+        "stashes": [],
+        "files": [],
+        "commits": [],
+        "conflicts": [],
+        "terminalOpen": true,
+        "terminalShell": "Git",
+        "terminalHistory": [],
+        "config": {
+          "user": {
+            "name": "Developer",
+            "email": "developer@example.com"
+          },
+          "settings": {},
+          "credentialHelper": "manager",
+          "signingKey": "",
+          "signCommits": false
+        },
+        "remoteBranches": [
+          {
+            "name": "origin/main",
+            "remote": "origin"
+          }
+        ],
+        "reflog": [],
+        "rebasePlan": [],
+        "gitignore": "target/\\n.idea/\\n",
+        "hooks": {},
+        "lfs": {
+          "patterns": []
+        },
+        "submodules": [],
+        "worktrees": []
+      },
+      "github": {
+        "user": "sabareeshrao",
+        "displayName": "Java Developer",
+        "contributions": 0,
+        "activeRepo": "Developer-7-Intellij",
+        "repositories": [
+          {
+            "owner": "sabareeshrao",
+            "name": "Developer-7-Intellij",
+            "description": "GeoOps developer playback rebuilt set by set in IntelliJ",
+            "defaultBranch": "main",
+            "private": false,
+            "stars": 0,
+            "watchers": 0,
+            "forks": 0,
+            "cloneUrl": "https://github.com/sabareeshrao/Developer-7-Intellij.git",
+            "branches": [
+              {
+                "name": "main",
+                "protected": false
+              }
+            ],
+            "tags": [],
+            "releases": [],
+            "files": [
+              {
+                "path": "pom.xml",
+                "content": "",
+                "message": "Complete Set 1 GeoOps bootstrap",
+                "time": "Today"
+              },
+              {
+                "path": ".java-version",
+                "content": "",
+                "message": "Complete Set 1 GeoOps bootstrap",
+                "time": "Today"
+              },
+              {
+                "path": ".gitignore",
+                "content": "",
+                "message": "Complete Set 1 GeoOps bootstrap",
+                "time": "Today"
+              },
+              {
+                "path": "src/main/java/com/atlasgrid/geoops/GeoOpsApplication.java",
+                "content": "",
+                "message": "Complete Set 1 GeoOps bootstrap",
+                "time": "Today"
+              },
+              {
+                "path": "src/main/java/com/atlasgrid/geoops/project/domain/GeoProject.java",
+                "content": "",
+                "message": "Complete Set 1 GeoOps bootstrap",
+                "time": "Today"
+              },
+              {
+                "path": "src/main/java/com/atlasgrid/geoops/project/api/CreateProjectRequest.java",
+                "content": "",
+                "message": "Complete Set 1 GeoOps bootstrap",
+                "time": "Today"
+              },
+              {
+                "path": "src/main/java/com/atlasgrid/geoops/project/application/ProjectService.java",
+                "content": "",
+                "message": "Complete Set 1 GeoOps bootstrap",
+                "time": "Today"
+              },
+              {
+                "path": "src/main/java/com/atlasgrid/geoops/project/api/ProjectController.java",
+                "content": "",
+                "message": "Complete Set 1 GeoOps bootstrap",
+                "time": "Today"
+              },
+              {
+                "path": "src/main/resources/application.yml",
+                "content": "",
+                "message": "Complete Set 1 GeoOps bootstrap",
+                "time": "Today"
+              },
+              {
+                "path": "src/test/java/com/atlasgrid/geoops/GeoOpsApplicationTests.java",
+                "content": "",
+                "message": "Complete Set 1 GeoOps bootstrap",
+                "time": "Today"
+              },
+              {
+                "path": ".github/workflows/ci.yml",
+                "content": "",
+                "message": "Complete Set 1 GeoOps bootstrap",
+                "time": "Today"
+              }
+            ],
+            "readme": "# Developer-7-Intellij\\n\\nSet-by-set GeoOps developer playback.",
+            "commits": [
+              {
+                "hash": "set1001",
+                "message": "Complete Set 1 GeoOps bootstrap",
+                "author": "Developer",
+                "date": "Today",
+                "files": [
+                  "pom.xml",
+                  ".java-version",
+                  ".gitignore",
+                  "src/main/java/com/atlasgrid/geoops/GeoOpsApplication.java",
+                  "src/main/java/com/atlasgrid/geoops/project/domain/GeoProject.java",
+                  "src/main/java/com/atlasgrid/geoops/project/api/CreateProjectRequest.java",
+                  "src/main/java/com/atlasgrid/geoops/project/application/ProjectService.java",
+                  "src/main/java/com/atlasgrid/geoops/project/api/ProjectController.java",
+                  "src/main/resources/application.yml",
+                  "src/test/java/com/atlasgrid/geoops/GeoOpsApplicationTests.java",
+                  ".github/workflows/ci.yml"
+                ]
+              }
+            ],
+            "issues": [],
+            "pullRequests": [],
+            "projects": [],
+            "discussions": [],
+            "security": {
+              "dependabot": 0,
+              "codeScanning": 0,
+              "secretScanning": 0,
+              "policy": false
+            },
+            "insights": {
+              "contributors": 1,
+              "clones": 0,
+              "visitors": 0
+            },
+            "settings": {},
+            "branchProtection": [],
+            "collaborators": []
+          }
+        ]
+      },
+      "github_actions": {
+        "owner": "sabareeshrao",
+        "repository": "Developer-7-Intellij",
+        "workflows": [
+          {
+            "id": "geoops-ci",
+            "name": "GeoOps CI",
+            "file": "ci.yml",
+            "enabled": true,
+            "events": [
+              "push",
+              "pull_request"
+            ],
+            "dispatch": false,
+            "permissions": "contents: read",
+            "yaml": "name: GeoOps CI\non:\n  push:\n    branches: [ \"main\" ]\n  pull_request:\n    branches: [ \"main\" ]\njobs:\n  build:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-java@v4\n        with:\n          distribution: temurin\n          java-version: \"17\"\n          cache: maven\n      - run: python scripts/build-player-data.py --validate-only\n      - run: mvn --batch-mode clean verify\n"
+          }
+        ],
+        "runs": [
+          {
+            "id": "set-1-ci",
+            "name": "GeoOps CI",
+            "event": "push",
+            "branch": "main",
+            "status": "success",
+            "commit": "set1001",
+            "actor": "sabareeshrao",
+            "runner": "ubuntu-latest",
+            "duration": "1m 12s",
+            "jobs": [
+              {
+                "name": "build",
+                "status": "success",
+                "runner": "ubuntu-latest",
+                "steps": [
+                  {
+                    "name": "Set up job",
+                    "status": "success",
+                    "log": "Runner image: ubuntu-latest"
+                  },
+                  {
+                    "name": "Checkout",
+                    "status": "success",
+                    "log": "Checked out Set 1"
+                  },
+                  {
+                    "name": "Set up Java 17",
+                    "status": "success",
+                    "log": "Temurin Java 17 configured"
+                  },
+                  {
+                    "name": "Validate learning curriculum",
+                    "status": "success",
+                    "log": "Narration and lesson structure valid"
+                  },
+                  {
+                    "name": "Verify with Maven",
+                    "status": "success",
+                    "log": "Tests run: 1, Failures: 0\\nBUILD SUCCESS"
+                  }
+                ]
+              }
+            ],
+            "summary": "Set 1 build, test and curriculum validation passed.",
+            "annotations": [],
+            "artifacts": []
+          }
+        ],
+        "templates": [],
+        "secrets": [],
+        "variables": [],
+        "caches": [],
+        "artifacts": [],
+        "environments": [],
+        "runners": [],
+        "marketplace": []
+      }
+    }
+  },
+  "stages": [
+    {
+      "title": "1: Set 1 — Development Environment & Spring Boot Bootstrap",
+      "subtitle": "Create the first runnable GeoOps slice and carry it from project generation through CI.",
+      "steps": [
+        {
+          "title": "Choose Maven as the GeoOps build system",
+          "why": "We are starting at the generator because this is the cleanest place to see the first architecture decision. Maven gives GeoOps a standard Java layout and one pom.xml that describes how the application is built. That also creates a repeatable path from a developer laptop to CI instead of relying on settings that exist only inside IntelliJ.",
+          "software": "spring_initializer",
+          "action": {
+            "action": "setProjectType",
+            "data": {
+              "value": "Maven"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#projectType"
+            ]
+          }
+        },
+        {
+          "title": "Keep the implementation language on Java",
+          "why": "The project is specifically meant to build Java and Spring Boot experience, so the generator stays on Java rather than Kotlin or Groovy. This setting decides the kind of source scaffold we begin with. IntelliJ will later compile those .java files into JVM bytecode, which is where the JDK and JVM concepts connect back to something visible in the project.",
+          "software": "spring_initializer",
+          "action": {
+            "action": "setLanguage",
+            "data": {
+              "value": "Java"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#language"
+            ]
+          }
+        },
+        {
+          "title": "Select Java 17",
+          "why": "GeoOps deliberately targets Java 17, and consistency matters more than simply having a newer JDK installed somewhere on the machine. IntelliJ, Maven and GitHub Actions should all agree on the same major version. That alignment prevents the familiar situation where code compiles locally but fails on the build server because a different Java level is being used.",
+          "software": "spring_initializer",
+          "action": {
+            "action": "setJavaVersion",
+            "data": {
+              "value": "17"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#javaVersion"
+            ]
+          }
+        },
+        {
+          "title": "Give the application its GeoOps identity",
+          "why": "Before downloading anything, we give the project stable Maven coordinates and a package root. com.atlasgrid:geoops identifies the artifact, while com.atlasgrid.geoops becomes the package tree Spring will scan beneath the application class. These values look small in the form, but they shape folders, imports and the artifact name we will carry through every later set.",
+          "software": "spring_initializer",
+          "action": {
+            "action": "setMetadata",
+            "data": {
+              "group": "com.atlasgrid",
+              "artifact": "geoops",
+              "name": "GeoOps",
+              "packageName": "com.atlasgrid.geoops",
+              "description": "Fictional GIS operations platform used for Java/Spring Boot experience learning",
+              "packaging": "Jar",
+              "configFormat": "YAML"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#group",
+              "#artifact",
+              "#name",
+              "#packageName",
+              "#description"
+            ]
+          }
+        },
+        {
+          "title": "Add Spring Web",
+          "why": "Spring Web is the capability that turns this starter into an HTTP application. It brings Spring MVC, JSON handling and the embedded servlet stack that will expose /api/projects. We are not installing a separate application server by hand; the starter is what allows Spring Boot to bring up embedded Tomcat with the application.",
+          "software": "spring_initializer",
+          "action": {
+            "action": "addDependency",
+            "data": {
+              "id": "web"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#dependencyList",
+              "#addDependencyBtn"
+            ]
+          }
+        },
+        {
+          "title": "Add Bean Validation",
+          "why": "Project intake will accept JSON from outside the service, so we want a clean way to reject missing required values at the API boundary. The Validation starter gives us annotations such as @NotBlank. That keeps basic input rules beside the request model instead of scattering manual empty-string checks throughout the controller.",
+          "software": "spring_initializer",
+          "action": {
+            "action": "addDependency",
+            "data": {
+              "id": "validation"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#dependencyList"
+            ]
+          }
+        },
+        {
+          "title": "Add Lombok",
+          "why": "Lombok is here for selective boilerplate reduction, not as a substitute for knowing Java. In this first slice we use @Slf4j so the service gets a logger without hand-writing the logger field. IntelliJ still needs annotation processing support for generated members, while Maven carries the actual library dependency in the build.",
+          "software": "spring_initializer",
+          "action": {
+            "action": "addDependency",
+            "data": {
+              "id": "lombok"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#dependencyList"
+            ]
+          }
+        },
+        {
+          "title": "Generate the starter project",
+          "why": "The generator now has enough information to produce a Maven Spring Boot scaffold. The simulator shows a newer patch in the Spring Boot 3.3 line, but this course is reproducing the original Developer-7 Set 1 state exactly. Once the project reaches IntelliJ, pom.xml will pin the historical GeoOps baseline to Spring Boot 3.3.5 rather than silently changing the source project.",
+          "software": "spring_initializer",
+          "action": {
+            "action": "generateProject",
+            "data": {}
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#generateBtn",
+              "#generatedSummary"
+            ]
+          }
+        },
+        {
+          "title": "Open GeoOps in IntelliJ",
+          "why": "This is the handoff from project generation to everyday development. IntelliJ becomes the main workspace from here: source code, Maven, tests, Spring Boot runs and later refactoring stay in the same IDE. The project begins nearly empty on purpose because the learning value comes from watching its structure grow when each set earns a new capability.",
+          "software": "intellij",
+          "action": {
+            "action": "openProject",
+            "data": {
+              "project": {
+                "name": "GeoOps",
+                "sdk": "Java 17",
+                "languageLevel": "17"
+              }
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#project",
+              "#status"
+            ]
+          }
+        },
+        {
+          "title": "Bind IntelliJ to the Java 17 JDK",
+          "why": "Choosing the Project SDK tells IntelliJ which development kit supplies javac, the standard libraries and runtime tools used by this project. The JVM executes compiled bytecode, while the JDK gives us the compiler and development utilities. Pinning the IDE to Java 17 removes ambiguity before we start writing application code.",
+          "software": "intellij",
+          "action": {
+            "action": "setProjectSdk",
+            "data": {
+              "sdk": "Java 17"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#project",
+              "#status"
+            ]
+          }
+        },
+        {
+          "title": "Create the canonical GeoOps pom.xml",
+          "why": "Here we turn the generated idea into the exact Set 1 build definition. The parent is pinned to Spring Boot 3.3.5, and the dependencies add Web, Validation, Actuator, Lombok and the Spring Boot test starter. Notice that most dependency versions are absent because Spring Boot dependency management supplies a coordinated version set instead of making us match every library manually.",
+          "software": "intellij",
+          "action": {
+            "action": "createFile",
+            "data": {
+              "path": "pom.xml",
+              "language": "xml",
+              "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\"\n         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd\">\n    <modelVersion>4.0.0</modelVersion>\n    <parent>\n        <groupId>org.springframework.boot</groupId>\n        <artifactId>spring-boot-starter-parent</artifactId>\n        <version>3.3.5</version>\n        <relativePath/>\n    </parent>\n    <groupId>com.atlasgrid</groupId>\n    <artifactId>geoops</artifactId>\n    <version>0.0.1-SNAPSHOT</version>\n    <name>GeoOps</name>\n    <description>Fictional GIS operations platform used for Java/Spring Boot experience learning</description>\n    <properties>\n        <java.version>17</java.version>\n    </properties>\n    <dependencies>\n        <dependency>\n            <groupId>org.springframework.boot</groupId>\n            <artifactId>spring-boot-starter-web</artifactId>\n        </dependency>\n        <dependency>\n            <groupId>org.springframework.boot</groupId>\n            <artifactId>spring-boot-starter-validation</artifactId>\n        </dependency>\n        <dependency>\n            <groupId>org.springframework.boot</groupId>\n            <artifactId>spring-boot-starter-actuator</artifactId>\n        </dependency>\n        <dependency>\n            <groupId>org.projectlombok</groupId>\n            <artifactId>lombok</artifactId>\n            <optional>true</optional>\n        </dependency>\n        <dependency>\n            <groupId>org.springframework.boot</groupId>\n            <artifactId>spring-boot-starter-test</artifactId>\n            <scope>test</scope>\n        </dependency>\n    </dependencies>\n    <build>\n        <plugins>\n            <plugin>\n                <groupId>org.springframework.boot</groupId>\n                <artifactId>spring-boot-maven-plugin</artifactId>\n            </plugin>\n        </plugins>\n    </build>\n</project>\n"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              ".tab.active",
+              ".codeLine.focus",
+              "#project"
+            ]
+          }
+        },
+        {
+          "title": "Look up Spring Web in Maven Central",
+          "why": "A pom.xml names a dependency, but Maven still needs a repository from which to resolve it. Maven Central is the public repository we are looking at here; the first build downloads missing artifacts and stores them under the developer's local ~/.m2/repository. That local cache explains why later builds usually do not download the same JAR files again.",
+          "software": "maven_central",
+          "action": {
+            "action": "searchDependency",
+            "data": {
+              "query": "spring-boot-starter-web"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#searchInput",
+              "#results",
+              "#artifactDetail"
+            ]
+          }
+        },
+        {
+          "title": "Open the Maven tool window",
+          "why": "Back in IntelliJ, we can inspect the imported Maven model instead of treating pom.xml as passive XML. The IDE resolves the libraries and exposes Maven goals, but Maven remains the build system that can run outside IntelliJ. That distinction matters because a healthy project must be reproducible from the command line and in automation.",
+          "software": "intellij",
+          "action": {
+            "action": "openMavenToolWindow",
+            "data": {
+              "project": "GeoOps",
+              "profile": "default",
+              "status": "Ready",
+              "plugins": [
+                "spring-boot",
+                "compiler",
+                "surefire"
+              ],
+              "profiles": [
+                "default"
+              ],
+              "dependencies": [
+                {
+                  "groupId": "org.springframework.boot",
+                  "artifactId": "spring-boot-starter-web",
+                  "version": "3.3.5"
+                },
+                {
+                  "groupId": "org.springframework.boot",
+                  "artifactId": "spring-boot-starter-validation",
+                  "version": "3.3.5"
+                },
+                {
+                  "groupId": "org.springframework.boot",
+                  "artifactId": "spring-boot-starter-actuator",
+                  "version": "3.3.5"
+                },
+                {
+                  "groupId": "org.projectlombok",
+                  "artifactId": "lombok",
+                  "version": "managed"
+                },
+                {
+                  "groupId": "org.springframework.boot",
+                  "artifactId": "spring-boot-starter-test",
+                  "version": "3.3.5"
+                }
+              ]
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#right",
+              "#rightTabs"
+            ]
+          }
+        },
+        {
+          "title": "Walk through the Maven lifecycle",
+          "why": "Think of the lifecycle as an ordered build pipeline rather than a bag of unrelated commands. validate checks the project, compile builds main source, test runs tests, package produces the JAR, verify performs verification work, install copies the artifact to the local Maven repository, and deploy can publish it remotely. Asking Maven for a later phase automatically includes the earlier phases before it.",
+          "software": "intellij",
+          "action": {
+            "action": "showMavenLifecycle",
+            "data": {
+              "phases": [
+                "validate",
+                "compile",
+                "test",
+                "package",
+                "verify",
+                "install",
+                "deploy"
+              ]
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#right",
+              "#rightTabs"
+            ]
+          }
+        },
+        {
+          "title": "Create the Spring Boot entry point",
+          "why": "This class is where ordinary Java startup hands control to Spring Boot. The JVM invokes main(), then SpringApplication.run(...) creates the Spring application context and starts the web environment. @SpringBootApplication also establishes the configuration root, enables auto-configuration and scans below com.atlasgrid.geoops, which is why our controller and service will be discovered later.",
+          "software": "intellij",
+          "action": {
+            "action": "createFile",
+            "data": {
+              "path": "src/main/java/com/atlasgrid/geoops/GeoOpsApplication.java",
+              "language": "java",
+              "content": "package com.atlasgrid.geoops;\n\nimport org.springframework.boot.SpringApplication;\nimport org.springframework.boot.autoconfigure.SpringBootApplication;\n\n@SpringBootApplication\npublic class GeoOpsApplication {\n    public static void main(String[] args) {\n        SpringApplication.run(GeoOpsApplication.class, args);\n    }\n}\n"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              ".tab.active",
+              ".codeLine.focus",
+              "#project"
+            ]
+          }
+        },
+        {
+          "title": "Model one GIS project",
+          "why": "GeoOps needs an object that represents a project entering the GIS workflow, so we create a small immutable record. The coordinateReferenceSystem field makes the domain explicitly geospatial from day one, while UUID and createdAt give each intake record identity and timing. We are intentionally avoiding database annotations or geometry engines because those technologies have not been introduced by the learning sequence yet.",
+          "software": "intellij",
+          "action": {
+            "action": "createFile",
+            "data": {
+              "path": "src/main/java/com/atlasgrid/geoops/project/domain/GeoProject.java",
+              "language": "java",
+              "content": "package com.atlasgrid.geoops.project.domain;\n\nimport java.time.Instant;\nimport java.util.UUID;\n\npublic record GeoProject(\n        UUID id,\n        String projectCode,\n        String name,\n        String coordinateReferenceSystem,\n        Instant createdAt\n) {\n}\n"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              ".tab.active",
+              ".codeLine.focus",
+              "#project"
+            ]
+          }
+        },
+        {
+          "title": "Separate request input from domain state",
+          "why": "Incoming JSON should not have to mirror every internal field on GeoProject. This request record contains only values the client is allowed to supply, and @NotBlank expresses the minimum contract for each one. The server will create the UUID and timestamp itself, which keeps client input responsibilities separate from values owned by the application.",
+          "software": "intellij",
+          "action": {
+            "action": "createFile",
+            "data": {
+              "path": "src/main/java/com/atlasgrid/geoops/project/api/CreateProjectRequest.java",
+              "language": "java",
+              "content": "package com.atlasgrid.geoops.project.api;\n\nimport jakarta.validation.constraints.NotBlank;\n\npublic record CreateProjectRequest(\n        @NotBlank String projectCode,\n        @NotBlank String name,\n        @NotBlank String coordinateReferenceSystem\n) {\n}\n"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              ".tab.active",
+              ".codeLine.focus",
+              "#project"
+            ]
+          }
+        },
+        {
+          "title": "Add the first GeoOps service",
+          "why": "The controller should not become the place where all application rules accumulate, so project creation belongs in ProjectService. For Set 1 the service keeps records in an ArrayList and returns a defensive copy for reads; that is enough to make the slice runnable without pretending persistence already exists. @Slf4j supplies the logger, giving the earlier Lombok choice a concrete use.",
+          "software": "intellij",
+          "action": {
+            "action": "createFile",
+            "data": {
+              "path": "src/main/java/com/atlasgrid/geoops/project/application/ProjectService.java",
+              "language": "java",
+              "content": "package com.atlasgrid.geoops.project.application;\n\nimport com.atlasgrid.geoops.project.api.CreateProjectRequest;\nimport com.atlasgrid.geoops.project.domain.GeoProject;\nimport lombok.extern.slf4j.Slf4j;\nimport org.springframework.stereotype.Service;\n\nimport java.time.Instant;\nimport java.util.ArrayList;\nimport java.util.List;\nimport java.util.UUID;\n\n@Slf4j\n@Service\npublic class ProjectService {\n    private final List<GeoProject> projects = new ArrayList<>();\n\n    public List<GeoProject> findAll() {\n        return List.copyOf(projects);\n    }\n\n    public GeoProject create(CreateProjectRequest request) {\n        GeoProject project = new GeoProject(\n                UUID.randomUUID(),\n                request.projectCode(),\n                request.name(),\n                request.coordinateReferenceSystem(),\n                Instant.now()\n        );\n        projects.add(project);\n        log.info(\"Created GeoOps project code={} crs={}\",\n                project.projectCode(), project.coordinateReferenceSystem());\n        return project;\n    }\n}\n"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              ".tab.active",
+              ".codeLine.focus",
+              "#project"
+            ]
+          }
+        },
+        {
+          "title": "Expose project intake over HTTP",
+          "why": "This controller turns the service into a REST API. GET /api/projects returns current records, while POST /api/projects accepts validated JSON and responds with HTTP 201 when a project is created. Constructor injection makes the ProjectService dependency explicit, and Spring can provide that service because our application class is scanning this package tree.",
+          "software": "intellij",
+          "action": {
+            "action": "createFile",
+            "data": {
+              "path": "src/main/java/com/atlasgrid/geoops/project/api/ProjectController.java",
+              "language": "java",
+              "content": "package com.atlasgrid.geoops.project.api;\n\nimport com.atlasgrid.geoops.project.application.ProjectService;\nimport com.atlasgrid.geoops.project.domain.GeoProject;\nimport jakarta.validation.Valid;\nimport org.springframework.http.HttpStatus;\nimport org.springframework.web.bind.annotation.*;\n\nimport java.util.List;\n\n@RestController\n@RequestMapping(\"/api/projects\")\npublic class ProjectController {\n    private final ProjectService projectService;\n\n    public ProjectController(ProjectService projectService) {\n        this.projectService = projectService;\n    }\n\n    @GetMapping\n    public List<GeoProject> getProjects() {\n        return projectService.findAll();\n    }\n\n    @PostMapping\n    @ResponseStatus(HttpStatus.CREATED)\n    public GeoProject createProject(@Valid @RequestBody CreateProjectRequest request) {\n        return projectService.create(request);\n    }\n}\n"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              ".tab.active",
+              ".codeLine.focus",
+              "#project"
+            ]
+          }
+        },
+        {
+          "title": "Configure the GeoOps runtime",
+          "why": "Application code tells Spring what the program does; this YAML carries settings that should not be buried inside Java methods. We name the service, keep the local server on port 8080 and expose Actuator health and info endpoints. Those operational endpoints give us a cheap way to prove the process is alive before we test any business request.",
+          "software": "intellij",
+          "action": {
+            "action": "createFile",
+            "data": {
+              "path": "src/main/resources/application.yml",
+              "language": "yaml",
+              "content": "spring:\n  application:\n    name: geoops\n\nserver:\n  port: 8080\n\nmanagement:\n  endpoints:\n    web:\n      exposure:\n        include: health,info\n\ninfo:\n  app:\n    name: GeoOps\n    domain: GIS operations\n    company: AtlasGrid Geospatial Systems\n"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              ".tab.active",
+              ".codeLine.focus",
+              "#project"
+            ]
+          }
+        },
+        {
+          "title": "Add a Spring Boot context test",
+          "why": "The first test is deliberately small but still useful: can Spring build the application context with the dependencies and configuration we assembled? @SpringBootTest boots that context, so a failure can reveal broken wiring or startup configuration early. Focused behavior tests will arrive as later sets add rules that deserve their own verification.",
+          "software": "intellij",
+          "action": {
+            "action": "createFile",
+            "data": {
+              "path": "src/test/java/com/atlasgrid/geoops/GeoOpsApplicationTests.java",
+              "language": "java",
+              "content": "package com.atlasgrid.geoops;\n\nimport org.junit.jupiter.api.Test;\nimport org.springframework.boot.test.context.SpringBootTest;\n\n@SpringBootTest\nclass GeoOpsApplicationTests {\n    @Test\n    void contextLoads() {\n    }\n}\n"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              ".tab.active",
+              ".codeLine.focus",
+              "#project"
+            ]
+          }
+        },
+        {
+          "title": "Run the JUnit test",
+          "why": "Rather than assuming the project is wired correctly, we run the test runner and look for a visible green result. A passing contextLoads test means the Spring container can start with the current classes and configuration. It does not prove future business behavior, but it gives this first vertical slice a reliable startup checkpoint.",
+          "software": "intellij",
+          "action": {
+            "action": "runJUnit",
+            "data": {
+              "suite": "GeoOpsApplicationTests",
+              "duration": "0.82 s",
+              "tests": [
+                {
+                  "name": "contextLoads",
+                  "status": "PASS",
+                  "duration": "820 ms"
+                }
+              ],
+              "total": 1,
+              "passed": 1,
+              "failed": 0
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#bottomPanel",
+              "#runBtn"
+            ]
+          }
+        },
+        {
+          "title": "Run Maven clean verify",
+          "why": "The IDE test view is convenient during development, but the build must also succeed through the command our automation will use. clean removes old target output and verify drives the lifecycle through compilation, tests, packaging and verification. Seeing BUILD SUCCESS here proves the project can be built without depending on a hidden IntelliJ state.",
+          "software": "intellij",
+          "action": {
+            "action": "runMavenGoal",
+            "data": {
+              "goal": "clean verify",
+              "status": "BUILD SUCCESS",
+              "console": "[INFO] Compiling GeoOps with Java 17\\n[INFO] Running GeoOpsApplicationTests\\n[INFO] Tests run: 1, Failures: 0, Errors: 0\\n[INFO] BUILD SUCCESS"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#bottomPanel",
+              "#right"
+            ]
+          }
+        },
+        {
+          "title": "Start GeoOps from IntelliJ",
+          "why": "With the build green, we run the application instead of merely compiling it. SpringApplication.run() creates the context, auto-configuration recognizes the web starter, and embedded Tomcat begins listening on port 8080. A useful path to keep in mind is JVM → main() → Spring Boot context → Tomcat → REST mappings, because Postman is about to enter through the HTTP end of that chain.",
+          "software": "intellij",
+          "action": {
+            "action": "runSpringBootApp",
+            "data": {
+              "name": "GeoOpsApplication",
+              "port": 8080,
+              "profile": "default",
+              "console": "2026-09-29 INFO Starting GeoOpsApplication using Java 17\\n2026-09-29 INFO Tomcat started on port 8080 (http)\\n2026-09-29 INFO Started GeoOpsApplication"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#bottomPanel",
+              "#status",
+              "#runBtn"
+            ]
+          }
+        },
+        {
+          "title": "Open the Actuator health request",
+          "why": "Before sending business data, we use the smallest request available to check whether the service is reachable. /actuator/health comes from Actuator rather than ProjectController, so a successful response confirms the application and web server are running. This separates runtime availability from project-intake behavior and makes failures easier to isolate.",
+          "software": "postman",
+          "action": {
+            "action": "openRequest",
+            "data": {
+              "id": "health"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#sendBtn",
+              "#reqTabs"
+            ]
+          }
+        },
+        {
+          "title": "Confirm GeoOps is healthy",
+          "why": "The 200 OK response with status UP is external proof that the Spring Boot process is listening and Actuator is working. We have now crossed the boundary from code inside IntelliJ to an HTTP client outside the application. If this check failed, we would fix startup, port or connectivity before spending time debugging project JSON.",
+          "software": "postman",
+          "action": {
+            "action": "sendRequest",
+            "data": {
+              "boundary": true,
+              "status": 200,
+              "statusText": "OK",
+              "time": 31,
+              "size": "15 B",
+              "headers": {
+                "Content-Type": "application/vnd.spring-boot.actuator.v3+json"
+              },
+              "body": {
+                "status": "UP"
+              }
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#sendBtn",
+              "#respMeta"
+            ]
+          }
+        },
+        {
+          "title": "Open the Create Project request",
+          "why": "We now move from an operational endpoint to the first GeoOps business endpoint. This request targets POST /api/projects and carries only the three fields allowed by CreateProjectRequest. Using EPSG:4326 keeps the payload grounded in the GIS domain instead of turning the exercise into a generic CRUD example.",
+          "software": "postman",
+          "action": {
+            "action": "openRequest",
+            "data": {
+              "id": "create-project"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#sendBtn",
+              "#reqTabs"
+            ]
+          }
+        },
+        {
+          "title": "Create the first GIS intake record",
+          "why": "POST reaches ProjectController, validation checks the payload, ProjectService creates the UUID and timestamp, and the new GeoProject is stored in memory. HTTP 201 Created tells the caller that a new resource was accepted. This response demonstrates that controller mapping, validation, service logic, the domain record and JSON serialization are cooperating end to end.",
+          "software": "postman",
+          "action": {
+            "action": "sendRequest",
+            "data": {
+              "boundary": true,
+              "status": 201,
+              "statusText": "Created",
+              "time": 47,
+              "size": "196 B",
+              "headers": {
+                "Content-Type": "application/json"
+              },
+              "body": {
+                "id": "5f0b790a-83cc-4f7f-8d32-76c3da9e8c01",
+                "projectCode": "TX-AUS-001",
+                "name": "Austin Survey Intake",
+                "coordinateReferenceSystem": "EPSG:4326",
+                "createdAt": "2026-09-29T22:00:00Z"
+              }
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#sendBtn",
+              "#respMeta"
+            ]
+          }
+        },
+        {
+          "title": "Open the project list request",
+          "why": "Creating a record is only half of the first slice; we also want to read the current application state back through the API. GET /api/projects calls ProjectService.findAll(), which returns a copy of the in-memory collection. Returning a copy prevents outside code from receiving the service's mutable list directly.",
+          "software": "postman",
+          "action": {
+            "action": "openRequest",
+            "data": {
+              "id": "list-projects"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#sendBtn",
+              "#reqTabs"
+            ]
+          }
+        },
+        {
+          "title": "Read the project back from GeoOps",
+          "why": "The list response contains the same Austin project we just created, so the slice has completed a create-and-read round trip. There is still no database behind this result; restarting the process would lose the record, and that limitation is intentional here. Persistence will enter only when a later interview anchor gives the project a reason to need it.",
+          "software": "postman",
+          "action": {
+            "action": "sendRequest",
+            "data": {
+              "boundary": true,
+              "status": 200,
+              "statusText": "OK",
+              "time": 38,
+              "size": "198 B",
+              "headers": {
+                "Content-Type": "application/json"
+              },
+              "body": [
+                {
+                  "id": "5f0b790a-83cc-4f7f-8d32-76c3da9e8c01",
+                  "projectCode": "TX-AUS-001",
+                  "name": "Austin Survey Intake",
+                  "coordinateReferenceSystem": "EPSG:4326",
+                  "createdAt": "2026-09-29T22:00:00Z"
+                }
+              ]
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#sendBtn",
+              "#respMeta"
+            ]
+          }
+        },
+        {
+          "title": "Open the working tree in Git",
+          "why": "The application works locally, so the next responsibility is to capture that state in version control. Git sees source, configuration, tests and workflows as a working tree that can be reviewed before committing. This local repository is different from GitHub: Git records history on the machine, while GitHub will host and collaborate on that history remotely.",
+          "software": "git",
+          "action": {
+            "action": "openRepository",
+            "data": {
+              "name": "Developer-7-Intellij",
+              "path": "C:\\\\Users\\\\developer\\\\Developer-7-Intellij",
+              "branch": "main",
+              "files": [
+                {
+                  "path": "pom.xml",
+                  "status": "A",
+                  "staged": false,
+                  "content": ""
+                },
+                {
+                  "path": ".java-version",
+                  "status": "A",
+                  "staged": false,
+                  "content": ""
+                },
+                {
+                  "path": ".gitignore",
+                  "status": "A",
+                  "staged": false,
+                  "content": ""
+                },
+                {
+                  "path": "src/main/java/com/atlasgrid/geoops/GeoOpsApplication.java",
+                  "status": "A",
+                  "staged": false,
+                  "content": ""
+                },
+                {
+                  "path": "src/main/java/com/atlasgrid/geoops/project/domain/GeoProject.java",
+                  "status": "A",
+                  "staged": false,
+                  "content": ""
+                },
+                {
+                  "path": "src/main/java/com/atlasgrid/geoops/project/api/CreateProjectRequest.java",
+                  "status": "A",
+                  "staged": false,
+                  "content": ""
+                },
+                {
+                  "path": "src/main/java/com/atlasgrid/geoops/project/application/ProjectService.java",
+                  "status": "A",
+                  "staged": false,
+                  "content": ""
+                },
+                {
+                  "path": "src/main/java/com/atlasgrid/geoops/project/api/ProjectController.java",
+                  "status": "A",
+                  "staged": false,
+                  "content": ""
+                },
+                {
+                  "path": "src/main/resources/application.yml",
+                  "status": "A",
+                  "staged": false,
+                  "content": ""
+                },
+                {
+                  "path": "src/test/java/com/atlasgrid/geoops/GeoOpsApplicationTests.java",
+                  "status": "A",
+                  "staged": false,
+                  "content": ""
+                },
+                {
+                  "path": ".github/workflows/ci.yml",
+                  "status": "A",
+                  "staged": false,
+                  "content": ""
+                }
+              ]
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#mainView",
+              "#detailsBody",
+              "#pushBtn"
+            ]
+          }
+        },
+        {
+          "title": "Stage the Set 1 files",
+          "why": "Staging is the review boundary between files that merely changed and files we intend to include in a commit. We stage the complete first slice together because source, test, build configuration and CI describe one coherent starting point. Git can now show exactly what will be recorded without making the commit yet.",
+          "software": "git",
+          "action": {
+            "action": "stageAll",
+            "data": {}
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#mainView",
+              "#detailsBody"
+            ]
+          }
+        },
+        {
+          "title": "Commit the GeoOps bootstrap",
+          "why": "A commit freezes this known-good learning milestone into local history with a meaningful message. The value is more than backup: later sets can show how GeoOps evolved from this point and we can reason about which change introduced a behavior. That continuity is essential for a course that should feel like one real project growing over time.",
+          "software": "git",
+          "action": {
+            "action": "commit",
+            "data": {
+              "message": "Complete Set 1 GeoOps bootstrap",
+              "hash": "set1001"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#mainView",
+              "#detailsBody"
+            ]
+          }
+        },
+        {
+          "title": "Push Set 1 to the remote",
+          "why": "Pushing transfers the local commit to the configured remote so the project is no longer confined to one workstation. Once main is on GitHub, collaboration, CI and Pages deployment can react to repository history. The source-control path becomes local Git commit → remote GitHub repository → automated checks.",
+          "software": "git",
+          "action": {
+            "action": "push",
+            "data": {
+              "remote": "origin",
+              "branch": "main",
+              "aheadAfter": 0,
+              "output": "Enumerating objects... done.\\nTo https://github.com/sabareeshrao/Developer-7-Intellij.git\\n   set1001  main -> main",
+              "status": "Push complete"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#pushBtn",
+              "#mainView"
+            ]
+          }
+        },
+        {
+          "title": "Open Developer-7-Intellij on GitHub",
+          "why": "Here we are looking at the remote copy that the rest of the team and GitHub automation can see. The repository carries the Set 1 source plus curriculum and deployment integration for the learning site. Keeping this downstream project independent lets GeoOps evolve on its own while simulator fixes continue to come from the pinned Experiment-VS-Code master.",
+          "software": "github",
+          "action": {
+            "action": "openRepository",
+            "data": {
+              "name": "Developer-7-Intellij"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#content"
+            ]
+          }
+        },
+        {
+          "title": "Open GitHub Actions",
+          "why": "CI is where we prove the project can be rebuilt on a clean machine rather than trusting the developer laptop. The workflow checks out the repository, configures Java 17, validates the learning narration and runs Maven clean verify. If one of those steps fails, main should not be treated as a healthy Set 1 state.",
+          "software": "github_actions",
+          "action": {
+            "action": "openActions",
+            "data": {}
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#content"
+            ]
+          }
+        },
+        {
+          "title": "Inspect the successful Set 1 CI run",
+          "why": "This final screen closes the development loop: code was built in IntelliJ, exercised through Postman, committed with Git, pushed to GitHub and rebuilt by automation. A green verification run means the starting point is reproducible. Set 2 can modify this exact project instead of resetting to another disconnected demo.",
+          "software": "github_actions",
+          "action": {
+            "action": "openRun",
+            "data": {
+              "id": "set-1-ci"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#content"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

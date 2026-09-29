@@ -1,0 +1,80 @@
+name: Deploy Learning Project
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout downstream project
+        uses: actions/checkout@v4
+
+      - name: Resolve validated master software reference
+        id: master
+        shell: bash
+        run: |
+          set -euo pipefail
+          ref="$(tr -d '\r\n' < MASTER_SOFTWARE_REF)"
+          case "$ref" in
+            sabareeshrao/Experiment-VS-Code@*) ;;
+            *) echo "Invalid MASTER_SOFTWARE_REF: $ref" >&2; exit 1 ;;
+          esac
+          sha="${ref##*@}"
+          test -n "$sha"
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+
+      - name: Checkout authoritative player and simulators
+        uses: actions/checkout@v4
+        with:
+          repository: sabareeshrao/Experiment-VS-Code
+          ref: ${{ steps.master.outputs.sha }}
+          path: .software
+
+      - name: Build downstream Pages artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf _site
+          mkdir -p _site
+          cp .software/index.html _site/index.html
+          cp .software/library.js _site/library.js
+          cp .software/library.css _site/library.css
+          cp .software/player.html _site/player.html
+          cp .software/app.js _site/app.js
+          cp .software/styles.css _site/styles.css
+          cp -a .software/simulator _site/simulator
+          python scripts/build-player-data.py
+          software_sha="$(git -C .software rev-parse HEAD)"
+          printf '{\n  "repository": "sabareeshrao/Experiment-VS-Code",\n  "commit": "%s"\n}\n' "$software_sha" > _site/software-snapshot.json
+          touch _site/.nojekyll
+
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
