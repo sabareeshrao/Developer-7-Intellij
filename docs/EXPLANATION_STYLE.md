@@ -121,3 +121,54 @@ The master global explanation card from `Experiment-VS-Code` is authoritative.
 Do not create a second downstream explanation UI.
 
 The visible code, command, result, or control must stay highlighted while the narration explains it.
+
+
+## Zero-knowledge rule
+
+Assume the learner does not already know a technical term the first time it appears.
+
+Do not write:
+
+> "Maven manages dependencies."
+
+until the explanation has first answered:
+
+- What problem do dependencies solve?
+- What is a library?
+- Why does the project need external libraries?
+- What does Maven actually do with them?
+- Where does pom.xml fit?
+
+The required learning order is:
+
+```text
+problem
+  ↓
+why the problem exists
+  ↓
+simple everyday explanation
+  ↓
+technical term
+  ↓
+actual GeoOps code/tool
+  ↓
+what changes because of it
+```
+
+Examples of terms that must be explained on first appearance include JDK, JVM, dependency, library, JAR, annotation, HTTP, JSON, controller, service, UUID, CRS, Actuator, JUnit, Maven lifecycle, Git staging, commit, remote repository, CI, and GitHub Actions.
+
+Never assume a learner knows a term merely because it is common to an experienced Java developer.
+
+## Reason-first rule
+
+Every important action should answer "why are we doing this?" before moving on.
+
+For example, do not only say:
+
+> "We add Spring Web so the application can expose REST endpoints."
+
+Explain the underlying reason:
+
+> "Plain Java does not automatically give this project a web server, URL routing, or JSON request handling. We need those capabilities because Postman and other systems must be able to send HTTP requests to GeoOps. Spring Web provides those pieces, so we add it as a dependency."
+
+The explanation box should teach the reason behind the action, not merely name the action.
