@@ -593,8 +593,8 @@
           "highlight": {
             "kind": "target",
             "selectors": [
-              "#project",
-              "#status"
+              "#projectTitle",
+              "#statusText"
             ]
           }
         },
@@ -611,8 +611,8 @@
           "highlight": {
             "kind": "target",
             "selectors": [
-              "#project",
-              "#status"
+              "#projectTitle",
+              "#statusText"
             ]
           }
         },
@@ -633,7 +633,7 @@
             "selectors": [
               ".tab.active",
               ".codeLine.focus",
-              "#project"
+              "#projectTitle"
             ]
           }
         },
@@ -706,8 +706,8 @@
           "highlight": {
             "kind": "target",
             "selectors": [
-              "#right",
-              "#rightTabs"
+              "#rightPanel",
+              "#rightPanel"
             ]
           }
         },
@@ -732,8 +732,8 @@
           "highlight": {
             "kind": "target",
             "selectors": [
-              "#right",
-              "#rightTabs"
+              "#rightPanel",
+              "#rightPanel"
             ]
           }
         },
@@ -754,7 +754,7 @@
             "selectors": [
               ".tab.active",
               ".codeLine.focus",
-              "#project"
+              "#projectTitle"
             ]
           }
         },
@@ -775,7 +775,7 @@
             "selectors": [
               ".tab.active",
               ".codeLine.focus",
-              "#project"
+              "#projectTitle"
             ]
           }
         },
@@ -796,7 +796,7 @@
             "selectors": [
               ".tab.active",
               ".codeLine.focus",
-              "#project"
+              "#projectTitle"
             ]
           }
         },
@@ -817,7 +817,7 @@
             "selectors": [
               ".tab.active",
               ".codeLine.focus",
-              "#project"
+              "#projectTitle"
             ]
           }
         },
@@ -838,7 +838,7 @@
             "selectors": [
               ".tab.active",
               ".codeLine.focus",
-              "#project"
+              "#projectTitle"
             ]
           }
         },
@@ -859,7 +859,7 @@
             "selectors": [
               ".tab.active",
               ".codeLine.focus",
-              "#project"
+              "#projectTitle"
             ]
           }
         },
@@ -880,7 +880,7 @@
             "selectors": [
               ".tab.active",
               ".codeLine.focus",
-              "#project"
+              "#projectTitle"
             ]
           }
         },
@@ -929,7 +929,7 @@
             "kind": "target",
             "selectors": [
               "#bottomPanel",
-              "#right"
+              "#rightPanel"
             ]
           }
         },
@@ -950,7 +950,7 @@
             "kind": "target",
             "selectors": [
               "#bottomPanel",
-              "#status",
+              "#statusText",
               "#runBtn"
             ]
           }
@@ -997,7 +997,7 @@
             "kind": "target",
             "selectors": [
               "#sendBtn",
-              "#respMeta"
+              "#status"
             ]
           }
         },
@@ -1047,7 +1047,7 @@
             "kind": "target",
             "selectors": [
               "#sendBtn",
-              "#respMeta"
+              "#status"
             ]
           }
         },
@@ -1099,7 +1099,7 @@
             "kind": "target",
             "selectors": [
               "#sendBtn",
-              "#respMeta"
+              "#status"
             ]
           }
         },
