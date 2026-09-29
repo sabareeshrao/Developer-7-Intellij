@@ -16,6 +16,7 @@ PROJECT_FILES = [
     "src/main/java/com/atlasgrid/geoops/project/application/ProjectService.java",
     "src/main/java/com/atlasgrid/geoops/project/api/ProjectController.java",
     "src/main/resources/application.yml",
+    "src/main/java/com/atlasgrid/geoops/tools/preflight/PreflightResult.java",
     "src/test/java/com/atlasgrid/geoops/GeoOpsApplicationTests.java",
     ".github/workflows/ci.yml",
 ]
