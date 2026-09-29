@@ -7,7 +7,7 @@
       "title": "GeoOps from Scratch",
       "subtitle": "Java 17, Spring Boot and real developer-tool workflow built cumulatively.",
       "chapterStart": 1,
-      "chapterEnd": 1
+      "chapterEnd": 2
     }
   ],
   "package": {
@@ -1329,6 +1329,38 @@
             "kind": "target",
             "selectors": [
               "#content"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "2: Set 2 — System.exit() and Process Boundaries",
+      "subtitle": "Use a short-lived GIS preflight CLI to learn where process exit belongs and why normal Spring Boot service code must not terminate the JVM.",
+      "steps": [
+        {
+          "title": "Model the preflight result before we terminate anything",
+          "why": "• Alright, Set 2 starts with a different kind of problem.\n• Our main GeoOps application is a long-running Spring Boot server. Once it starts, it is supposed to keep running and continue serving requests.\n• But imagine a batch job wants to check a GIS dataset before sending that file into GeoOps.\n• For that small job, we do not need to start the entire web application. A short command-line program is enough.\n• A command-line program is a program we run from a terminal, usually with some input written after the command.\n• When that program finishes, the operating system needs a simple way to know whether the work succeeded or failed.\n• That value is called a process exit code.\n• By convention, exit code 0 means success. A non-zero value means some kind of failure.\n• Later in this set we are going to use System.exit() to return a failure code from the outer CLI process.\n• But we do not want our reusable validation logic to call System.exit() directly.\n• Why not?\n• Because System.exit() does not just leave one method. It asks the JVM to terminate the whole running Java process.\n• If a validator called it internally, a unit test or another caller could lose control of the process before it had a chance to inspect the validation result.\n• So first we create PreflightResult.\n• This record carries three pieces of information: whether validation passed, which exit code should be reported, and a human-readable message.\n• success() creates a successful result with exit code 0.\n• failure() creates a failed result with the specific non-zero code we want the CLI to report later.\n• That gives us a safer flow:\n• validator → PreflightResult → CLI boundary → System.exit() only when process termination is actually appropriate.",
+          "software": "intellij",
+          "action": {
+            "action": "createFile",
+            "data": {
+              "path": "src/main/java/com/atlasgrid/geoops/tools/preflight/PreflightResult.java",
+              "language": "java",
+              "content": "package com.atlasgrid.geoops.tools.preflight;\n\n/**\n * Result returned by the standalone GIS dataset preflight validator.\n *\n * @param valid    whether the input passed validation\n * @param exitCode operating-system process exit code\n * @param message  human-readable result\n */\npublic record PreflightResult(\n        boolean valid,\n        int exitCode,\n        String message\n) {\n    public static PreflightResult success(String message) {\n        return new PreflightResult(true, 0, message);\n    }\n\n    public static PreflightResult failure(int exitCode, String message) {\n        return new PreflightResult(false, exitCode, message);\n    }\n}\n"
+            }
+          },
+          "highlight": {
+            "kind": "code",
+            "lines": [
+              10,
+              11,
+              12,
+              13,
+              15,
+              16,
+              19,
+              20
             ]
           }
         }
