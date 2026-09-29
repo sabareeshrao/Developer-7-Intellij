@@ -4,9 +4,9 @@ This repository rebuilds the **Developer-7 / GeoOps** Java + Spring Boot project
 
 ## Current status
 
-**Set 1 — Development Environment & Spring Boot Bootstrap — COMPLETE**
+**Set 2 — System.exit() and Process Boundaries — COMPLETE**
 
-The project is deliberately small at this point. Set 1 establishes:
+The project now contains:
 
 - Java 17
 - Maven
@@ -16,11 +16,14 @@ The project is deliberately small at this point. Set 1 establishes:
 - Actuator
 - Lombok
 - JUnit 5 / Spring Boot Test
-- a first in-memory GeoOps REST vertical slice
+- an in-memory GeoOps REST slice
+- a standalone GIS dataset preflight CLI
+- explicit process exit codes
+- graceful Spring Boot shutdown
 - Postman verification
 - Git / GitHub / GitHub Actions
 
-No database, security, messaging, Docker, Kubernetes, or monitoring stack is introduced early.
+No database, security, messaging, Docker, Kubernetes, or monitoring stack has been introduced early.
 
 ## Learning experience
 
@@ -28,14 +31,24 @@ The site reuses the simulator/runtime from `sabareeshrao/Experiment-VS-Code`.
 
 Each step:
 
-1. performs visible work in the software a developer would really use;
-2. highlights the exact control, code, command, or result;
-3. explains the step with short YouTube-style narration;
-4. reconstructs simulator state cumulatively, so later sets continue the same GeoOps project.
+1. performs visible work in the actual software surface;
+2. highlights the exact control, code line, command, or result;
+3. uses zero-knowledge, reason-first explanation bullets;
+4. reconstructs simulator state cumulatively so later sets continue the same GeoOps project.
 
-Narration is validated to reject repeated full explanation sentences.
+Source creation follows the master pattern:
 
-## Set 1 runnable slice
+```text
+create empty file → typeCode → exact code-line highlight
+```
+
+Terminal commands follow:
+
+```text
+typeTerminal → visible typing → yellow command boundary → exit status
+```
+
+## Current architecture
 
 ```text
 HTTP
@@ -45,18 +58,22 @@ ProjectController
 ProjectService
   ↓
 in-memory GeoProject records
+
+Inbound GIS file
+  ↓
+DatasetPreflightValidator
+  ↓
+PreflightResult
+  ↓
+GeoOpsPreflightCli
+  ↓
+process exit code
 ```
-
-Endpoints:
-
-- `GET /actuator/health`
-- `GET /api/projects`
-- `POST /api/projects`
 
 ## Build the Java project
 
 ```bash
-mvn clean test
+mvn clean verify
 mvn spring-boot:run
 ```
 
@@ -72,12 +89,14 @@ Developer-7-Intellij
 GitHub Pages
 ```
 
-The exact reusable simulator snapshot is stored in `MASTER_SOFTWARE_REF`.
+The reusable simulator snapshot is pinned in `MASTER_SOFTWARE_REF`.
 
-## Current software in Set 1
+## Software used through Set 2
 
-Spring Initializr · IntelliJ IDEA · Postman · Git · GitHub · GitHub Actions
+Spring Initializr · IntelliJ IDEA · Maven Central · Postman · Git · GitHub · GitHub Actions
 
 ## Next set
 
-Set 2 will add the controlled GIS preflight CLI and Java process-lifecycle behavior around `System.exit()`. The primary simulator will remain **IntelliJ IDEA**, with its integrated terminal used where command-line execution helps explain the process boundary.
+Set 3 follows the original Developer-7 order: **Project Methodology / Agile-Scrum**.
+
+It will connect backlog work to GitHub issues, branches, pull requests, peer review, CI, Sprint Review, and Retrospective while continuing the same GeoOps repository.
