@@ -186,3 +186,18 @@ Rules:
 - Do not use large paragraph spacing inside the explanation card.
 
 The goal is to keep the explanation dense, scannable, and easy to follow without empty vertical gaps.
+
+
+## Code-highlight alignment rule
+
+When the explanation card talks about code, the simulator must highlight the exact code lines being discussed.
+
+Rules:
+- IntelliJ code creation/edit steps must use `highlight.kind: "code"`.
+- Use explicit `lines`, `line`, `text`, or a code selector that resolves to the discussed code.
+- Do not rely on generic `.codeLine.focus` for a step that explains specific code.
+- If the explanation discusses several important lines, highlight those lines together.
+- The highlighted lines must match the explanation, not merely the file that happens to be open.
+- UI actions such as opening Maven, running tests, or clicking Postman controls may continue to use target/control highlights.
+
+The build validator rejects IntelliJ code-edit steps that do not declare an explicit code highlight.
