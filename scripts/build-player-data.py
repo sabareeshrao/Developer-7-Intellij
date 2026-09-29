@@ -17,7 +17,10 @@ PROJECT_FILES = [
     "src/main/java/com/atlasgrid/geoops/project/api/ProjectController.java",
     "src/main/resources/application.yml",
     "src/main/java/com/atlasgrid/geoops/tools/preflight/PreflightResult.java",
+    "src/main/java/com/atlasgrid/geoops/tools/preflight/DatasetPreflightValidator.java",
+    "src/main/java/com/atlasgrid/geoops/tools/preflight/GeoOpsPreflightCli.java",
     "src/test/java/com/atlasgrid/geoops/GeoOpsApplicationTests.java",
+    "src/test/java/com/atlasgrid/geoops/tools/preflight/DatasetPreflightValidatorTest.java",
     ".github/workflows/ci.yml",
 ]
 
