@@ -4,17 +4,17 @@
   "originalAnchorCount": 387,
   "syntheticAnchorCount": 0,
   "totalAnchorCount": 387,
-  "status": "1/387+ — Set 2 in progress",
+  "status": "2/387+",
   "completed": {
-    "sets": 1,
-    "jobExperienceAnchors": 1
+    "sets": 2,
+    "jobExperienceAnchors": 2
   },
   "current": {
     "set": 2,
     "anchor": "Did you get a chance to use System.exit() in your project?",
     "anchorType": "original",
-    "covered": false,
-    "evidence": "src/main/java/com/atlasgrid/geoops/tools/preflight/PreflightResult.java"
+    "covered": true,
+    "evidence": "docs/sets/SET-002-SYSTEM-EXIT.md"
   },
-  "nextAction": "Continue Set 2 with the GIS dataset validator, preserving exact explanation-aligned code highlights."
+  "nextAction": "Build Set 3 in original Developer-7 order: project methodology / Agile-Scrum workflow, preserving master simulator typing and highlight rules."
 }
