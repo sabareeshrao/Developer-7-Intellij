@@ -39,6 +39,17 @@ def validate_course(course):
                 raise SystemExit(f"Step {stage_index}.{step_index} has no software")
             if not (step.get("action") or {}).get("action"):
                 raise SystemExit(f"Step {stage_index}.{step_index} has no simulator action")
+            action_name = (step.get("action") or {}).get("action")
+            if step.get("software") == "intellij" and action_name in {"createFile", "setCode", "typeCode", "replaceCode"}:
+                highlight = step.get("highlight") or {}
+                if highlight.get("kind") != "code":
+                    raise SystemExit(
+                        f"Step {stage_index}.{step_index} edits code but does not use an explicit code-line highlight"
+                    )
+                if not (highlight.get("lines") or highlight.get("line") or highlight.get("text") or highlight.get("selector")):
+                    raise SystemExit(
+                        f"Step {stage_index}.{step_index} code highlight has no line/text/selector target"
+                    )
             for sentence in re.split(r"(?<=[.!?])\s+", why):
                 key = normalize_sentence(sentence)
                 if len(key) < 32:
