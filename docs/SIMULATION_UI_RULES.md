@@ -5,7 +5,7 @@ This downstream project must follow the pinned `Experiment-VS-Code` simulator co
 ## Master runtime
 
 Pinned source:
-`sabareeshrao/Experiment-VS-Code@fdd89e9401432f5571b84bff3ba7d8bbf6c92a0f`
+`sabareeshrao/Experiment-VS-Code@64a1c12ca3b3adbda288da2d9644375ef726e7aa`
 
 The pinned and current master versions of these core files were checked and matched at the time of this audit:
 
@@ -91,3 +91,20 @@ Explanation text must:
 - missing actions/highlights/software;
 - explanation lines without the bullet format;
 - repeated explanation sentences.
+
+
+## Real developer tool-window fidelity
+
+A simulator action must own the same visible surface a developer would expect in the real tool.
+
+For IntelliJ:
+
+- JUnit results belong under **Tests**.
+- Maven build execution belongs under **Run**, with a process header and preformatted multiline console.
+- Spring Boot application state belongs under **Services**, with the actual application name/status and a preformatted Spring log console.
+- Terminal commands belong under **Terminal**, with the current command emphasized in yellow.
+- Maven lifecycle/dependencies belong in the **Maven** tool window, not a generic modal.
+- An action must make its own tool window visible rather than inheriting whichever bottom tab was active from a previous step.
+- Completion popups must remain inside the editor viewport even when a bottom tool window is open.
+
+Lesson highlights must point to the specific visible control, row, card, process, or console being explained. Whole-panel selectors such as `#bottomPanel`, `#rightPanel`, `#mainView`, and generic `#content` are rejected by downstream validation when a precise target exists.
