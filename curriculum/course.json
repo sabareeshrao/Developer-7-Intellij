@@ -2337,7 +2337,7 @@
         },
         {
           "title": "Create empty AGILE-WORKFLOW.md",
-          "why": "• This Set 3 artifact belongs in docs/process/AGILE-WORKFLOW.md, but we do not want finished content to appear instantly.\n• IntelliJ first creates the empty file so the project tree changes in the same visible way it would during normal development.\n• The following step will type the Agile/Scrum delivery workflow into this file through the master typeCode action.\n• That keeps the learning flow honest: file creation happens first, then the actual repository content is written in front of us.",
+          "why": "• Before we describe the sprint process, IntelliJ needs a place in the repository where that shared workflow can live.\n• We create AGILE-WORKFLOW.md under docs/process so the methodology sits beside the project rather than existing only as an interview answer.\n• The file starts empty because the next lesson will visibly type the Agile/Scrum rules into it instead of dropping a finished document onto the screen.\n• Watch this tab stay open; the next action will build the backlog-to-review workflow inside this exact file.",
           "software": "intellij",
           "action": {
             "action": "createFile",
@@ -2385,7 +2385,7 @@
         },
         {
           "title": "Create empty DEFINITION-OF-DONE.md",
-          "why": "• This Set 3 artifact belongs in docs/process/DEFINITION-OF-DONE.md, but we do not want finished content to appear instantly.\n• IntelliJ first creates the empty file so the project tree changes in the same visible way it would during normal development.\n• The following step will type the shared completion checklist into this file through the master typeCode action.\n• That keeps the learning flow honest: file creation happens first, then the actual repository content is written in front of us.",
+          "why": "• The team also needs one shared checklist that says when a story is truly complete, so we create DEFINITION-OF-DONE.md.\n• Keeping this checklist under docs/process makes the completion rules versioned with the same repository as the code they govern.\n• We leave the new document blank at first so you can see its Definition of Done criteria being written in the next step.\n• This separates the simple act of creating a repository file from the important reasoning we are about to put inside it.",
           "software": "intellij",
           "action": {
             "action": "createFile",
@@ -2430,7 +2430,7 @@
         },
         {
           "title": "Create empty SPRINT-001.md",
-          "why": "• This Set 3 artifact belongs in docs/process/SPRINT-001.md, but we do not want finished content to appear instantly.\n• IntelliJ first creates the empty file so the project tree changes in the same visible way it would during normal development.\n• The following step will type the first recorded GeoOps sprint into this file through the master typeCode action.\n• That keeps the learning flow honest: file creation happens first, then the actual repository content is written in front of us.",
+          "why": "• We have process rules, but we also need evidence of how those rules apply to one real GeoOps sprint.\n• SPRINT-001.md is created as the first sprint record, where Sets 1, 2, and 3 will be connected as committed stories under one sprint goal.\n• The empty editor is intentional; the next action will type the sprint goal, story outcomes, review demo, and retrospective seed visibly.\n• That lets the learner watch a sprint record emerge from the work already completed rather than reading a prebuilt artifact.",
           "software": "intellij",
           "action": {
             "action": "createFile",
@@ -2475,7 +2475,7 @@
         },
         {
           "title": "Create empty feature.yml",
-          "why": "• This Set 3 artifact belongs in .github/ISSUE_TEMPLATE/feature.yml, but we do not want finished content to appear instantly.\n• IntelliJ first creates the empty file so the project tree changes in the same visible way it would during normal development.\n• The following step will type the reusable feature-story form into this file through the master typeCode action.\n• That keeps the learning flow honest: file creation happens first, then the actual repository content is written in front of us.",
+          "why": "• Future backlog stories should collect the same planning information every time, so we add a reusable GitHub feature issue template.\n• GitHub reads YAML files in .github/ISSUE_TEMPLATE to define the fields shown when someone opens a new issue from that template.\n• We create feature.yml empty first because the next step will type each planning field—outcome, GIS context, acceptance criteria, risks, and evidence.\n• This makes the connection visible between Definition of Ready and the form developers will actually use when proposing work.",
           "software": "intellij",
           "action": {
             "action": "createFile",
@@ -2518,7 +2518,7 @@
         },
         {
           "title": "Create empty pull_request_template.md",
-          "why": "• This Set 3 artifact belongs in .github/pull_request_template.md, but we do not want finished content to appear instantly.\n• IntelliJ first creates the empty file so the project tree changes in the same visible way it would during normal development.\n• The following step will type the reusable pull-request review checklist into this file through the master typeCode action.\n• That keeps the learning flow honest: file creation happens first, then the actual repository content is written in front of us.",
+          "why": "• The review side of the workflow needs the same consistency, so now we create the repository's pull request template.\n• GitHub can prefill a new pull request from .github/pull_request_template.md, giving every reviewer the same story, verification, GIS-impact, and risk prompts.\n• The document begins blank because the next step will visibly type the review checklist rather than showing an already-completed template.\n• This file will become the bridge between the feature branch we are building and the Definition of Done that must be satisfied before merge.",
           "software": "intellij",
           "action": {
             "action": "createFile",
