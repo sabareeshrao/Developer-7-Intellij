@@ -4,7 +4,7 @@ This repository rebuilds the **Developer-7 / GeoOps** Java + Spring Boot project
 
 ## Current status
 
-**Set 2 — System.exit() and Process Boundaries — COMPLETE**
+**Set 3 — Project Methodology / Agile-Scrum — COMPLETE**
 
 The project now contains:
 
@@ -100,3 +100,26 @@ Spring Initializr · IntelliJ IDEA · Maven Central · Postman · Git · GitHub 
 Set 3 follows the original Developer-7 order: **Project Methodology / Agile-Scrum**.
 
 It will connect backlog work to GitHub issues, branches, pull requests, peer review, CI, Sprint Review, and Retrospective while continuing the same GeoOps repository.
+
+## Set 3 delivery workflow
+
+GeoOps now records how work moves from idea to reviewed code:
+
+```text
+Backlog → Ready → 2-week Sprint → feature branch
+        → Pull Request → review + GitHub Actions
+        → merge → Done → Sprint Review → Retrospective
+```
+
+Definition of Ready, Definition of Done, Sprint 001, the feature issue template, and the pull-request template are versioned beside the code.
+
+## Current course size
+
+- Set 1: 45 simulation steps
+- Set 2: 26 simulation steps
+- Set 3: 31 simulation steps
+- Total through Set 3: 102 cumulative steps
+
+## Next set
+
+Set 4 follows the original Developer-7 order: **StringBuilder / StringBuffer**.
