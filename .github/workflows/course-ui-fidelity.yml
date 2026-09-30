@@ -1,0 +1,62 @@
+name: Course UI Fidelity
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout downstream project
+        uses: actions/checkout@v4
+
+      - name: Resolve pinned master
+        id: master
+        shell: bash
+        run: |
+          set -euo pipefail
+          ref="$(tr -d '\r\n' < MASTER_SOFTWARE_REF)"
+          case "$ref" in
+            sabareeshrao/Experiment-VS-Code@*) ;;
+            *) echo "Invalid MASTER_SOFTWARE_REF: $ref" >&2; exit 1 ;;
+          esac
+          echo "sha=${ref##*@}" >> "$GITHUB_OUTPUT"
+
+      - name: Checkout pinned simulator master
+        uses: actions/checkout@v4
+        with:
+          repository: sabareeshrao/Experiment-VS-Code
+          ref: ${{ steps.master.outputs.sha }}
+          path: .software
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install browser dependency
+        run: |
+          npm install --no-save --package-lock=false playwright@1.63.0
+          npx playwright install --with-deps chromium
+
+      - name: Build exact downstream player
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf _site
+          mkdir -p _site
+          cp .software/index.html _site/index.html
+          cp .software/library.js _site/library.js
+          cp .software/library.css _site/library.css
+          cp .software/player.html _site/player.html
+          cp .software/app.js _site/app.js
+          cp .software/styles.css _site/styles.css
+          cp -a .software/simulator _site/simulator
+          python scripts/build-player-data.py
+          touch _site/.nojekyll
+
+      - name: Exercise Set 1 and Set 2 in Chromium
+        run: node scripts/test-course-ui.cjs
