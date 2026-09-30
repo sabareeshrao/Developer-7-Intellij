@@ -22,6 +22,17 @@ PROJECT_FILES = [
     "src/test/java/com/atlasgrid/geoops/GeoOpsApplicationTests.java",
     "src/test/java/com/atlasgrid/geoops/tools/preflight/DatasetPreflightValidatorTest.java",
     ".github/workflows/ci.yml",
+    ".github/ISSUE_TEMPLATE/feature.yml",
+    ".github/pull_request_template.md",
+    "docs/process/AGILE-WORKFLOW.md",
+    "docs/process/DEFINITION-OF-DONE.md",
+    "docs/process/SPRINT-001.md",
+    "docs/sets/SET-003-PROJECT-METHODOLOGY.md",
+    "state/LEARNING_TRACKER.md",
+    "world/CANON.md",
+    "state/progress.json",
+    "AI_CONTEXT.md",
+    "README.md",
 ]
 
 def normalize_sentence(text):
