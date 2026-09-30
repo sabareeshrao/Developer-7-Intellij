@@ -237,11 +237,14 @@ const server = http.createServer((req, res) => {
     const ciSuccess = findStep(2, "setRunStatus");
     await openStep(ciSuccess);
     await actionsFrame().waitForSelector(".jobHead");
+    await actionsFrame().waitForSelector('[data-run-status="success"]');
     const ciUi = await actionsFrame().evaluate(() => ({
+      status: document.querySelector('[data-run-status="success"]')?.innerText || "",
       body: document.querySelector("#content")?.innerText || "",
       jobs: [...document.querySelectorAll(".jobHead")].map(x => x.innerText).join("\n")
     }));
-    assert(ciUi.body.includes("success") && ciUi.body.includes("Verify with Maven"), "Set 3 successful CI details are not visible: " + JSON.stringify(ciUi));
+    assert.equal(ciUi.status, "Success", "Set 3 Actions run does not expose a readable Success label: " + JSON.stringify(ciUi));
+    assert(ciUi.body.includes("Verify with Maven"), "Set 3 successful CI details are not visible: " + JSON.stringify(ciUi));
 
     const check = findStep(2, "setCheckStatus");
     await openStep(check);
