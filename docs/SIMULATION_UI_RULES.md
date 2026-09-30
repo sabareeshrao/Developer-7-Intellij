@@ -5,7 +5,7 @@ This downstream project must follow the pinned `Experiment-VS-Code` simulator co
 ## Master runtime
 
 Pinned source:
-`sabareeshrao/Experiment-VS-Code@64a1c12ca3b3adbda288da2d9644375ef726e7aa`
+`sabareeshrao/Experiment-VS-Code@f52450e36d9d34f3a7d86a63dfc3c54fe3639ec8`
 
 The pinned and current master versions of these core files were checked and matched at the time of this audit:
 
