@@ -4,7 +4,7 @@ This repository is the simulator-backed rebuild of `Developer-7`.
 
 ## Current learning state
 
-**Set 2 — 2/387+ — complete**
+**Set 3 — 3/387+ — complete**
 
 The implementation grows cumulatively. Do not reset the project between sets and do not copy future features backward.
 
@@ -93,3 +93,30 @@ Set 2 adds:
 ## Next set
 
 Set 3 establishes the GeoOps Agile/Scrum delivery workflow using the same project and repository history.
+
+## Set 3 project state
+
+GeoOps now has an inspectable Agile/Scrum delivery workflow with 2-week sprints.
+
+The repository process is:
+
+```text
+Backlog → Ready → Sprint Planning → feature branch → Pull Request
+        → Review + GitHub Actions → merge → Done
+        → Sprint Review → Retrospective
+```
+
+Set 3 repository evidence:
+
+- `docs/process/AGILE-WORKFLOW.md`
+- `docs/process/DEFINITION-OF-DONE.md`
+- `docs/process/SPRINT-001.md`
+- `.github/ISSUE_TEMPLATE/feature.yml`
+- `.github/pull_request_template.md`
+- `docs/sets/SET-003-PROJECT-METHODOLOGY.md`
+
+The simulation must make the issue, feature branch, PR description, CI check, peer review, merge state, closed story, and local-main synchronization visibly real on their owning developer surfaces.
+
+## Next set
+
+Set 4 follows the original Developer-7 order: StringBuilder / StringBuffer.
