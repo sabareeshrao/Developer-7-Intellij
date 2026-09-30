@@ -606,8 +606,7 @@
           "highlight": {
             "kind": "target",
             "selectors": [
-              "#dependencyList",
-              "#addDependencyBtn"
+              "#dependencyList [data-id=\"web\"]"
             ]
           }
         },
@@ -624,7 +623,7 @@
           "highlight": {
             "kind": "target",
             "selectors": [
-              "#dependencyList"
+              "#dependencyList [data-id=\"validation\"]"
             ]
           }
         },
@@ -641,7 +640,7 @@
           "highlight": {
             "kind": "target",
             "selectors": [
-              "#dependencyList"
+              "#dependencyList [data-id=\"lombok\"]"
             ]
           }
         },
@@ -762,10 +761,10 @@
           "highlight": {
             "kind": "target",
             "selectors": [
-              "#searchInput",
-              "#results",
-              "#artifactDetail"
-            ]
+              ".result.active",
+              "#artifactDetail h1"
+            ],
+            "multiple": true
           }
         },
         {
@@ -818,9 +817,10 @@
           "highlight": {
             "kind": "target",
             "selectors": [
-              "#rightPanel",
-              "#rightPanel"
-            ]
+              "[data-right=\"maven\"]",
+              ".ij-maven-head"
+            ],
+            "multiple": true
           }
         },
         {
@@ -844,9 +844,10 @@
           "highlight": {
             "kind": "target",
             "selectors": [
-              "#rightPanel",
-              "#rightPanel"
-            ]
+              "[data-maven-section=\"Lifecycle\"]",
+              "[data-maven-goal=\"verify\"]"
+            ],
+            "multiple": true
           }
         },
         {
@@ -1179,9 +1180,11 @@
           "highlight": {
             "kind": "target",
             "selectors": [
-              "#bottomPanel",
-              "#runBtn"
-            ]
+              ".ij-test-summary",
+              ".ij-test-suite",
+              ".ij-test-ok"
+            ],
+            "multiple": true
           }
         },
         {
@@ -1199,9 +1202,11 @@
           "highlight": {
             "kind": "target",
             "selectors": [
-              "#bottomPanel",
-              "#rightPanel"
-            ]
+              "[data-bottom=\"run\"]",
+              ".processName",
+              ".toolConsole"
+            ],
+            "multiple": true
           }
         },
         {
@@ -1220,10 +1225,11 @@
           "highlight": {
             "kind": "target",
             "selectors": [
-              "#bottomPanel",
-              "#statusText",
-              "#runBtn"
-            ]
+              "[data-bottom=\"services\"]",
+              ".ij-service-card",
+              ".ij-service-console"
+            ],
+            "multiple": true
           }
         },
         {
@@ -1239,9 +1245,10 @@
           "highlight": {
             "kind": "target",
             "selectors": [
-              "#sendBtn",
-              "#reqTabs"
-            ]
+              "#methodBox",
+              "#urlBox"
+            ],
+            "multiple": true
           }
         },
         {
@@ -1267,9 +1274,10 @@
           "highlight": {
             "kind": "target",
             "selectors": [
-              "#sendBtn",
-              "#status"
-            ]
+              "#status",
+              "#responseBody"
+            ],
+            "multiple": true
           }
         },
         {
@@ -1285,9 +1293,10 @@
           "highlight": {
             "kind": "target",
             "selectors": [
-              "#sendBtn",
-              "#reqTabs"
-            ]
+              "#methodBox",
+              "#urlBox"
+            ],
+            "multiple": true
           }
         },
         {
@@ -1317,9 +1326,10 @@
           "highlight": {
             "kind": "target",
             "selectors": [
-              "#sendBtn",
-              "#status"
-            ]
+              "#status",
+              "#responseBody"
+            ],
+            "multiple": true
           }
         },
         {
@@ -1335,9 +1345,10 @@
           "highlight": {
             "kind": "target",
             "selectors": [
-              "#sendBtn",
-              "#reqTabs"
-            ]
+              "#methodBox",
+              "#urlBox"
+            ],
+            "multiple": true
           }
         },
         {
@@ -1369,9 +1380,10 @@
           "highlight": {
             "kind": "target",
             "selectors": [
-              "#sendBtn",
-              "#status"
-            ]
+              "#status",
+              "#responseBody"
+            ],
+            "multiple": true
           }
         },
         {
@@ -1457,10 +1469,11 @@
           "highlight": {
             "kind": "target",
             "selectors": [
-              "#mainView",
-              "#detailsBody",
-              "#pushBtn"
-            ]
+              "#repoPath",
+              ".viewTitle",
+              "#changeCount"
+            ],
+            "multiple": true
           }
         },
         {
@@ -1474,9 +1487,10 @@
           "highlight": {
             "kind": "target",
             "selectors": [
-              "#mainView",
-              "#detailsBody"
-            ]
+              "#stageAllBtn",
+              "#statusText"
+            ],
+            "multiple": true
           }
         },
         {
@@ -1493,9 +1507,10 @@
           "highlight": {
             "kind": "target",
             "selectors": [
-              "#mainView",
-              "#detailsBody"
-            ]
+              "#commitCount",
+              "#statusText"
+            ],
+            "multiple": true
           }
         },
         {
@@ -1516,8 +1531,10 @@
             "kind": "target",
             "selectors": [
               "#pushBtn",
-              "#mainView"
-            ]
+              "#syncText",
+              "#statusText"
+            ],
+            "multiple": true
           }
         },
         {
@@ -1533,8 +1550,10 @@
           "highlight": {
             "kind": "target",
             "selectors": [
-              "#content"
-            ]
+              ".repoTitle",
+              "#branchBtn"
+            ],
+            "multiple": true
           }
         },
         {
@@ -1548,7 +1567,7 @@
           "highlight": {
             "kind": "target",
             "selectors": [
-              "#content"
+              "[data-run=\"set-1-ci\"]"
             ]
           }
         },
@@ -1565,8 +1584,10 @@
           "highlight": {
             "kind": "target",
             "selectors": [
-              "#content"
-            ]
+              ".jobHead",
+              ".card .head"
+            ],
+            "multiple": true
           }
         }
       ]
@@ -1839,9 +1860,11 @@
           "highlight": {
             "kind": "target",
             "selectors": [
-              "#bottomPanel",
-              "#runBtn"
-            ]
+              ".ij-test-summary",
+              ".ij-test-suite",
+              ".ij-test-ok"
+            ],
+            "multiple": true
           }
         },
         {
@@ -1859,9 +1882,11 @@
           "highlight": {
             "kind": "target",
             "selectors": [
-              "#bottomPanel",
-              "#rightPanel"
-            ]
+              "[data-bottom=\"run\"]",
+              ".processName",
+              ".toolConsole"
+            ],
+            "multiple": true
           }
         },
         {
@@ -1880,9 +1905,11 @@
           "highlight": {
             "kind": "target",
             "selectors": [
-              "#bottomPanel",
-              "#runBtn"
-            ]
+              "[data-bottom=\"services\"]",
+              ".ij-service-card",
+              ".ij-service-console"
+            ],
+            "multiple": true
           }
         },
         {
@@ -1898,9 +1925,11 @@
           "highlight": {
             "kind": "target",
             "selectors": [
-              "#bottomPanel",
-              "#stopBtn"
-            ]
+              "[data-bottom=\"services\"]",
+              ".ij-service-card",
+              ".ij-service-console"
+            ],
+            "multiple": true
           }
         },
         {
@@ -1914,8 +1943,10 @@
           "highlight": {
             "kind": "target",
             "selectors": [
-              "#bottomPanel"
-            ]
+              "[data-bottom=\"terminal\"]",
+              ".terminalSessionBar"
+            ],
+            "multiple": true
           }
         },
         {
@@ -2049,9 +2080,11 @@
           "highlight": {
             "kind": "target",
             "selectors": [
-              "#mainView",
-              "#detailsBody"
-            ]
+              "#repoPath",
+              ".viewTitle",
+              "#changeCount"
+            ],
+            "multiple": true
           }
         },
         {
@@ -2065,9 +2098,10 @@
           "highlight": {
             "kind": "target",
             "selectors": [
-              "#mainView",
-              "#detailsBody"
-            ]
+              "#stageAllBtn",
+              "#statusText"
+            ],
+            "multiple": true
           }
         },
         {
@@ -2084,9 +2118,10 @@
           "highlight": {
             "kind": "target",
             "selectors": [
-              "#mainView",
-              "#detailsBody"
-            ]
+              "#commitCount",
+              "#statusText"
+            ],
+            "multiple": true
           }
         },
         {
@@ -2107,8 +2142,10 @@
             "kind": "target",
             "selectors": [
               "#pushBtn",
-              "#mainView"
-            ]
+              "#syncText",
+              "#statusText"
+            ],
+            "multiple": true
           }
         },
         {
@@ -2124,8 +2161,10 @@
           "highlight": {
             "kind": "target",
             "selectors": [
-              "#content"
-            ]
+              ".repoTitle",
+              "#branchBtn"
+            ],
+            "multiple": true
           }
         },
         {
@@ -2139,7 +2178,7 @@
           "highlight": {
             "kind": "target",
             "selectors": [
-              "#content"
+              "[data-run=\"set-2-ci\"]"
             ]
           }
         },
@@ -2156,8 +2195,10 @@
           "highlight": {
             "kind": "target",
             "selectors": [
-              "#content"
-            ]
+              ".jobHead",
+              ".card .head"
+            ],
+            "multiple": true
           }
         }
       ]
