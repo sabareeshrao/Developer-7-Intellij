@@ -58,5 +58,5 @@ jobs:
           python scripts/build-player-data.py
           touch _site/.nojekyll
 
-      - name: Exercise Set 1 and Set 2 in Chromium
+      - name: Exercise Sets 1 through 3 in Chromium
         run: node scripts/test-course-ui.cjs
