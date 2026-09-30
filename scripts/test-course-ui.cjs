@@ -53,6 +53,9 @@ const server = http.createServer((req, res) => {
     });
 
     const ide = () => page.frames().find(frame => frame.url().includes("/simulator/intellij/index.html"));
+    const gitFrame = () => page.frames().find(frame => frame.url().includes("/simulator/git/index.html"));
+    const githubFrame = () => page.frames().find(frame => frame.url().includes("/simulator/github/index.html"));
+    const actionsFrame = () => page.frames().find(frame => frame.url().includes("/simulator/github_actions/index.html"));
 
     async function openStep(step) {
       await page.goto(`${base}/player.html?step=${step.global}`);
@@ -177,6 +180,114 @@ const server = http.createServer((req, res) => {
     assert(typing.finalText.includes("SpringApplication.run"), "typeCode did not finish the expected GeoOps source: " + JSON.stringify(typing));
     assert(typing.focusedLines > 0, "typeCode did not leave the typed code focused: " + JSON.stringify(typing));
     assert(typing.scrollLeft < 40, "typeCode replay jumped the editor horizontally: " + JSON.stringify(typing));
+
+    // Set 3: verify the complete Agile/Scrum delivery workflow on the actual
+    // GitHub, Git and GitHub Actions simulator surfaces.
+    const agileDoc = flat.find(s => s.stageIndex === 2 && s.action?.action === "typeCode" && s.action?.data?.file === "docs/process/AGILE-WORKFLOW.md");
+    assert(agileDoc, "Missing Set 3 Agile workflow typing step");
+    await openStep(agileDoc);
+    await ide().waitForSelector(".codeLine.focus, .simLessonLineHighlight");
+    const agileUi = await ide().evaluate(() => ({
+      text: document.querySelector("#code")?.innerText || "",
+      focused: [...document.querySelectorAll(".codeLine.focus,.simLessonLineHighlight")].map(x => x.innerText)
+    }));
+    assert(agileUi.text.includes("GeoOps Agile Delivery Workflow") && agileUi.text.includes("Sprint length: 2 weeks"), "Set 3 Agile document was not typed into IntelliJ: " + JSON.stringify(agileUi));
+    assert(agileUi.focused.length > 0, "Set 3 Agile document has no explanation-aligned line highlights");
+
+    const issueOpen = findStep(2, "openIssue");
+    await openStep(issueOpen);
+    await githubFrame().waitForSelector(".issueBody");
+    const issueUi = await githubFrame().evaluate(() => ({
+      title: document.querySelector(".view h2")?.innerText || "",
+      state: document.querySelector(".view .toolbar .pill")?.innerText || "",
+      body: document.querySelector(".issueBody")?.innerText || ""
+    }));
+    assert(issueUi.title.includes("GEO-3 Establish delivery workflow"), "Set 3 story title missing: " + JSON.stringify(issueUi));
+    assert.equal(issueUi.state, "Open", "Set 3 story should be open before implementation: " + JSON.stringify(issueUi));
+    assert(issueUi.body.includes("Business outcome\n") && issueUi.body.includes("\nAcceptance criteria\n"), "Set 3 issue body lost planning structure: " + JSON.stringify(issueUi));
+
+    const branch = findStep(2, "createBranch");
+    await openStep(branch);
+    await gitFrame().waitForSelector("#activeBranch");
+    const branchUi = await gitFrame().evaluate(() => ({
+      branch: document.querySelector("#activeBranch")?.innerText || "",
+      status: document.querySelector("#statusText")?.innerText || ""
+    }));
+    assert.equal(branchUi.branch, "feature/GEO-3-delivery-workflow", "Feature branch is not visibly checked out: " + JSON.stringify(branchUi));
+    assert(branchUi.status.includes("Created branch"), "Branch creation status is missing: " + JSON.stringify(branchUi));
+
+    const prOpen = findStep(2, "openPullRequest");
+    await openStep(prOpen);
+    await githubFrame().waitForSelector(".prDescription");
+    const prOpenUi = await githubFrame().evaluate(() => ({
+      description: document.querySelector(".prDescription")?.innerText || "",
+      merge: document.querySelector("#mergeBtn")?.innerText || "",
+      filesChanged: [...document.querySelectorAll(".tabs .tab")].map(x => x.innerText).find(x => x.startsWith("Files changed")) || ""
+    }));
+    assert(prOpenUi.description.includes("Closes #3\n\nWhat changed"), "PR template content is not visibly preserved: " + JSON.stringify(prOpenUi));
+    assert.equal(prOpenUi.merge, "Merge pull request", "Open PR should expose the merge control before gates are complete: " + JSON.stringify(prOpenUi));
+    assert(prOpenUi.filesChanged.includes("7"), "PR files-changed count is wrong: " + JSON.stringify(prOpenUi));
+
+    const ciTrigger = findStep(2, "triggerRun");
+    await openStep(ciTrigger);
+    await actionsFrame().waitForSelector('[data-run="set-3-pr-ci"]');
+    const ciRow = await actionsFrame().locator('[data-run="set-3-pr-ci"]').innerText();
+    assert(ciRow.includes("set3001") && ciRow.includes("pull_request") && ciRow.includes("feature/GEO-3-delivery-workflow"), "PR CI run lost commit/branch/event metadata: " + ciRow);
+
+    const ciSuccess = findStep(2, "setRunStatus");
+    await openStep(ciSuccess);
+    await actionsFrame().waitForSelector(".jobHead");
+    const ciUi = await actionsFrame().evaluate(() => ({
+      body: document.querySelector("#content")?.innerText || "",
+      jobs: [...document.querySelectorAll(".jobHead")].map(x => x.innerText).join("\n")
+    }));
+    assert(ciUi.body.includes("success") && ciUi.body.includes("Verify with Maven"), "Set 3 successful CI details are not visible: " + JSON.stringify(ciUi));
+
+    const check = findStep(2, "setCheckStatus");
+    await openStep(check);
+    await githubFrame().waitForSelector(".commitRow");
+    const checkUi = await githubFrame().locator(".commitRow").allInnerTexts();
+    assert(checkUi.some(x => x.includes("GeoOps CI / build") && x.includes("success")), "PR does not visibly show the green CI check: " + JSON.stringify(checkUi));
+
+    const review = findStep(2, "addReview");
+    await openStep(review);
+    await githubFrame().waitForSelector(".reviewEvent");
+    const reviewUi = await githubFrame().evaluate(() => ({
+      event: document.querySelector(".reviewEvent")?.innerText || "",
+      reviewers: document.querySelector(".reviewBox")?.innerText || ""
+    }));
+    assert(reviewUi.event.includes("reviewer reviewed · approved") && reviewUi.event.includes("CI is green"), "Peer approval is not visible in the PR conversation: " + JSON.stringify(reviewUi));
+    assert(reviewUi.reviewers.includes("reviewer"), "PR reviewer area did not update: " + JSON.stringify(reviewUi));
+
+    const merge = findStep(2, "mergePullRequest");
+    await openStep(merge);
+    await githubFrame().waitForFunction(() => document.querySelector(".view .toolbar .pill")?.textContent.trim() === "Merged");
+    const mergeUi = await githubFrame().evaluate(() => ({
+      state: document.querySelector(".view .toolbar .pill")?.innerText || "",
+      mergeButtons: document.querySelectorAll("#mergeBtn").length,
+      confirmation: [...document.querySelectorAll(".cardHead")].map(x => x.innerText).find(x => x.includes("successfully merged")) || ""
+    }));
+    assert.equal(mergeUi.state, "Merged", "PR did not transition to Merged: " + JSON.stringify(mergeUi));
+    assert.equal(mergeUi.mergeButtons, 0, "Merged PR still exposes an active merge button: " + JSON.stringify(mergeUi));
+    assert(mergeUi.confirmation.includes("successfully merged"), "Merged PR confirmation missing: " + JSON.stringify(mergeUi));
+
+    const closeIssue = findStep(2, "closeIssue");
+    await openStep(closeIssue);
+    await githubFrame().waitForSelector(".issueBody");
+    const closedState = await githubFrame().locator(".view .toolbar .pill").innerText();
+    assert.equal(closedState, "Closed", "Merged story was not visibly moved to Closed");
+
+    const pull = findStep(2, "pull");
+    await openStep(pull);
+    await gitFrame().waitForSelector("#syncText");
+    const pullUi = await gitFrame().evaluate(() => ({
+      branch: document.querySelector("#activeBranch")?.innerText || "",
+      sync: document.querySelector("#syncText")?.innerText || "",
+      terminal: document.querySelector("#terminalBody")?.innerText || ""
+    }));
+    assert.equal(pullUi.branch, "main", "Local repository did not return to main: " + JSON.stringify(pullUi));
+    assert(pullUi.sync.includes("0 ahead") && pullUi.sync.includes("0 behind"), "Local main is not synchronized after merge: " + JSON.stringify(pullUi));
+    assert(pullUi.terminal.includes("git pull origin main") && pullUi.terminal.includes("Fast-forward"), "Merged Set 3 pull is not visible in Git: " + JSON.stringify(pullUi));
 
     assert.equal(errors.length, 0, "Browser page errors: " + errors.join(" | "));
     console.log(JSON.stringify({
