@@ -7,7 +7,7 @@
       "title": "GeoOps from Scratch",
       "subtitle": "Java 17, Spring Boot and real developer-tool workflow built cumulatively.",
       "chapterStart": 1,
-      "chapterEnd": 2
+      "chapterEnd": 3
     }
   ],
   "package": {
@@ -2199,6 +2199,852 @@
               ".card .head"
             ],
             "multiple": true
+          }
+        }
+      ]
+    },
+    {
+      "title": "3: Set 3 — Project Methodology / Agile-Scrum",
+      "subtitle": "Turn Agile/Scrum from interview vocabulary into a visible GeoOps issue → branch → pull request → CI → review → merge workflow.",
+      "steps": [
+        {
+          "title": "Open the GeoOps issue backlog",
+          "why": "• Set 3 is about how work moves through the team, so we start where future work is collected: the backlog.\n• A backlog is an ordered list of work the team may do; it is not the same thing as a promise that every item starts immediately.\n• GeoOps follows an Agile style rather than one long Waterfall sequence because GIS requirements can become clearer after real files, coordinate metadata, and client feedback are examined.\n• Agile means the team delivers and reviews smaller increments, learns from the result, and adjusts later work instead of locking every detail at the beginning.\n• Scrum is the framework we use to organize that iterative work into short time-boxes called sprints.\n• GeoOps uses 2-week sprints, so an item must become understandable and ready before Sprint Planning selects it.\n• GitHub Issues gives this project a concrete place to represent those backlog stories.",
+          "software": "github",
+          "action": {
+            "action": "openTab",
+            "data": {
+              "tab": "issues"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "[data-tab=\"issues\"]",
+              "#newIssueBtn"
+            ],
+            "multiple": true
+          }
+        },
+        {
+          "title": "Create the GEO-3 delivery-workflow story",
+          "why": "• Now we turn the planned outcome into a real story instead of starting with an unstructured list of coding tasks.\n• A user story describes the result we want; a task describes one piece of implementation work needed to reach that result.\n• The GEO-3 outcome is to establish a repeatable delivery workflow for future GeoOps changes.\n• The issue body records the business outcome, GIS context, acceptance criteria, dependencies, risks, and validation evidence.\n• Acceptance criteria are observable conditions that tell the team when the story can actually be accepted.\n• For this story, documentation, Definition of Ready, Definition of Done, and shared GitHub templates are part of the acceptance criteria.\n• Writing these expectations before development reduces the chance that developer, reviewer, and stakeholder each imagine a different definition of complete.",
+          "software": "github",
+          "action": {
+            "action": "createIssue",
+            "data": {
+              "number": 3,
+              "title": "GEO-3 Establish delivery workflow",
+              "body": "Business outcome\nEstablish a repeatable Agile/Scrum delivery workflow for future GeoOps changes.\n\nGIS / domain context\nGIS rules can change after sample survey files, CRS metadata, and client validation behavior are reviewed.\n\nAcceptance criteria\n- Agile workflow documented\n- Definition of Ready documented\n- Definition of Done documented\n- Feature issue template exists\n- Pull request template exists\n\nDependencies and risks\n- Existing GeoOps CI must remain green\n- No new runtime technology is required\n\nValidation evidence\n- Pull request review\n- GitHub Actions clean verify",
+              "labels": [
+                "feature"
+              ],
+              "author": "sabareeshrao"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "[data-issue-row=\"3\"]"
+            ]
+          }
+        },
+        {
+          "title": "Inspect the story before starting work",
+          "why": "• Opening the issue lets us check whether the story is ready enough to enter development.\n• Definition of Ready answers a simple question: do we understand this item well enough to start it without immediately discovering missing basics?\n• For GeoOps, a ready story needs an understandable outcome, written acceptance criteria, known dependencies, any required sample GIS data or API examples, and no unresolved blocker.\n• The green Open state means the story is active, while the body keeps the reason and acceptance conditions visible to everyone working on it.\n• This is how backlog refinement connects to engineering: the story is clarified first, then implementation starts.",
+          "software": "github",
+          "action": {
+            "action": "openIssue",
+            "data": {
+              "number": 3
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              ".issueBody",
+              ".view .toolbar .pill"
+            ],
+            "multiple": true
+          }
+        },
+        {
+          "title": "Open the local repository on main",
+          "why": "• The story is ready, but we still do not edit main directly.\n• main represents the shared integration branch—the line of development the team wants to keep stable and reviewable.\n• A feature branch gives this story its own short-lived line of work so the change can be developed and reviewed without mixing unfinished work into main.\n• We start by looking at the clean local repository on main before creating that branch.",
+          "software": "git",
+          "action": {
+            "action": "openRepository",
+            "data": {
+              "name": "Developer-7-Intellij",
+              "path": "C:\\Users\\developer\\Developer-7-Intellij",
+              "branch": "main",
+              "branches": [
+                {
+                  "name": "main",
+                  "current": true,
+                  "ahead": 0,
+                  "behind": 0
+                }
+              ],
+              "files": [],
+              "commits": [
+                {
+                  "hash": "set2001",
+                  "message": "Complete Set 2 controlled System.exit preflight CLI",
+                  "author": "Developer",
+                  "date": "Today",
+                  "branch": "main"
+                },
+                {
+                  "hash": "set1001",
+                  "message": "Complete Set 1 GeoOps bootstrap",
+                  "author": "Developer",
+                  "date": "Today",
+                  "branch": "main"
+                }
+              ]
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#repoPath",
+              "#activeBranch",
+              "#statusText"
+            ],
+            "multiple": true
+          }
+        },
+        {
+          "title": "Create the feature branch for GEO-3",
+          "why": "• Now we create feature/GEO-3-delivery-workflow and check it out.\n• The branch name connects the local work directly to the story number, which makes the relationship easy to trace during review.\n• Short-lived feature branches are useful because developers can commit, push, and open a pull request without making main carry unfinished work.\n• After checkout, the active branch indicator changes from main to the GEO-3 branch; that is where the Set 3 repository artifacts will be written.",
+          "software": "git",
+          "action": {
+            "action": "createBranch",
+            "data": {
+              "name": "feature/GEO-3-delivery-workflow",
+              "checkout": true
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#activeBranch",
+              "#statusText"
+            ],
+            "multiple": true
+          }
+        },
+        {
+          "title": "Create empty AGILE-WORKFLOW.md",
+          "why": "• This Set 3 artifact belongs in docs/process/AGILE-WORKFLOW.md, but we do not want finished content to appear instantly.\n• IntelliJ first creates the empty file so the project tree changes in the same visible way it would during normal development.\n• The following step will type the Agile/Scrum delivery workflow into this file through the master typeCode action.\n• That keeps the learning flow honest: file creation happens first, then the actual repository content is written in front of us.",
+          "software": "intellij",
+          "action": {
+            "action": "createFile",
+            "data": {
+              "path": "docs/process/AGILE-WORKFLOW.md",
+              "language": "markdown",
+              "content": ""
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              ".tab.active"
+            ]
+          }
+        },
+        {
+          "title": "Type the GeoOps Agile delivery workflow",
+          "why": "• This document turns the methodology from an interview phrase into a project rule developers can inspect.\n• Waterfall usually moves through large sequential phases such as requirements, design, implementation, testing, and release; changing an early assumption late can become expensive.\n• GeoOps uses Agile because GIS assumptions often improve after sample survey files, coordinate metadata, validation rules, and downstream behavior are seen in practice.\n• Scrum organizes that Agile approach into our 2-week sprint cadence.\n• The story flow shows Backlog → Ready → Sprint Planning → In Progress → Pull Request → Review + CI → Done → Sprint Review.\n• Backlog Refinement prepares future work, Sprint Planning selects ready work, Daily Stand-up coordinates progress and blockers, Sprint Review demonstrates completed behavior, and Retrospective chooses improvements for the next sprint.\n• The Definition of Ready section prevents unclear work from being pulled into a sprint too early.\n• The branch and pull-request flow connects the process directly to GitHub rather than treating Agile as meetings with no engineering evidence.",
+          "software": "intellij",
+          "action": {
+            "action": "typeCode",
+            "data": {
+              "file": "docs/process/AGILE-WORKFLOW.md",
+              "code": "# GeoOps Agile Delivery Workflow\n\nGeoOps uses an Agile/Scrum-style delivery model for the fictional AtlasGrid Geospatial Systems team.\n\n## Cadence\n\n- Sprint length: 2 weeks\n- Backlog is refined continuously.\n- Sprint Planning selects a small set of ready stories.\n- Developers implement on short-lived branches.\n- Pull requests are reviewed before merge.\n- CI must pass before merge.\n- Sprint Review demonstrates completed behavior.\n- Retrospective captures one or two process improvements for the next sprint.\n\n## Story flow\n\n```text\nBacklog\n  ↓\nRefined / Ready\n  ↓\nSprint Planning\n  ↓\nIn Progress\n  ↓\nPull Request\n  ↓\nReview + CI\n  ↓\nDone\n  ↓\nSprint Review\n```\n\n## Why GeoOps uses Agile instead of a pure Waterfall flow\n\nGIS requirements can change as sample survey files, coordinate metadata, client rules and downstream integration constraints become clearer.\n\nA short feedback cycle lets the team:\n- validate assumptions early,\n- demonstrate small working slices,\n- adjust acceptance criteria before large amounts of code are committed,\n- detect integration problems earlier,\n- deliver usable increments without waiting for one large final release.\n\n## Definition of Ready\n\nA story is considered ready for Sprint Planning when:\n- the business outcome is understandable,\n- acceptance criteria are written,\n- major dependencies are known,\n- sample GIS data or API examples are available when needed,\n- the team can estimate the work,\n- no unresolved blocker prevents starting.\n\n## Branch / pull-request flow\n\n```text\nGitHub Issue\n   ↓\nfeature/<issue>-short-name\n   ↓\ncode + tests + documentation\n   ↓\nPull Request\n   ↓\nreview + GitHub Actions\n   ↓\nmerge to main\n```\n\n## Ceremonies\n\n### Sprint Planning\nThe team chooses ready stories based on priority and capacity, discusses implementation risks and breaks stories into tasks when necessary.\n\n### Daily Stand-up\nEach person briefly covers progress, next work and blockers. It is a coordination event, not a status report to one individual.\n\n### Backlog Refinement\nUpcoming work is clarified before a future Sprint Planning session.\n\n### Sprint Review\nCompleted behavior is demonstrated to stakeholders and feedback is collected.\n\n### Retrospective\nThe team discusses what helped, what slowed delivery and one or two concrete improvements to try next sprint.\n\n## GeoOps example\n\nA story such as \"Validate inbound GeoJSON before project intake\" may include:\n- acceptance criteria for supported file types,\n- expected error behavior,\n- validator code,\n- unit tests,\n- documentation,\n- a pull request proving CI passes.\n\nThat keeps process artifacts tied to actual code rather than treating Agile as ceremony-only.\n",
+              "position": "replace"
+            }
+          },
+          "highlight": {
+            "kind": "code",
+            "lines": [
+              1,
+              7,
+              8,
+              21,
+              9,
+              29,
+              36,
+              47,
+              60,
+              14,
+              92
+            ]
+          }
+        },
+        {
+          "title": "Create empty DEFINITION-OF-DONE.md",
+          "why": "• This Set 3 artifact belongs in docs/process/DEFINITION-OF-DONE.md, but we do not want finished content to appear instantly.\n• IntelliJ first creates the empty file so the project tree changes in the same visible way it would during normal development.\n• The following step will type the shared completion checklist into this file through the master typeCode action.\n• That keeps the learning flow honest: file creation happens first, then the actual repository content is written in front of us.",
+          "software": "intellij",
+          "action": {
+            "action": "createFile",
+            "data": {
+              "path": "docs/process/DEFINITION-OF-DONE.md",
+              "language": "markdown",
+              "content": ""
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              ".tab.active"
+            ]
+          }
+        },
+        {
+          "title": "Type the GeoOps Definition of Done",
+          "why": "• A story can be coded and still not be complete, so the team needs a shared finish line.\n• Definition of Done answers: what must be true before we can honestly call this story complete?\n• The checklist includes implementation quality, automated tests, a green GitHub Actions build, pull-request review, API or data-contract checks when applicable, GIS-specific assumptions, documentation, and acceptance criteria.\n• The GIS section matters because coordinate reference systems, supported formats, metadata behavior, and reproducible sample data can affect whether a change is actually safe.\n• This differs from Definition of Ready: Ready decides whether work can start; Done decides whether completed work can leave development and be demonstrated.\n• A common team-level Definition of Done also reduces arguments at the end of the sprint because completion was defined before the work reached review.",
+          "software": "intellij",
+          "action": {
+            "action": "typeCode",
+            "data": {
+              "file": "docs/process/DEFINITION-OF-DONE.md",
+              "code": "# GeoOps Definition of Done\n\nA GeoOps story is Done only when all applicable checks below are satisfied.\n\n## Code\n- Implementation matches the accepted story scope.\n- Code follows established package and architecture boundaries.\n- No new technology is introduced without a justified project need.\n- Error paths are handled intentionally.\n\n## Tests\n- New logic has appropriate automated tests.\n- Existing tests pass.\n- GitHub Actions build is green.\n\n## Review\n- Pull request explains what changed and why.\n- Reviewer feedback is resolved.\n- Risky behavior or design tradeoffs are documented.\n\n## API / Data\nWhen the story changes an API or data contract:\n- request/response behavior is documented,\n- validation rules are explicit,\n- backward compatibility impact is considered.\n\n## GIS-specific checks\nWhen the story handles geospatial input:\n- coordinate reference system assumptions are explicit,\n- supported file/data formats are documented,\n- invalid or incomplete metadata behavior is defined,\n- sample data or reproducible validation steps exist.\n\n## Documentation\n- Relevant set evidence document is updated.\n- world/CANON.md is updated for new permanent world facts.\n- state/LEARNING_TRACKER.md marks the covered questions.\n- AI_CONTEXT.md reflects material architecture changes.\n\n## Delivery\n- Story acceptance criteria are satisfied.\n- The change is demonstrable in Sprint Review.\n",
+              "position": "replace"
+            }
+          },
+          "highlight": {
+            "kind": "code",
+            "lines": [
+              1,
+              6,
+              13,
+              14,
+              17,
+              29,
+              35,
+              41
+            ]
+          }
+        },
+        {
+          "title": "Create empty SPRINT-001.md",
+          "why": "• This Set 3 artifact belongs in docs/process/SPRINT-001.md, but we do not want finished content to appear instantly.\n• IntelliJ first creates the empty file so the project tree changes in the same visible way it would during normal development.\n• The following step will type the first recorded GeoOps sprint into this file through the master typeCode action.\n• That keeps the learning flow honest: file creation happens first, then the actual repository content is written in front of us.",
+          "software": "intellij",
+          "action": {
+            "action": "createFile",
+            "data": {
+              "path": "docs/process/SPRINT-001.md",
+              "language": "markdown",
+              "content": ""
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              ".tab.active"
+            ]
+          }
+        },
+        {
+          "title": "Record Sprint 001 and its committed stories",
+          "why": "• Now we capture one concrete sprint so the methodology has a real example instead of only definitions.\n• A sprint is a fixed development window; GeoOps uses two weeks and gives each sprint a goal.\n• Sprint 001 contains GEO-1 for the application bootstrap, GEO-2 for the preflight utility, and GEO-3 for the delivery workflow we are building now.\n• Each story records an outcome and acceptance criteria, while the implementation evidence points back to the code or documentation that proves the result exists.\n• The Sprint Review section lists the behavior stakeholders can actually see: tests, health, project intake, preflight validation, and the issue/PR workflow.\n• The Retrospective seed captures a process improvement idea for the next sprint rather than changing product scope.\n• That separation is important: Sprint Review asks what working value was delivered; Retrospective asks how the team can work better next time.",
+          "software": "intellij",
+          "action": {
+            "action": "typeCode",
+            "data": {
+              "file": "docs/process/SPRINT-001.md",
+              "code": "# Sprint 001 — GeoOps Foundation\n\n**Sprint length:** 2 weeks  \n**Goal:** Establish a runnable Java/Spring Boot GIS service and the first operational validation utility.\n\n## Committed stories\n\n### Story GEO-1 — Bootstrap GeoOps\n**Outcome:** Developers can clone, build, test and run the initial service.\n\nAcceptance criteria:\n- Java 17 is established.\n- Maven builds the project.\n- Spring Boot application starts.\n- Health endpoint is available.\n- Basic GIS project intake endpoint exists.\n- CI verifies the build.\n\nEvidence:\n- Set 1\n- pom.xml\n- GeoOpsApplication.java\n- ProjectController.java\n- ProjectService.java\n\n### Story GEO-2 — Preflight inbound GIS datasets\n**Outcome:** A standalone utility can reject clearly invalid input before it reaches the long-running service.\n\nAcceptance criteria:\n- CLI accepts one dataset path.\n- Missing/unsupported files produce non-zero process codes.\n- Supported starter extensions are .csv, .json and .geojson.\n- Business validation logic does not call System.exit.\n- Spring Boot web service uses graceful shutdown.\n\nEvidence:\n- Set 2\n- GeoOpsPreflightCli.java\n- DatasetPreflightValidator.java\n- DatasetPreflightValidatorTest.java\n\n### Story GEO-3 — Establish delivery workflow\n**Outcome:** The repository explains how future GeoOps work moves from backlog to reviewed, tested code.\n\nAcceptance criteria:\n- Agile workflow documented.\n- Definition of Ready documented.\n- Definition of Done documented.\n- Feature issue template exists.\n- Pull request template exists.\n\nEvidence:\n- Set 3\n- docs/process/AGILE-WORKFLOW.md\n- docs/process/DEFINITION-OF-DONE.md\n\n## Sprint Review demo\n\n1. Run `mvn clean test`.\n2. Start GeoOps and call `/actuator/health`.\n3. Create and list a GIS project through `/api/projects`.\n4. Demonstrate preflight validation behavior.\n5. Show how a new feature would enter through the issue/PR workflow.\n\n## Retrospective seed\n\nKeep interview-learning documentation adjacent to code evidence so later contributors and AIs can reconstruct why each architectural decision exists.\n",
+              "position": "replace"
+            }
+          },
+          "highlight": {
+            "kind": "code",
+            "lines": [
+              1,
+              3,
+              4,
+              8,
+              26,
+              42,
+              57,
+              65
+            ]
+          }
+        },
+        {
+          "title": "Create empty feature.yml",
+          "why": "• This Set 3 artifact belongs in .github/ISSUE_TEMPLATE/feature.yml, but we do not want finished content to appear instantly.\n• IntelliJ first creates the empty file so the project tree changes in the same visible way it would during normal development.\n• The following step will type the reusable feature-story form into this file through the master typeCode action.\n• That keeps the learning flow honest: file creation happens first, then the actual repository content is written in front of us.",
+          "software": "intellij",
+          "action": {
+            "action": "createFile",
+            "data": {
+              "path": ".github/ISSUE_TEMPLATE/feature.yml",
+              "language": "yaml",
+              "content": ""
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              ".tab.active"
+            ]
+          }
+        },
+        {
+          "title": "Type the GeoOps feature issue template",
+          "why": "• Future stories should not depend on every developer remembering the same planning questions from memory.\n• This GitHub issue template standardizes the information a feature story should collect before implementation.\n• Business outcome asks what useful result the change must deliver.\n• GIS / domain context asks for datasets, coordinate systems, validation rules, client workflow, or integration details that could change the technical solution.\n• Acceptance criteria captures the observable conditions required for approval.\n• Dependencies and risks exposes blockers or external services before the story enters development.\n• Validation evidence tells a reviewer or QA person how the completed behavior should be verified.\n• The template supports Definition of Ready by making missing planning information visible early.",
+          "software": "intellij",
+          "action": {
+            "action": "typeCode",
+            "data": {
+              "file": ".github/ISSUE_TEMPLATE/feature.yml",
+              "code": "name: GeoOps Feature\ndescription: Propose a product or engineering increment for the GeoOps GIS platform.\ntitle: \"[Feature] \"\nlabels: [\"feature\"]\nbody:\n  - type: textarea\n    id: outcome\n    attributes:\n      label: Business outcome\n      description: What user or operational outcome should this change deliver?\n    validations:\n      required: true\n\n  - type: textarea\n    id: gis_context\n    attributes:\n      label: GIS / domain context\n      description: Describe relevant datasets, coordinate systems, validation rules, client workflow, or integration context.\n\n  - type: textarea\n    id: acceptance\n    attributes:\n      label: Acceptance criteria\n      description: List observable conditions that must be true for the story to be accepted.\n      placeholder: |\n        - [ ] Given ...\n        - [ ] When ...\n        - [ ] Then ...\n    validations:\n      required: true\n\n  - type: textarea\n    id: dependencies\n    attributes:\n      label: Dependencies and risks\n      description: Note APIs, files, services, environments, data samples, or blockers.\n\n  - type: textarea\n    id: evidence\n    attributes:\n      label: Validation evidence\n      description: How should a reviewer or QA verify the result?\n",
+              "position": "replace"
+            }
+          },
+          "highlight": {
+            "kind": "code",
+            "lines": [
+              1,
+              9,
+              17,
+              23,
+              35,
+              41
+            ]
+          }
+        },
+        {
+          "title": "Create empty pull_request_template.md",
+          "why": "• This Set 3 artifact belongs in .github/pull_request_template.md, but we do not want finished content to appear instantly.\n• IntelliJ first creates the empty file so the project tree changes in the same visible way it would during normal development.\n• The following step will type the reusable pull-request review checklist into this file through the master typeCode action.\n• That keeps the learning flow honest: file creation happens first, then the actual repository content is written in front of us.",
+          "software": "intellij",
+          "action": {
+            "action": "createFile",
+            "data": {
+              "path": ".github/pull_request_template.md",
+              "language": "markdown",
+              "content": ""
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              ".tab.active"
+            ]
+          }
+        },
+        {
+          "title": "Type the GeoOps pull request template",
+          "why": "• The issue explains what outcome we want; the pull request explains what implementation is now asking to join main.\n• A pull request, or PR, is the review boundary between a feature branch and the shared branch.\n• The template asks for the linked story, concrete changes, reason for the change, GIS impact, verification evidence, and rollback risk.\n• The verification checklist includes automated tests, mvn clean verify, acceptance criteria, documentation, and permanent project-state updates.\n• This gives the reviewer more than a diff: it gives context for why the diff exists and what evidence supports merging it.\n• That is how Definition of Done becomes part of the engineering workflow instead of a document nobody consults.",
+          "software": "intellij",
+          "action": {
+            "action": "typeCode",
+            "data": {
+              "file": ".github/pull_request_template.md",
+              "code": "## Story / issue\n\nLink the GitHub issue or story this change implements.\n\n## What changed\n\nDescribe the implementation in concrete terms.\n\n## Why\n\nExplain the business or technical reason for the change.\n\n## GIS impact\n\nIf applicable, document:\n- dataset/file-format impact,\n- coordinate reference system assumptions,\n- spatial/data validation changes,\n- downstream integration impact.\n\n## Verification\n\n- [ ] Automated tests added or updated where needed\n- [ ] `mvn clean verify` passes\n- [ ] Acceptance criteria checked\n- [ ] Relevant documentation updated\n- [ ] Canon/tracker updated if this introduces permanent world facts\n\n## Risk / rollback\n\nDescribe meaningful risks and how the change could be reverted or disabled.\n",
+              "position": "replace"
+            }
+          },
+          "highlight": {
+            "kind": "code",
+            "lines": [
+              1,
+              5,
+              9,
+              13,
+              21,
+              24,
+              29
+            ]
+          }
+        },
+        {
+          "title": "Review the Set 3 working tree",
+          "why": "• The process artifacts are written, so we return to Git before recording them.\n• The working tree now shows the Agile workflow, Definition of Done, Sprint 001, issue template, PR template, and Set 3 learning evidence as one related change.\n• Reviewing the file list before staging helps catch accidental or unrelated files before they enter the story's commit.\n• All of these changes belong to GEO-3 because they establish the repository delivery workflow described by the issue.",
+          "software": "git",
+          "action": {
+            "action": "openRepository",
+            "data": {
+              "name": "Developer-7-Intellij",
+              "path": "C:\\Users\\developer\\Developer-7-Intellij",
+              "branch": "feature/GEO-3-delivery-workflow",
+              "branches": [
+                {
+                  "name": "main",
+                  "current": false,
+                  "ahead": 0,
+                  "behind": 0
+                },
+                {
+                  "name": "feature/GEO-3-delivery-workflow",
+                  "current": true,
+                  "ahead": 0,
+                  "behind": 0
+                }
+              ],
+              "files": [
+                {
+                  "path": "docs/process/AGILE-WORKFLOW.md",
+                  "status": "A",
+                  "staged": false,
+                  "content": "# GeoOps Agile Delivery Workflow\n\nGeoOps uses an Agile/Scrum-style delivery model for the fictional AtlasGrid Geospatial Systems team.\n\n## Cadence\n\n- Sprint length: 2 weeks\n- Backlog is refined continuously.\n- Sprint Planning selects a small set of ready stories.\n- Developers implement on short-lived branches.\n- Pull requests are reviewed before merge.\n- CI must pass before merge.\n- Sprint Review demonstrates completed behavior.\n- Retrospective captures one or two process improvements for the next sprint.\n\n## Story flow\n\n```text\nBacklog\n  ↓\nRefined / Ready\n  ↓\nSprint Planning\n  ↓\nIn Progress\n  ↓\nPull Request\n  ↓\nReview + CI\n  ↓\nDone\n  ↓\nSprint Review\n```\n\n## Why GeoOps uses Agile instead of a pure Waterfall flow\n\nGIS requirements can change as sample survey files, coordinate metadata, client rules and downstream integration constraints become clearer.\n\nA short feedback cycle lets the team:\n- validate assumptions early,\n- demonstrate small working slices,\n- adjust acceptance criteria before large amounts of code are committed,\n- detect integration problems earlier,\n- deliver usable increments without waiting for one large final release.\n\n## Definition of Ready\n\nA story is considered ready for Sprint Planning when:\n- the business outcome is understandable,\n- acceptance criteria are written,\n- major dependencies are known,\n- sample GIS data or API examples are available when needed,\n- the team can estimate the work,\n- no unresolved blocker prevents starting.\n\n## Branch / pull-request flow\n\n```text\nGitHub Issue\n   ↓\nfeature/<issue>-short-name\n   ↓\ncode + tests + documentation\n   ↓\nPull Request\n   ↓\nreview + GitHub Actions\n   ↓\nmerge to main\n```\n\n## Ceremonies\n\n### Sprint Planning\nThe team chooses ready stories based on priority and capacity, discusses implementation risks and breaks stories into tasks when necessary.\n\n### Daily Stand-up\nEach person briefly covers progress, next work and blockers. It is a coordination event, not a status report to one individual.\n\n### Backlog Refinement\nUpcoming work is clarified before a future Sprint Planning session.\n\n### Sprint Review\nCompleted behavior is demonstrated to stakeholders and feedback is collected.\n\n### Retrospective\nThe team discusses what helped, what slowed delivery and one or two concrete improvements to try next sprint.\n\n## GeoOps example\n\nA story such as \"Validate inbound GeoJSON before project intake\" may include:\n- acceptance criteria for supported file types,\n- expected error behavior,\n- validator code,\n- unit tests,\n- documentation,\n- a pull request proving CI passes.\n\nThat keeps process artifacts tied to actual code rather than treating Agile as ceremony-only.\n",
+                  "oldContent": ""
+                },
+                {
+                  "path": "docs/process/DEFINITION-OF-DONE.md",
+                  "status": "A",
+                  "staged": false,
+                  "content": "# GeoOps Definition of Done\n\nA GeoOps story is Done only when all applicable checks below are satisfied.\n\n## Code\n- Implementation matches the accepted story scope.\n- Code follows established package and architecture boundaries.\n- No new technology is introduced without a justified project need.\n- Error paths are handled intentionally.\n\n## Tests\n- New logic has appropriate automated tests.\n- Existing tests pass.\n- GitHub Actions build is green.\n\n## Review\n- Pull request explains what changed and why.\n- Reviewer feedback is resolved.\n- Risky behavior or design tradeoffs are documented.\n\n## API / Data\nWhen the story changes an API or data contract:\n- request/response behavior is documented,\n- validation rules are explicit,\n- backward compatibility impact is considered.\n\n## GIS-specific checks\nWhen the story handles geospatial input:\n- coordinate reference system assumptions are explicit,\n- supported file/data formats are documented,\n- invalid or incomplete metadata behavior is defined,\n- sample data or reproducible validation steps exist.\n\n## Documentation\n- Relevant set evidence document is updated.\n- world/CANON.md is updated for new permanent world facts.\n- state/LEARNING_TRACKER.md marks the covered questions.\n- AI_CONTEXT.md reflects material architecture changes.\n\n## Delivery\n- Story acceptance criteria are satisfied.\n- The change is demonstrable in Sprint Review.\n",
+                  "oldContent": ""
+                },
+                {
+                  "path": "docs/process/SPRINT-001.md",
+                  "status": "A",
+                  "staged": false,
+                  "content": "# Sprint 001 — GeoOps Foundation\n\n**Sprint length:** 2 weeks  \n**Goal:** Establish a runnable Java/Spring Boot GIS service and the first operational validation utility.\n\n## Committed stories\n\n### Story GEO-1 — Bootstrap GeoOps\n**Outcome:** Developers can clone, build, test and run the initial service.\n\nAcceptance criteria:\n- Java 17 is established.\n- Maven builds the project.\n- Spring Boot application starts.\n- Health endpoint is available.\n- Basic GIS project intake endpoint exists.\n- CI verifies the build.\n\nEvidence:\n- Set 1\n- pom.xml\n- GeoOpsApplication.java\n- ProjectController.java\n- ProjectService.java\n\n### Story GEO-2 — Preflight inbound GIS datasets\n**Outcome:** A standalone utility can reject clearly invalid input before it reaches the long-running service.\n\nAcceptance criteria:\n- CLI accepts one dataset path.\n- Missing/unsupported files produce non-zero process codes.\n- Supported starter extensions are .csv, .json and .geojson.\n- Business validation logic does not call System.exit.\n- Spring Boot web service uses graceful shutdown.\n\nEvidence:\n- Set 2\n- GeoOpsPreflightCli.java\n- DatasetPreflightValidator.java\n- DatasetPreflightValidatorTest.java\n\n### Story GEO-3 — Establish delivery workflow\n**Outcome:** The repository explains how future GeoOps work moves from backlog to reviewed, tested code.\n\nAcceptance criteria:\n- Agile workflow documented.\n- Definition of Ready documented.\n- Definition of Done documented.\n- Feature issue template exists.\n- Pull request template exists.\n\nEvidence:\n- Set 3\n- docs/process/AGILE-WORKFLOW.md\n- docs/process/DEFINITION-OF-DONE.md\n\n## Sprint Review demo\n\n1. Run `mvn clean test`.\n2. Start GeoOps and call `/actuator/health`.\n3. Create and list a GIS project through `/api/projects`.\n4. Demonstrate preflight validation behavior.\n5. Show how a new feature would enter through the issue/PR workflow.\n\n## Retrospective seed\n\nKeep interview-learning documentation adjacent to code evidence so later contributors and AIs can reconstruct why each architectural decision exists.\n",
+                  "oldContent": ""
+                },
+                {
+                  "path": ".github/ISSUE_TEMPLATE/feature.yml",
+                  "status": "A",
+                  "staged": false,
+                  "content": "name: GeoOps Feature\ndescription: Propose a product or engineering increment for the GeoOps GIS platform.\ntitle: \"[Feature] \"\nlabels: [\"feature\"]\nbody:\n  - type: textarea\n    id: outcome\n    attributes:\n      label: Business outcome\n      description: What user or operational outcome should this change deliver?\n    validations:\n      required: true\n\n  - type: textarea\n    id: gis_context\n    attributes:\n      label: GIS / domain context\n      description: Describe relevant datasets, coordinate systems, validation rules, client workflow, or integration context.\n\n  - type: textarea\n    id: acceptance\n    attributes:\n      label: Acceptance criteria\n      description: List observable conditions that must be true for the story to be accepted.\n      placeholder: |\n        - [ ] Given ...\n        - [ ] When ...\n        - [ ] Then ...\n    validations:\n      required: true\n\n  - type: textarea\n    id: dependencies\n    attributes:\n      label: Dependencies and risks\n      description: Note APIs, files, services, environments, data samples, or blockers.\n\n  - type: textarea\n    id: evidence\n    attributes:\n      label: Validation evidence\n      description: How should a reviewer or QA verify the result?\n",
+                  "oldContent": ""
+                },
+                {
+                  "path": ".github/pull_request_template.md",
+                  "status": "A",
+                  "staged": false,
+                  "content": "## Story / issue\n\nLink the GitHub issue or story this change implements.\n\n## What changed\n\nDescribe the implementation in concrete terms.\n\n## Why\n\nExplain the business or technical reason for the change.\n\n## GIS impact\n\nIf applicable, document:\n- dataset/file-format impact,\n- coordinate reference system assumptions,\n- spatial/data validation changes,\n- downstream integration impact.\n\n## Verification\n\n- [ ] Automated tests added or updated where needed\n- [ ] `mvn clean verify` passes\n- [ ] Acceptance criteria checked\n- [ ] Relevant documentation updated\n- [ ] Canon/tracker updated if this introduces permanent world facts\n\n## Risk / rollback\n\nDescribe meaningful risks and how the change could be reverted or disabled.\n",
+                  "oldContent": ""
+                },
+                {
+                  "path": "docs/sets/SET-003-PROJECT-METHODOLOGY.md",
+                  "status": "A",
+                  "staged": false,
+                  "content": "Set 3 methodology evidence",
+                  "oldContent": ""
+                },
+                {
+                  "path": "state/LEARNING_TRACKER.md",
+                  "status": "A",
+                  "staged": false,
+                  "content": "Learning tracker advanced through Set 3",
+                  "oldContent": ""
+                }
+              ],
+              "commits": [
+                {
+                  "hash": "set2001",
+                  "message": "Complete Set 2 controlled System.exit preflight CLI",
+                  "author": "Developer",
+                  "date": "Today",
+                  "branch": "main"
+                },
+                {
+                  "hash": "set1001",
+                  "message": "Complete Set 1 GeoOps bootstrap",
+                  "author": "Developer",
+                  "date": "Today",
+                  "branch": "main"
+                }
+              ]
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              ".viewTitle",
+              "#changeCount",
+              "#activeBranch"
+            ],
+            "multiple": true
+          }
+        },
+        {
+          "title": "Stage the GEO-3 process artifacts",
+          "why": "• Staging selects the exact working-tree changes that should enter the next commit.\n• Here the seven Set 3 artifacts form one coherent story-sized change, so we stage them together.\n• If an unrelated Java file had appeared in this list, this would be the moment to leave it unstaged rather than accidentally mixing work.",
+          "software": "git",
+          "action": {
+            "action": "stageAll",
+            "data": {}
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#stageAllBtn",
+              "#statusText",
+              "#changeCount"
+            ],
+            "multiple": true
+          }
+        },
+        {
+          "title": "Commit the Agile delivery workflow on the feature branch",
+          "why": "• A commit records the prepared Set 3 change in local Git history.\n• The message describes the outcome—establish the GeoOps Agile delivery workflow—rather than using a vague message such as 'update files'.\n• Because the commit lives on the GEO-3 feature branch, main is still unchanged until review and merge happen later.",
+          "software": "git",
+          "action": {
+            "action": "commit",
+            "data": {
+              "message": "Establish Set 3 Agile delivery workflow",
+              "hash": "set3001",
+              "author": "Developer",
+              "date": "Today"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#commitCount",
+              "#statusText",
+              "#activeBranch"
+            ],
+            "multiple": true
+          }
+        },
+        {
+          "title": "Push the feature branch for review",
+          "why": "• The commit is only local until we push the feature branch to the remote repository.\n• Pushing makes the GEO-3 branch available to GitHub so a pull request can compare it against main.\n• The branch remains separate from main; publishing a branch is not the same thing as merging it.\n• That distinction gives CI and reviewers a place to evaluate the change before the shared branch moves.",
+          "software": "git",
+          "action": {
+            "action": "push",
+            "data": {
+              "remote": "origin",
+              "branch": "feature/GEO-3-delivery-workflow",
+              "aheadAfter": 0,
+              "output": "Enumerating objects... done.\nTo https://github.com/sabareeshrao/Developer-7-Intellij.git\n * [new branch]      feature/GEO-3-delivery-workflow -> feature/GEO-3-delivery-workflow",
+              "status": "Feature branch pushed"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#pushBtn",
+              "#syncText",
+              "#statusText"
+            ],
+            "multiple": true
+          }
+        },
+        {
+          "title": "Open the GEO-3 pull request",
+          "why": "• Now the feature branch is ready to ask for review.\n• The pull request compares feature/GEO-3-delivery-workflow against main and explains why the repository should accept the change.\n• Its description links back to issue #3, summarizes the process artifacts, states that runtime GIS behavior is unchanged, and records the verification plan.\n• The Files changed count makes the scope visible before anyone approves the merge.\n• Creating the PR moves the story from individual development into team review.",
+          "software": "github",
+          "action": {
+            "action": "createPullRequest",
+            "data": {
+              "number": 1,
+              "title": "GEO-3 Establish Agile delivery workflow",
+              "body": "Closes #3\n\nWhat changed\n- Added the GeoOps Agile/Scrum workflow\n- Added Definition of Done\n- Recorded Sprint 001\n- Added feature issue and pull request templates\n\nWhy\nFuture GeoOps work needs a visible path from backlog story to reviewed, tested code.\n\nGIS impact\nNo runtime GIS behavior changes in this set; the workflow documents how GIS assumptions and sample data must be reviewed.\n\nVerification\n- Repository process artifacts reviewed\n- GeoOps CI passes\n- Acceptance criteria checked\n\nRisk / rollback\nDocumentation and templates only; revert the process-artifact commit if the workflow must be redesigned.",
+              "head": "feature/GEO-3-delivery-workflow",
+              "base": "main",
+              "author": "sabareeshrao",
+              "filesChanged": [
+                "docs/process/AGILE-WORKFLOW.md",
+                "docs/process/DEFINITION-OF-DONE.md",
+                "docs/process/SPRINT-001.md",
+                ".github/ISSUE_TEMPLATE/feature.yml",
+                ".github/pull_request_template.md",
+                "docs/sets/SET-003-PROJECT-METHODOLOGY.md",
+                "state/LEARNING_TRACKER.md"
+              ],
+              "diff": [
+                "+# GeoOps Agile Delivery Workflow",
+                "+# GeoOps Definition of Done",
+                "+# Sprint 001 — GeoOps Foundation",
+                "+name: GeoOps Feature",
+                "+## Story / issue"
+              ]
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "[data-pr-row=\"1\"]"
+            ]
+          }
+        },
+        {
+          "title": "Inspect the pull request description and merge boundary",
+          "why": "• Opening the PR shows the information a reviewer needs before looking only at individual changed lines.\n• The description connects the implementation back to GEO-3, while Files changed shows the actual repository scope.\n• The Merge pull request control is visible, but we deliberately do not use it yet.\n• Definition of Done still requires CI and peer review, so the correct next move is verification rather than immediate merge.",
+          "software": "github",
+          "action": {
+            "action": "openPullRequest",
+            "data": {
+              "number": 1
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              ".prDescription",
+              "#mergeBtn"
+            ],
+            "multiple": true
+          }
+        },
+        {
+          "title": "Trigger CI for the pull request",
+          "why": "• The PR now triggers the same GeoOps CI workflow used on other repository changes.\n• CI means Continuous Integration: an automated system rebuilds and tests the committed change on a clean runner instead of trusting one developer's machine.\n• This run is tied to the pull-request event and the GEO-3 feature branch.\n• The workflow will validate the curriculum and run Maven clean verify before the PR is treated as safe to merge.",
+          "software": "github_actions",
+          "action": {
+            "action": "triggerRun",
+            "data": {
+              "id": "set-3-pr-ci",
+              "name": "GeoOps CI",
+              "event": "pull_request",
+              "branch": "feature/GEO-3-delivery-workflow",
+              "commit": "set3001",
+              "status": "in_progress",
+              "runner": "ubuntu-latest",
+              "jobs": [
+                {
+                  "name": "build",
+                  "status": "in_progress",
+                  "runner": "ubuntu-latest",
+                  "steps": [
+                    {
+                      "name": "Checkout",
+                      "status": "success",
+                      "log": "Checked out feature/GEO-3-delivery-workflow"
+                    },
+                    {
+                      "name": "Set up Java 17",
+                      "status": "success",
+                      "log": "Temurin Java 17 configured"
+                    },
+                    {
+                      "name": "Validate learning curriculum",
+                      "status": "in_progress",
+                      "log": "Validating Set 3 workflow and fidelity contracts"
+                    },
+                    {
+                      "name": "Verify with Maven",
+                      "status": "queued",
+                      "log": ""
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "[data-run=\"set-3-pr-ci\"]"
+            ]
+          }
+        },
+        {
+          "title": "Inspect the in-progress PR build",
+          "why": "• Opening the run lets the team see which job and step are currently executing instead of treating CI as a mysterious green or red icon.\n• Checkout and Java setup have completed, while curriculum validation and Maven verification still represent gates the change must pass.\n• A failing build would send the story back to development; the PR should not move to Done just because the documentation looks reasonable.",
+          "software": "github_actions",
+          "action": {
+            "action": "openRun",
+            "data": {
+              "id": "set-3-pr-ci"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              ".jobHead",
+              ".card .head"
+            ],
+            "multiple": true
+          }
+        },
+        {
+          "title": "Complete the Set 3 CI run successfully",
+          "why": "• The clean runner has now finished the same verification expected by the repository.\n• Curriculum validation passes and Maven reports all five existing tests green, so Set 3 has not broken the Java application while adding its process artifacts.\n• A successful automated build is one part of Definition of Done, but it does not replace human review.\n• Next we carry this green result back to the pull request and complete the peer-review gate.",
+          "software": "github_actions",
+          "action": {
+            "action": "setRunStatus",
+            "data": {
+              "id": "set-3-pr-ci",
+              "status": "success",
+              "duration": "1m 11s",
+              "jobs": [
+                {
+                  "name": "build",
+                  "status": "success",
+                  "runner": "ubuntu-latest",
+                  "steps": [
+                    {
+                      "name": "Checkout",
+                      "status": "success",
+                      "log": "Checked out feature/GEO-3-delivery-workflow"
+                    },
+                    {
+                      "name": "Set up Java 17",
+                      "status": "success",
+                      "log": "Temurin Java 17 configured"
+                    },
+                    {
+                      "name": "Validate learning curriculum",
+                      "status": "success",
+                      "log": "Set 3 narration, highlights and workflow contracts valid"
+                    },
+                    {
+                      "name": "Verify with Maven",
+                      "status": "success",
+                      "log": "Tests run: 5, Failures: 0\nBUILD SUCCESS"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              ".jobHead",
+              ".ok"
+            ],
+            "multiple": true
+          }
+        },
+        {
+          "title": "Attach the green CI check to the pull request",
+          "why": "• The pull request should show the verification result where the reviewer is making the merge decision.\n• We mark GeoOps CI / build as successful on PR #1, so the Checks card now provides visible evidence from automation.\n• This is the engineering connection behind the process phrase 'Review + CI': both machine verification and human review are required before merge.",
+          "software": "github",
+          "action": {
+            "action": "setCheckStatus",
+            "data": {
+              "number": 1,
+              "name": "GeoOps CI / build",
+              "status": "success"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              ".commitRow",
+              ".ok"
+            ],
+            "multiple": true
+          }
+        },
+        {
+          "title": "Record peer approval on the pull request",
+          "why": "• CI can prove the build and tests pass, but it cannot decide whether the change communicates the workflow clearly or matches the agreed story.\n• A peer review gives another developer a chance to inspect the reasoning, scope, risks, and repository conventions.\n• The approved review is now visible in the PR conversation and the reviewer appears in the review area.\n• With acceptance criteria, green CI, and review satisfied, the story has reached the merge gate defined by our Definition of Done.",
+          "software": "github",
+          "action": {
+            "action": "addReview",
+            "data": {
+              "number": 1,
+              "author": "reviewer",
+              "state": "approved",
+              "body": "Agile workflow, Definition of Done, sprint record, and shared templates match GEO-3. CI is green."
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              ".reviewEvent",
+              ".reviewBox"
+            ],
+            "multiple": true
+          }
+        },
+        {
+          "title": "Merge the reviewed GEO-3 pull request",
+          "why": "• Now the merge is justified instead of being a shortcut.\n• The feature branch has a clear story, reviewed scope, successful CI, and peer approval.\n• Merging integrates the Set 3 process artifacts into main and changes the PR state to Merged.\n• The simulator also removes the active merge action after completion, which matches the real developer expectation that an already merged PR cannot be merged again.\n• At this point the implementation portion of GEO-3 is complete.",
+          "software": "github",
+          "action": {
+            "action": "mergePullRequest",
+            "data": {
+              "number": 1
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              ".view .toolbar .pill"
+            ]
+          }
+        },
+        {
+          "title": "Close the completed GEO-3 story",
+          "why": "• The pull request is merged, so the story can move out of active backlog work.\n• Closing issue #3 records that its acceptance criteria were satisfied by the merged repository change.\n• The Closed state is visible on the issue rather than leaving the story looking unfinished after the code-review workflow has completed.\n• This is the transition from reviewed implementation to Done in the sprint.",
+          "software": "github",
+          "action": {
+            "action": "closeIssue",
+            "data": {
+              "number": 3
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              ".view .toolbar .pill",
+              ".issueBody"
+            ],
+            "multiple": true
+          }
+        },
+        {
+          "title": "Switch the local repository back to main",
+          "why": "• The remote PR is merged, but our local Git workspace is still on the old feature branch.\n• We switch back to main because future work should start from the shared branch that now contains the accepted Set 3 history.\n• A feature branch is intentionally temporary; after merge, main becomes the new base for the next story.",
+          "software": "git",
+          "action": {
+            "action": "checkoutBranch",
+            "data": {
+              "name": "main"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#activeBranch",
+              "#statusText"
+            ],
+            "multiple": true
+          }
+        },
+        {
+          "title": "Pull the merged Set 3 history into local main",
+          "why": "• Switching branches does not automatically guarantee the local main branch contains the remote merge.\n• Pull fetches the remote update and integrates it into local main so the developer workspace matches the reviewed repository state.\n• The sync indicator returns to zero ahead and zero behind, which is the clean starting point we want before Set 4.",
+          "software": "git",
+          "action": {
+            "action": "pull",
+            "data": {
+              "remote": "origin",
+              "branch": "main",
+              "aheadAfter": 0,
+              "behindAfter": 0,
+              "output": "From https://github.com/sabareeshrao/Developer-7-Intellij\n * branch            main       -> FETCH_HEAD\nUpdating set2001..set3001\nFast-forward\n docs/process/AGILE-WORKFLOW.md | added\n docs/process/DEFINITION-OF-DONE.md | added\n docs/process/SPRINT-001.md | added",
+              "status": "Pulled merged GEO-3"
+            }
+          },
+          "highlight": {
+            "kind": "target",
+            "selectors": [
+              "#pullBtn",
+              "#syncText",
+              "#statusText"
+            ],
+            "multiple": true
+          }
+        },
+        {
+          "title": "Read the Sprint Review and Retrospective evidence",
+          "why": "• Set 3 ends where a sprint should end: by looking at what can be demonstrated and what the team learned.\n• Sprint Review is not another coding phase; it is the event where completed working behavior is shown to stakeholders and feedback is collected.\n• Sprint 001 can demonstrate the build, Actuator health, project intake API, preflight CLI, and the GitHub issue-to-PR workflow we just followed.\n• Retrospective focuses on the team's way of working rather than product scope.\n• The recorded improvement is to keep learning and decision evidence close to the code so future contributors can reconstruct why the project evolved this way.\n• That completes the original Developer-7 Set 3 methodology: Agile/Scrum, two-week sprints, Ready/Done definitions, feature branches, pull requests, CI, review, Sprint Review, and Retrospective.",
+          "software": "intellij",
+          "action": {
+            "action": "openFile",
+            "data": {
+              "file": "docs/process/SPRINT-001.md"
+            }
+          },
+          "highlight": {
+            "kind": "code",
+            "lines": [
+              57,
+              65
+            ]
           }
         }
       ]
