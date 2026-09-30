@@ -47,6 +47,18 @@ def validate_course(course):
             action_data = (step.get("action") or {}).get("data") or {}
             highlight = step.get("highlight") or {}
 
+            broad_targets = {
+                "#bottomPanel", "#rightPanel", "#mainView", "#detailsBody",
+                "#content", "#dependencyList", "#results", "#reqTabs"
+            }
+            selectors = set(highlight.get("selectors") or [])
+            forbidden = sorted(selectors & broad_targets)
+            if forbidden:
+                raise SystemExit(
+                    f"Step {stage_index}.{step_index} uses broad highlight target(s) {forbidden}; "
+                    "target the exact control/card/row/console the explanation is discussing"
+                )
+
             if why:
                 lines = why.splitlines()
                 if any(not line.startswith("• ") for line in lines):
