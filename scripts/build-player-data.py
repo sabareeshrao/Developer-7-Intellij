@@ -27,7 +27,22 @@ PROJECT_FILES = [
 def normalize_sentence(text):
     return re.sub(r"[^a-z0-9]+", " ", text.lower()).strip()
 
+def validate_multiline_payloads(value, path="course"):
+    multiline_keys = {"console", "output", "log", "readme", "gitignore"}
+    if isinstance(value, dict):
+        for key, child in value.items():
+            child_path = f"{path}.{key}"
+            if key in multiline_keys and isinstance(child, str) and "\\n" in child:
+                raise SystemExit(
+                    f"{child_path} contains literal \\n text; store real line breaks so developer consoles render correctly"
+                )
+            validate_multiline_payloads(child, child_path)
+    elif isinstance(value, list):
+        for index, child in enumerate(value):
+            validate_multiline_payloads(child, f"{path}[{index}]")
+
 def validate_course(course):
+    validate_multiline_payloads(course)
     stages = course.get("stages") or []
     if not stages:
         raise SystemExit("course has no stages")
