@@ -203,7 +203,7 @@
         ],
         "reflog": [],
         "rebasePlan": [],
-        "gitignore": "target/\\n.idea/\\n",
+        "gitignore": "target/\n.idea/\n",
         "hooks": {},
         "lfs": {
           "patterns": []
@@ -327,7 +327,7 @@
                 "time": "Today"
               }
             ],
-            "readme": "# Developer-7-Intellij\\n\\nSet-by-set GeoOps developer playback.",
+            "readme": "# Developer-7-Intellij\n\nSet-by-set GeoOps developer playback.",
             "commits": [
               {
                 "hash": "set2001",
@@ -489,7 +489,7 @@
                   {
                     "name": "Verify with Maven",
                     "status": "success",
-                    "log": "Tests run: 1, Failures: 0\\nBUILD SUCCESS"
+                    "log": "Tests run: 1, Failures: 0\nBUILD SUCCESS"
                   }
                 ]
               }
@@ -1196,7 +1196,7 @@
             "data": {
               "goal": "clean verify",
               "status": "BUILD SUCCESS",
-              "console": "[INFO] Compiling GeoOps with Java 17\\n[INFO] Running GeoOpsApplicationTests\\n[INFO] Tests run: 1, Failures: 0, Errors: 0\\n[INFO] BUILD SUCCESS"
+              "console": "[INFO] Compiling GeoOps with Java 17\n[INFO] Running GeoOpsApplicationTests\n[INFO] Tests run: 1, Failures: 0, Errors: 0\n[INFO] BUILD SUCCESS"
             }
           },
           "highlight": {
@@ -1219,7 +1219,7 @@
               "name": "GeoOpsApplication",
               "port": 8080,
               "profile": "default",
-              "console": "2026-09-29 INFO Starting GeoOpsApplication using Java 17\\n2026-09-29 INFO Tomcat started on port 8080 (http)\\n2026-09-29 INFO Started GeoOpsApplication"
+              "console": "2026-09-29 INFO Starting GeoOpsApplication using Java 17\n2026-09-29 INFO Tomcat started on port 8080 (http)\n2026-09-29 INFO Started GeoOpsApplication"
             }
           },
           "highlight": {
@@ -1523,7 +1523,7 @@
               "remote": "origin",
               "branch": "main",
               "aheadAfter": 0,
-              "output": "Enumerating objects... done.\\nTo https://github.com/sabareeshrao/Developer-7-Intellij.git\\n   set1001  main -> main",
+              "output": "Enumerating objects... done.\nTo https://github.com/sabareeshrao/Developer-7-Intellij.git\n   set1001  main -> main",
               "status": "Push complete"
             }
           },
